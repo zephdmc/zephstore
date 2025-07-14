@@ -41,14 +41,17 @@ export default defineConfig({
     },
 
     resolve: {
-        dedupe: ['react', 'react-dom'], // Ensure single version
         alias: {
+            react: path.resolve('./node_modules/react'),
+            'react-dom': path.resolve('./node_modules/react-dom'),
             '@': path.resolve(__dirname, './src'),
             '~': path.resolve(__dirname, './public')
         },
-        extensions: ['.js', '.jsx', '.json', '.mjs']
+        dedupe: ['react', 'react-dom']
     },
-
+    // optimizeDeps: {
+    //     exclude: ['react', 'react-dom'] // Don't prebundle, let Vite handle this cleanly
+    // },
     server: {
         port: 3000,
         strictPort: true,
@@ -68,34 +71,23 @@ export default defineConfig({
     },
 
     build: {
-        outDir: 'dist',
-        emptyOutDir: true,
-        sourcemap: process.env.NODE_ENV !== 'production',
-        minify: 'esbuild', // Change from 'terser' to 'esbuild'
-        chunkSizeWarningLimit: 1000,
-        rollupOptions: {
-            output: {
-                manualChunks(id) {
-                    if (id.includes('node_modules')) {
-                        // Force React and its dependencies into a single chunk
-                        if (
-                            id.includes('react') ||
-                            id.includes('react-dom') ||
-                            id.includes('scheduler') ||
-                            id.includes('@babel/runtime')
-                        ) {
-                            return 'vendor-react';
-                        }
-                        return 'vendor-other';
-                    }
-                }
-            }
-        },
-        terserOptions: {
-            compress: {
-                drop_console: process.env.NODE_ENV === 'production'
-            }
-        }
+        // rollupOptions: {
+        //     output: {
+        //         // manualChunks(id) {
+        //         //     if (id.includes('node_modules')) {
+        //         //         // Create a dedicated react chunk
+        //         //         if (id.includes('react') || id.includes('react-dom')) {
+        //         //             return 'vendor-react';
+        //         //         }
+        //         //         // Group Firebase together
+        //         //         if (id.includes('firebase')) {
+        //         //             return 'vendor-firebase';
+        //         //         }
+        //         //         return 'vendor-other';
+        //         //     }
+        //         // }
+        //     }
+        // }
     },
 
     optimizeDeps: {
@@ -103,10 +95,12 @@ export default defineConfig({
             'react',
             'react-dom',
             'react-router-dom',
+            'react/jsx-runtime',  // Explicitly include JSX runtime
             'firebase/app',
             'firebase/auth',
             'firebase/firestore',
             'firebase/messaging'
-        ]
+        ],
+        // exclude: ['react', 'react-dom']
     }
 });

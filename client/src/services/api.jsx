@@ -2,8 +2,8 @@ import axios from 'axios';
 import { auth } from '../firebase/config'; // or './firebase/config' depending on your folder structure
 
 const API = axios.create({
-    // baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000',
-    baseURL: 'http://localhost:5000',
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+    // baseURL: 'http://localhost:5000',
     withCredentials: true,
 });
 
