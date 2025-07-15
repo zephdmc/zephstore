@@ -312,7 +312,7 @@ export default function Header() {
                             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                         </button>
                         <Link to="/" className="text-2xl font-bold text-primary">
-                            🛒 Bellebeau Aesthetics
+                            Bellebeau Aesthetics
                         </Link>
                     </div>
 
