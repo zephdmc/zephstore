@@ -1,80 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import ProductCard from '../../components/products/ProductCard';
-// import { getProducts } from '../../services/productServic';
-// import { Link } from 'react-router-dom'; // Changed from <a> to <Link>
-
-// export default function HomePage() {
-//     const [products, setProducts] = useState([]);
-//     const [loading, setLoading] = useState(true);
-//     const [error, setError] = useState('');
-
-//     useEffect(() => {
-//         const fetchProducts = async () => {
-//             try {
-//                 const response = await getProducts();
-//                 setProducts(response.data?.slice(0, 8) || []); // Safe access with fallback
-//             } catch (err) {
-//                 setError(err.message || 'Failed to load featured products');
-//                 setProducts([]); // Ensure products is always an array
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-
-//         fetchProducts();
-//     }, []);
-
-//     return (
-//         <div className="container mx-auto px-4 py-8">
-//             {/* Hero Section - Always shows */}
-//             <section className="mb-12">
-//                 <div className="bg-primary text-white p-8 rounded-lg">
-//                     <h1 className="text-4xl text-gray-500 font-bold mb-4">Welcome to Zeph Store</h1>
-//                     <p className="text-xl text-gray-500  mb-6">
-//                         Discover amazing products at unbeatable prices
-//                     </p>
-//                     <Link
-//                         to="/products"
-//                         className="bg-white border-2 border-gray-400 text-primary py-3 px-6 rounded-lg font-medium inline-block hover:bg-gray-100 transition"
-//                     >
-//                         Shop Now
-//                     </Link>
-//                 </div>
-//             </section>
-
-//             {/* Products Section - Handles loading/error states */}
-//             <section>
-//                 <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
-
-//                 {loading ? (
-//                     <div className="text-center py-8">Loading featured products...</div>
-//                 ) : error ? (
-//                     <div className="text-red-500 bg-red-50 p-4 rounded-lg">
-//                         {error} (Showing placeholder products)
-//                     </div>
-//                 ) : null}
-
-//                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//                     {products.length > 0 ? (
-//                         products.map((product) => (
-//                             <ProductCard key={product.id} product={product} />
-//                         ))
-//                     ) : (
-//                         // Fallback UI when no products available
-//                         Array.from({ length: 4 }).map((_, index) => (
-//                             <div key={index} className="border rounded-lg p-4 bg-gray-50">
-//                                 <div className="bg-gray-200 h-48 mb-4 rounded"></div>
-//                                 <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-//                                 <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-//                             </div>
-//                         ))
-//                     )}
-//                 </div>
-//             </section>
-//         </div>
-//     );
-// }
-
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -164,6 +87,7 @@ export default function HomePage() {
             </section>
 
             {/* Featured Products Section */}
+            {/* Featured Products Section */}
             <section className="container mx-auto px-4 py-16">
                 <motion.div
                     initial="hidden"
@@ -189,25 +113,33 @@ export default function HomePage() {
                         </motion.div>
                     ) : null}
 
-                    <motion.div variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        {products.length > 0 ? (
-                            products.map((product) => (
+                    {products.length > 0 ? (
+
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: false, amount: 0.2 }} // 👈 triggers animation more reliably
+                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+                        >
+                            {products.map((product) => (
                                 <motion.div key={product.id} variants={itemVariants} whileHover={{ y: -5 }}>
                                     <ProductCard product={product} />
                                 </motion.div>
-                            ))
-                        ) : (
-                            Array.from({ length: 4 }).map((_, index) => (
-                                <motion.div key={index} variants={itemVariants}>
-                                    <div className="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                        <div className="bg-gray-200 h-64 mb-4 rounded animate-pulse"></div>
-                                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
-                                        <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
-                                    </div>
-                                </motion.div>
-                            ))
-                        )}
-                    </motion.div>
+                            ))}
+                        </motion.div>
+
+                    ) : (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <motion.div key={index} variants={itemVariants}>
+                                <div className="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+                                    <div className="bg-gray-200 h-64 mb-4 rounded animate-pulse"></div>
+                                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
+                                    <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+                                </div>
+                            </motion.div>
+                        ))
+                    )}
 
                     <motion.div variants={itemVariants} className="text-center mt-12">
                         <Link
@@ -219,6 +151,30 @@ export default function HomePage() {
                     </motion.div>
                 </motion.div>
             </section>
+
+            {/* Trending Blog Section */}
+            <section className="bg-white py-16">
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tips</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">Expert advice for your skincare journey</p>
+                    </motion.div>
+
+                    <BlogTeaser
+                        title="Top 5 Ingredients for Glowing Skin in 2025"
+                        excerpt="Discover the powerhouse ingredients that will transform your skincare routine this year..."
+                        link="/blog/top-5-ingredients-2025"
+                        image="/images/blog-teaser.jpg"
+                    />
+                </div>
+            </section>
+
 
             {/* Trending Blog Section */}
             <section className="bg-white py-16">
