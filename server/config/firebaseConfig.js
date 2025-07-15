@@ -1,5 +1,4 @@
 
-// module.exports = { admin, db, auth, storage, firebaseApp };
 const admin = require('firebase-admin');
 require('dotenv').config(); // Load .env
 
