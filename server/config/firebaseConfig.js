@@ -1,26 +1,28 @@
 
+// module.exports = { admin, db, auth, storage, firebaseApp };
 const admin = require('firebase-admin');
+require('dotenv').config(); // Load .env
 
-// Load and parse the JSON from the environment variable
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+console.log('[DEBUG] Raw FIREBASE_SERVICE_ACCOUNT env:', process.env.FIREBASE_SERVICE_ACCOUNT?.substring(0, 100));
+
+// Parse the service account JSON
+const serviceAccountRaw = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+
+// Replace escaped newline characters in private_key only
+serviceAccountRaw.private_key = serviceAccountRaw.private_key.replace(/\\n/g, '\n');
 
 // Initialize Firebase Admin SDK
 const firebaseApp = admin.initializeApp({
-    credential: admin.credential.cert({
-        projectId: serviceAccount.project_id,
-        clientEmail: serviceAccount.client_email,
-        privateKey: serviceAccount.private_key.replace(/\\n/g, '\n'),
-    }),
-    projectId: serviceAccount.project_id,
-    databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`,
-    storageBucket: `${serviceAccount.project_id}.appspot.com`
+    credential: admin.credential.cert(serviceAccountRaw),
+    databaseURL: `https://${serviceAccountRaw.project_id}.firebaseio.com`,
+    storageBucket: `${serviceAccountRaw.project_id}.appspot.com`
 });
 
 const db = admin.firestore();
 const auth = admin.auth();
 const storage = admin.storage();
 
-// Test Firestore connection
+// Optional test
 db.collection('_test').doc('connection').set({ timestamp: new Date() })
     .then(() => console.log('✅ Firestore connection verified'))
     .catch(err => console.error('❌ Firestore test failed:', err));
