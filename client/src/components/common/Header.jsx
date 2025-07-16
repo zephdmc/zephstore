@@ -519,7 +519,7 @@ const handleClickOutside = (event) => {
                             />
                             <button
                                 onClick={handleSearch}
-                                className="absolute right-3 top-2.5 text-purpleLight hover:text-primary transition"
+                                className="mobile-search-input absolute right-3 top-2.5 text-purpleLight hover:text-primary transition"
                             >
                                 <FiSearch size={18} />
                             </button>
