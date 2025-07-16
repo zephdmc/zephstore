@@ -511,7 +511,7 @@ const handleClickOutside = (event) => {
 <input
     type="text"
     placeholder="Search products..."
-    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparentt"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -520,12 +520,13 @@ const handleClickOutside = (event) => {
                             <button
     className="md:hidden text-purpleDark hover:text-primary transition mobile-search-button"
     onClick={(e) => {
+        handleSearch()
         e.stopPropagation();
         setMobileMenuOpen(false);
         setTimeout(() => searchRef.current?.focus(), 100);
     }}
 >
-    <FiSearch size={20} />
+    <FiSearch size={18} />
 </button>
                         </div>
                     </div>
