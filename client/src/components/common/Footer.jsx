@@ -3,16 +3,16 @@ import { FaTiktok, FaPinterestP } from 'react-icons/fa';
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-gray-10 text-white">
             {/* Main Footer Content */}
             <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-bold">
-                            <span className="text-purple-400">Bellebeau</span>Aesthetics
+                            <span className="text-purpleDark ">Bellebeau</span>Aesthetics
                         </h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">
+                        <p className="text-purpleLight  text-sm leading-relaxed">
                             Elevating beauty through premium aesthetic solutions. 
                             We deliver exceptional quality products with professional 
                             results you can trust.
@@ -20,19 +20,19 @@ export default function Footer() {
                         
                         {/* Social Media */}
                         <div className="flex space-x-4 pt-2">
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
                                 <FiFacebook size={20} />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
                                 <FiInstagram size={20} />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
                                 <FiTwitter size={20} />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
                                 <FaTiktok size={20} />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
                                 <FaPinterestP size={20} />
                             </a>
                         </div>
@@ -40,17 +40,17 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-700">Quick Links</h4>
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark ">Quick Links</h4>
                         <ul className="space-y-3">
-                            <li><a href="/" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                            <li><a href="/" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Home</a></li>
-                            <li><a href="/products" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                            <li><a href="/products" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Products</a></li>
-                            <li><a href="/about" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                            <li><a href="/about" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> About Us</a></li>
-                            <li><a href="/blog" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Blog</a></li>
-                            <li><a href="/faq" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                            <li><a href="/blog" className="text-white hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple- mr-2 rounded-full"></span> Blog</a></li>
+                            <li><a href="/faq" className="text-whitehover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> FAQs</a></li>
                         </ul>
                     </div>
@@ -74,20 +74,20 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-700">Contact Us</h4>
-                        <ul className="space-y-4 text-gray-400">
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark1>Contact Us</h4>
+                        <ul className="space-y-4 text-white">
                             <li className="flex items-start">
-                                <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-purple-400" />
+                                <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-purpleDark" />
                                 <span>123 Beauty Avenue, Victoria Island, Lagos, Nigeria</span>
                             </li>
                             <li className="flex items-center">
-                                <FiMail className="mr-3 text-purple-400" />
+                                <FiMail className="mr-3 text-white" />
                                 <a href="mailto:info@bellebeauaesthetics.com" className="hover:text-purple-400 transition-colors">
                                     info@bellebeauaesthetics.com
                                 </a>
                             </li>
                             <li className="flex items-center">
-                                <FiPhone className="mr-3 text-purple-400" />
+                                <FiPhone className="mr-3 text-white" />
                                 <a href="tel:+2348000000000" className="hover:text-purple-400 transition-colors">
                                     +234 800 000 0000
                                 </a>
