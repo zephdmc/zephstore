@@ -58,7 +58,7 @@ export default function HomePage() {
                         <h1 className="text-4xl md:text-6xl font-serif font-bold text-purplegradient mb-6">
                             Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
                         </h1>
-                        <p className="text-lg md:text-xl text-purpleDark backdrop-invert-65 mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg md:text-xl text-white backdrop-invert-65 mb-8 max-w-2xl mx-auto">
                             Discover skincare made for you — Shop clean beauty, get expert recommendations, and follow the latest trends.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -167,11 +167,11 @@ export default function HomePage() {
                                     <div className="p-4 flex-grow flex flex-col">
                                         {product ? (
                                             <>
-                                                <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-2">
+                                                <h3 className="font-semibold text-gray-900 text-md md:text-lg mb-1 line-clamp-2">
                                                     {product.name}
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-xl font-bold text-gray-900">
+                                                    <span className="text-sm md:text-xl font-bold text-gray-900">
                                                         ${product.price.toFixed(2)}
                                                     </span>
                                                     <FiShoppingBag className="text-gray-400 group-hover:text-purple-600 transition-colors" />
