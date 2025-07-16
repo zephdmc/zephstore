@@ -46,7 +46,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-purpleDark mb-1">Category</label>
+                    <label className="block text-white mb-1">Category</label>
                     <select
                         name="category"
                         value={filters.category}
@@ -62,7 +62,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     </select>
                 </div>
                 <div>
-                    <label className="block text-purpleDark mb-1">Min Price</label>
+                    <label className="block text-white mb-1">Min Price</label>
                     <input
                         type="number"
                         name="minPrice"
@@ -73,7 +73,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-purpleDark mb-1">Max Price</label>
+                    <label className="block text-white mb-1">Max Price</label>
                     <input
                         type="number"
                         name="maxPrice"
@@ -88,13 +88,13 @@ export default function ProductFilter({ categories, onFilter }) {
                 <button
                     type="button"
                     onClick={handleReset}
-                    className="bg-gray-200 text-purpleDark py-2 px-4 rounded hover:bg-gray-300 transition"
+                    className="bg-gray-200 text-white py-2 px-4 rounded hover:bg-purpleLight transition"
                 >
                     Reset
                 </button>
                 <button
                     type="submit"
-                    className="bg-primary text-purpleDark py-2 px-4 rounded hover:bg-primary-dark transition"
+                    className="bg-primary text-white py-2 px-4 rounded hover:bg-purpleLight transition"
                 >
                     Filter
                 </button>
