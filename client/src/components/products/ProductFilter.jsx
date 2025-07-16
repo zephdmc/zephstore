@@ -32,10 +32,10 @@ export default function ProductFilter({ categories, onFilter }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-4 rounded-lg shadow mb-6">
+        <form onSubmit={handleSubmit} className="bg-purplegradientr p-4 rounded-lg shadow mb-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
-                    <label className="block text-gray-700 mb-1">Search</label>
+                    <label className="block text-purpleDark mb-1">Search</label>
                     <input
                         type="text"
                         name="search"
@@ -46,7 +46,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Category</label>
+                    <label className="block text-purpleDark mb-1">Category</label>
                     <select
                         name="category"
                         value={filters.category}
@@ -62,7 +62,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     </select>
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Min Price</label>
+                    <label className="block text-purpleDark mb-1">Min Price</label>
                     <input
                         type="number"
                         name="minPrice"
@@ -73,7 +73,7 @@ export default function ProductFilter({ categories, onFilter }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Max Price</label>
+                    <label className="block text-purpleDark mb-1">Max Price</label>
                     <input
                         type="number"
                         name="maxPrice"
@@ -88,13 +88,13 @@ export default function ProductFilter({ categories, onFilter }) {
                 <button
                     type="button"
                     onClick={handleReset}
-                    className="bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition"
+                    className="bg-gray-200 text-purpleDark py-2 px-4 rounded hover:bg-gray-300 transition"
                 >
                     Reset
                 </button>
                 <button
                     type="submit"
-                    className="bg-primary text-gray-700 py-2 px-4 rounded hover:bg-primary-dark transition"
+                    className="bg-primary text-purpleDark py-2 px-4 rounded hover:bg-primary-dark transition"
                 >
                     Filter
                 </button>
