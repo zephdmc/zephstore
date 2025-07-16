@@ -172,7 +172,7 @@ export default function HomePage() {
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
                                                     <span className="text-4 md:text-xl text-gray-900">
-                                                        ${product.price.toFixed(2)}
+                                                        ₦{product.price.toFixed(2)}
                                                     </span>
                                                     <FiShoppingBag className="text-purpleDark1 group-hover:text-purpleDark transition-colors" />
                                                 </div>
