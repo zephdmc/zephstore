@@ -112,7 +112,7 @@ export default function HomePage() {
         {loading ? (
             <motion.div variants={itemVariants} className="text-center py-12">
                 <FiLoader className="inline-block animate-spin text-3xl text-purple-600 mb-3" />
-                <p className="text-gray-600">Loading featured products...</p>
+                <p className="text-">Loading featured products...</p>
             </motion.div>
         ) : error ? (
             <motion.div variants={itemVariants} className="text-white bg-gradient-to-r from-red-400 to-red-600 p-4 rounded-lg text-center shadow-lg">
@@ -149,7 +149,7 @@ export default function HomePage() {
                                 to={product ? `/products/${product.id}` : '#'}
                                 className="block"
                             >
-                                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-purplelight hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                                     <div className="relative pt-[100%] bg-gray-50 overflow-hidden">
                                         {product ? (
                                             <>
@@ -174,7 +174,7 @@ export default function HomePage() {
                                                     <span className="text-sm md:text-xl font-bold text-gray-900">
                                                         ${product.price.toFixed(2)}
                                                     </span>
-                                                    <FiShoppingBag className="text-gray-400 group-hover:text-purple-600 transition-colors" />
+                                                    <FiShoppingBag className="text-purpleDark1 group-hover:text-purpleDark transition-colors" />
                                                 </div>
                                             </>
                                         ) : (
