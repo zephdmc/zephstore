@@ -45,7 +45,7 @@ export default function HomePage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
+        <div className="min-h-screen bg-gradient-to-b from-purpleDark to-purpleLight">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
                 <div className="container mx-auto px-4 py-20 md:py-28 flex flex-col items-center text-center">
@@ -55,10 +55,10 @@ export default function HomePage() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
+                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-purpleDark mb-6">
                             Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg md:text-xl text-purpleDark mb-8 max-w-2xl mx-auto">
                             Discover skincare made for you — Shop clean beauty, get expert recommendations, and follow the latest trends.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -70,7 +70,7 @@ export default function HomePage() {
                             </Link>
                             <Link
                                 to="/skincare-quiz"
-                                className="border-2 border-purplegradient text-pink-600 hover:bg-pink-50 py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+                                className="border-2 border-purplegradient text-purpleLight hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
                             >
                                 Start Your Skincare Journey
                             </Link>
@@ -98,7 +98,7 @@ export default function HomePage() {
                     <motion.h2 variants={itemVariants} className="text-3xl font-serif font-bold text-center mb-4">
                         Customer Favorites
                     </motion.h2>
-                    <motion.p variants={itemVariants} className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                    <motion.p variants={itemVariants} className="text-purpleDark text-center max-w-2xl mx-auto mb-12">
                         Products loved by our community
                     </motion.p>
 
@@ -133,9 +133,9 @@ export default function HomePage() {
                         Array.from({ length: 4 }).map((_, index) => (
                             <motion.div key={index} variants={itemVariants}>
                                 <div className="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="bg-gray-200 h-64 mb-4 rounded animate-pulse"></div>
-                                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
-                                    <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+                                    <div className="bg-purpleLight h-64 mb-4 rounded animate-pulse"></div>
+                                    <div className="h-4 bg-purpleLight rounded w-3/4 mb-3 animate-pulse"></div>
+                                    <div className="h-4 bg-purpleLight rounded w-1/2 animate-pulse"></div>
                                 </div>
                             </motion.div>
                         ))
@@ -144,7 +144,7 @@ export default function HomePage() {
                     <motion.div variants={itemVariants} className="text-center mt-12">
                         <Link
                             to="/products"
-                            className="inline-block border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white py-3 px-8 rounded-full font-medium transition-all duration-300"
+                            className="inline-block border-2 border-purpleDark text-purpleDark hover:bg-purpleDark hover:text-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300"
                         >
                             View All Products
                         </Link>
@@ -153,7 +153,7 @@ export default function HomePage() {
             </section>
 
             {/* Trending Blog Section */}
-            <section className="bg-white py-16">
+            <section className="bg-purpleLight py-16">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -163,7 +163,7 @@ export default function HomePage() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tips</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">Expert advice for your skincare journey</p>
+                        <p className="text-purpleDark max-w-2xl mx-auto">Expert advice for your skincare journey</p>
                     </motion.div>
 
                     <BlogTeaser
@@ -187,7 +187,7 @@ export default function HomePage() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tips</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">Expert advice for your skincare journey</p>
+                        <p className="text-purpleDark max-w-2xl mx-auto">Expert advice for your skincare journey</p>
                     </motion.div>
 
                     <BlogTeaser
@@ -210,7 +210,7 @@ export default function HomePage() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-serif font-bold mb-4">What Our Customers Say</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">Real results from real people</p>
+                        <p className="text-purpleDark max-w-2xl mx-auto">Real results from real people</p>
                     </motion.div>
 
                     <TestimonialSlider />
@@ -228,12 +228,12 @@ export default function HomePage() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-serif font-bold mb-4">Join Our Community</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">Follow us for daily skincare tips and transformations</p>
+                        <p className="text-purpleDark max-w-2xl mx-auto">Follow us for daily skincare tips and transformations</p>
                     </motion.div>
 
                     <div className="max-w-4xl mx-auto">
                         {/* Placeholder for TikTok feed integration */}
-                        <div className="bg-gray-100 rounded-xl p-8 text-center">
+                        <div className="bg-purpleLight rounded-xl p-8 text-center">
                             <p className="text-gray-500 mb-4">TikTok Feed Integration</p>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {[1, 2, 3, 4].map((item) => (
@@ -246,7 +246,7 @@ export default function HomePage() {
             </section>
 
             {/* Newsletter Section */}
-            <section className="bg-gray-900 text-white py-16">
+            <section className="bg-purpleDark1 text-white py-16">
                 <div className="container mx-auto px-4 text-center">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -255,16 +255,16 @@ export default function HomePage() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="text-3xl font-serif font-bold mb-4">Stay Connected</h2>
-                        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                        <p className="text-purpleLight max-w-2xl mx-auto mb-8">
                             Subscribe to our newsletter for exclusive offers, skincare tips, and new product launches.
                         </p>
                         <div className="max-w-md mx-auto flex">
                             <input
                                 type="email"
                                 placeholder="Your email address"
-                                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-900"
+                                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-purpleDark"
                             />
-                            <button className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-r-lg font-medium transition-colors">
+                            <button className="bg-purplegradient hover:bg-pink-700 px-6 py-3 rounded-r-lg font-medium transition-colors">
                                 Subscribe
                             </button>
                         </div>
