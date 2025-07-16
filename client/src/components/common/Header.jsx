@@ -495,7 +495,7 @@ const handleClickOutside = (event) => {
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className="text-purpleDark1 px-3 py-1 rounded hover:bg-primary-dark transition"
+                                    className="text-purpleDark1 px-3 py-1 rounded hover:bg-primary-purpleLight transition"
                                 >
                                     Register
                                 </Link>
@@ -508,26 +508,21 @@ const handleClickOutside = (event) => {
                 {mobileMenuOpen && (
                     <div className="mt-3 md:hidden">
                         <div className="relative">
-<input
-    type="text"
-    placeholder="Search products..."
-    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleDark rounded-lg focus:outline-none focus:ring-2 focus:ring-purpleLight focus:border-transparentt"
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-    ref={searchRef}
-/>
+ <input
+                                type="text"
+                                placeholder="Search products..."
+                                className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                                ref={searchRef}
+                            />
                             <button
-    className="md:hidden text-purpleDark hover:text-primary transition mobile-search-button"
-    onClick={(e) => {
-        handleSearch()
-        e.stopPropagation();
-        setMobileMenuOpen(false);
-        setTimeout(() => searchRef.current?.focus(), 100);
-    }}
->
-    <FiSearch size={18} />
-</button>
+                                onClick={handleSearch}
+                                className="absolute right-3 top-2.5 text-purpleLight hover:text-primary transition"
+                            >
+                                <FiSearch size={18} />
+                            </button>
                         </div>
                     </div>
                 )}
