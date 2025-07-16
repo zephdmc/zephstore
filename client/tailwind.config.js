@@ -16,21 +16,21 @@ module.exports = {
                 'purpleDark': '#390039',
                 'purpleLight': '#C1A5C1',
                 'purpleDark2': '#380638',
-                primary: {
-                    DEFAULT: '#4F46E5',
-                    light: '#6366F1',
-                    dark: '#4338CA',
-                },
-                secondary: {
-                    DEFAULT: '#10B981',
-                    light: '#34D399',
-                    dark: '#059669',
-                },
-                danger: {
-                    DEFAULT: '#380638',
-                    light: '#C1A5c1',
-                    dark: '#380638',
-                },
+                // primary: {
+                //     DEFAULT: '#4F46E5',
+                //     light: '#6366F1',
+                //     dark: '#4338CA',
+                // },
+                // secondary: {
+                //     DEFAULT: '#10B981',
+                //     light: '#34D399',
+                //     dark: '#059669',
+                // },
+                // danger: {
+                //     DEFAULT: '#380638',
+                //     light: '#C1A5c1',
+                //     dark: '#380638',
+                // },
             },
   },
   plugins: [
