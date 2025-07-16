@@ -6,7 +6,7 @@ import ProductCard from '../../components/products/ProductCard';
 import { getProducts } from '../../services/productServic';
 import TestimonialSlider from '../../pages/home/HomePageComponent/TestimonialSlider';
 import BlogTeaser from '../home/HomePageComponent/BlogTeaser';
-
+import { FiHeart, FiAward, FiLoader, FiAlertTriangle, FiShoppingBag, FiArrowRight } from 'react-icons/fi';
 export default function HomePage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -58,7 +58,7 @@ export default function HomePage() {
                         <h1 className="text-4xl md:text-6xl font-serif font-bold text-purplegradient mb-6">
                             Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
                         </h1>
-                        <p className="text-lg md:text-xl text-purpleDark mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg md:text-xl text-purpleDark backdrop-invert-65 mb-8 max-w-2xl mx-auto">
                             Discover skincare made for you — Shop clean beauty, get expert recommendations, and follow the latest trends.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -88,69 +88,126 @@ export default function HomePage() {
 
             {/* Featured Products Section */}
             {/* Featured Products Section */}
-            <section className="container mx-auto px-4 py-16">
-                <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    variants={containerVariants}
-                >
-                    <motion.h2 variants={itemVariants} className="text-3xl font-serif font-bold text-center mb-4">
-                        Customer Favorites
-                    </motion.h2>
-                    <motion.p variants={itemVariants} className="text-purpleDark text-center max-w-2xl mx-auto mb-12">
-                        Products loved by our community
-                    </motion.p>
+           <section className="container mx-auto px-4 py-16">
+    <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={containerVariants}
+    >
+        <motion.h2 
+            variants={itemVariants} 
+            className="text-4xl md:text-5xl font-bold text-center mb-4 font-sans"
+        >
+            Customer Favorites
+            <FiHeart className="inline-block ml-3 text-red-500 animate-pulse" />
+        </motion.h2>
+        <motion.p 
+            variants={itemVariants} 
+            className="text-gray-600 text-center max-w-2xl mx-auto mb-12 text-lg"
+        >
+            Curated selections loved by our community <FiAward className="inline ml-1 text-yellow-500" />
+        </motion.p>
 
-                    {loading ? (
-                        <motion.div variants={itemVariants} className="text-center py-8">
-                            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purplegradientv mb-4"></div>
-                            <p>Loading featured products...</p>
-                        </motion.div>
-                    ) : error ? (
-                        <motion.div variants={itemVariants} className="text-purplegradientv bg-red-50 p-4 rounded-lg text-center">
-                            {error} (Showing placeholder products)
-                        </motion.div>
-                    ) : null}
+        {loading ? (
+            <motion.div variants={itemVariants} className="text-center py-12">
+                <FiLoader className="inline-block animate-spin text-3xl text-purple-600 mb-3" />
+                <p className="text-gray-600">Loading featured products...</p>
+            </motion.div>
+        ) : error ? (
+            <motion.div variants={itemVariants} className="text-white bg-gradient-to-r from-red-400 to-red-600 p-4 rounded-lg text-center shadow-lg">
+                <FiAlertTriangle className="inline-block mr-2" />
+                {error} (Showing placeholder products)
+            </motion.div>
+        ) : null}
 
-                    {products.length > 0 ? (
-
-                        <motion.div
-                            variants={containerVariants}
+        <div className="relative">
+            <div className="overflow-x-auto pb-6 scrollbar-hide">
+                <div className="inline-flex space-x-6 px-2">
+                    {(products.length > 0 ? products : Array.from({ length: 7 })).map((product, index) => (
+                        <motion.div 
+                            key={product?.id || index}
+                            variants={itemVariants}
                             initial="hidden"
                             whileInView="show"
-                            viewport={{ once: false, amount: 0.2 }} // 👈 triggers animation more reliably
-                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+                            viewport={{ once: true }}
+                            className={`
+                                w-[calc(50%-12px)] 
+                                sm:w-[calc(33%-16px)] 
+                                md:w-[calc(25%-18px)] 
+                                lg:w-[calc(20%-20px)]
+                                flex-shrink-0
+                                relative
+                                group
+                            `}
+                            whileHover={{ 
+                                y: -8,
+                                transition: { duration: 0.3 }
+                            }}
                         >
-                            {products.map((product) => (
-                                <motion.div key={product.id} variants={itemVariants} whileHover={{ y: -5 }}>
-                                    <ProductCard product={product} />
-                                </motion.div>
-                            ))}
-                        </motion.div>
-
-                    ) : (
-                        Array.from({ length: 4 }).map((_, index) => (
-                            <motion.div key={index} variants={itemVariants}>
-                                <div className="border rounded-lg p-4 bg-purpleLight shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="bg-purpleLight h-64 mb-4 rounded animate-pulse"></div>
-                                    <div className="h-4 bg-purpleLight rounded w-3/4 mb-3 animate-pulse"></div>
-                                    <div className="h-4 bg-purpleLight rounded w-1/2 animate-pulse"></div>
+                            <Link 
+                                to={product ? `/products/${product.id}` : '#'}
+                                className="block"
+                            >
+                                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                                    <div className="relative pt-[100%] bg-gray-50 overflow-hidden">
+                                        {product ? (
+                                            <>
+                                                <img 
+                                                    src={product.image} 
+                                                    alt={product.name}
+                                                    className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                                            </>
+                                        ) : (
+                                            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
+                                        )}
+                                    </div>
+                                    <div className="p-4 flex-grow flex flex-col">
+                                        {product ? (
+                                            <>
+                                                <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-2">
+                                                    {product.name}
+                                                </h3>
+                                                <div className="mt-auto flex items-center justify-between">
+                                                    <span className="text-xl font-bold text-gray-900">
+                                                        ${product.price.toFixed(2)}
+                                                    </span>
+                                                    <FiShoppingBag className="text-gray-400 group-hover:text-purple-600 transition-colors" />
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="h-5 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
+                                                <div className="h-5 bg-gray-200 rounded w-1/2 mt-auto animate-pulse"></div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
-                            </motion.div>
-                        ))
-                    )}
+                            </Link>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </div>
 
-                    <motion.div variants={itemVariants} className="text-center mt-12">
-                        <Link
-                            to="/products"
-                            className="inline-block border-2 border-purpleDark text-purpleDark hover:bg-purpleDark hover:text-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300"
-                        >
-                            View All Products
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            </section>
+        <motion.div 
+            variants={itemVariants} 
+            className="text-center mt-16"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+        >
+            <Link
+                to="/products"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+                View All Products
+                <FiArrowRight className="ml-2" />
+            </Link>
+        </motion.div>
+    </motion.div>
+</section>
 
             {/* Trending Blog Section */}
             <section className="bg-purpleLight py-16">
