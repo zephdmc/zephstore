@@ -56,7 +56,7 @@ export default function HomePage() {
                         className="max-w-4xl"
                     >
                         <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
-                            Glow Naturally with <span className="text-pink-600">Bellebeau</span> Aesthetics
+                            Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
                         </h1>
                         <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                             Discover skincare made for you — Shop clean beauty, get expert recommendations, and follow the latest trends.
@@ -64,13 +64,13 @@ export default function HomePage() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 to="/products"
-                                className="bg-purplegradient hover:bg-pink-300 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                className="bg-purplegradient hover:bg-purplegradientv text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
                             >
                                 Shop Now
                             </Link>
                             <Link
                                 to="/skincare-quiz"
-                                className="border-2 border-pink-600 text-pink-600 hover:bg-pink-50 py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+                                className="border-2 border-purplegradient text-pink-600 hover:bg-pink-50 py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
                             >
                                 Start Your Skincare Journey
                             </Link>
