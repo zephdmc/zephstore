@@ -1,35 +1,132 @@
+import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin, FiYoutube, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FaTiktok, FaPinterestP } from 'react-icons/fa';
+
 export default function Footer() {
     return (
-        <footer className="bg-gray-800 text-white py-8">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 className="text-xl font-bold mb-4">Zeph Store</h3>
-                        <p className="text-gray-400">
-                            Your one-stop shop for all your needs. Quality products at affordable prices.
+        <footer className="bg-gray-900 text-white">
+            {/* Main Footer Content */}
+            <div className="container mx-auto px-4 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    {/* Brand Column */}
+                    <div className="space-y-6">
+                        <h3 className="text-2xl font-bold">
+                            <span className="text-purple-400">Bellebeau</span>Aesthetics
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                            Elevating beauty through premium aesthetic solutions. 
+                            We deliver exceptional quality products with professional 
+                            results you can trust.
                         </p>
+                        
+                        {/* Social Media */}
+                        <div className="flex space-x-4 pt-2">
+                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                <FiFacebook size={20} />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                <FiInstagram size={20} />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                <FiTwitter size={20} />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                <FaTiktok size={20} />
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                <FaPinterestP size={20} />
+                            </a>
+                        </div>
                     </div>
+
+                    {/* Quick Links */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul className="space-y-2">
-                            <li><a href="/" className="text-gray-400 hover:text-white transition">Home</a></li>
-                            <li><a href="/products" className="text-gray-400 hover:text-white transition">Products</a></li>
-                            <li><a href="/cart" className="text-gray-400 hover:text-white transition">Cart</a></li>
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-700">Quick Links</h4>
+                        <ul className="space-y-3">
+                            <li><a href="/" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Home</a></li>
+                            <li><a href="/products" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Products</a></li>
+                            <li><a href="/about" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> About Us</a></li>
+                            <li><a href="/blog" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Blog</a></li>
+                            <li><a href="/faq" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> FAQs</a></li>
                         </ul>
                     </div>
+
+                    {/* Customer Service */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-                        <address className="text-gray-400 not-italic">
-                            123 Store Street<br />
-                            E-commerce City<br />
-                            Nigeria<br />
-                            Email: info@zephstore.com<br />
-                            Phone: +234 800 000 0000
-                        </address>
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-700">Customer Service</h4>
+                        <ul className="space-y-3">
+                            <li><a href="/contact" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Contact Us</a></li>
+                            <li><a href="/shipping" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Shipping Policy</a></li>
+                            <li><a href="/returns" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Returns & Exchanges</a></li>
+                            <li><a href="/privacy" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Privacy Policy</a></li>
+                            <li><a href="/terms" className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-700">Contact Us</h4>
+                        <ul className="space-y-4 text-gray-400">
+                            <li className="flex items-start">
+                                <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-purple-400" />
+                                <span>123 Beauty Avenue, Victoria Island, Lagos, Nigeria</span>
+                            </li>
+                            <li className="flex items-center">
+                                <FiMail className="mr-3 text-purple-400" />
+                                <a href="mailto:info@bellebeauaesthetics.com" className="hover:text-purple-400 transition-colors">
+                                    info@bellebeauaesthetics.com
+                                </a>
+                            </li>
+                            <li className="flex items-center">
+                                <FiPhone className="mr-3 text-purple-400" />
+                                <a href="tel:+2348000000000" className="hover:text-purple-400 transition-colors">
+                                    +234 800 000 0000
+                                </a>
+                            </li>
+                        </ul>
+
+                        {/* Newsletter Subscription */}
+                        <div className="mt-6">
+                            <h5 className="text-sm font-medium mb-3">Subscribe to our newsletter</h5>
+                            <div className="flex">
+                                <input 
+                                    type="email" 
+                                    placeholder="Your email address" 
+                                    className="px-4 py-2 w-full text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 rounded-l"
+                                />
+                                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 text-sm font-medium rounded-r transition-colors">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                    <p>&copy; {new Date().getFullYear()} Zeph Store. All rights reserved.</p>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="bg-gray-800 py-6">
+                <div className="container mx-auto px-4">
+                    <div className="flex flex-col md:flex-row justify-between items-center">
+                        <div className="text-gray-400 text-sm mb-4 md:mb-0">
+                            &copy; {new Date().getFullYear()} Bellebeau Aesthetics. All rights reserved.
+                        </div>
+                        
+                        <div className="flex space-x-6">
+                            <img src="/images/payment-methods/visa.svg" alt="Visa" className="h-6" />
+                            <img src="/images/payment-methods/mastercard.svg" alt="Mastercard" className="h-6" />
+                            <img src="/images/payment-methods/verve.svg" alt="Verve" className="h-6" />
+                            <img src="/images/payment-methods/paypal.svg" alt="PayPal" className="h-6" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
