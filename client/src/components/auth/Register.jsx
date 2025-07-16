@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
+=======
+import { useState, } from 'react';
+>>>>>>> 9194195cafce6a6b7bdd532cb5768d9e1c7a1e40
 import { Link, useNavigate } from 'react-router-dom';
 import {
     createUserWithEmailAndPassword,
