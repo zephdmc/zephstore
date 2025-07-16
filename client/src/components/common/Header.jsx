@@ -511,7 +511,7 @@ const handleClickOutside = (event) => {
 <input
     type="text"
     placeholder="Search products..."
-    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparentt"
+    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleDark rounded-lg focus:outline-none focus:ring-2 focus:ring-purpleLight focus:border-transparentt"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
