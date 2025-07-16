@@ -88,7 +88,7 @@ export default function HomePage() {
 
             {/* Featured Products Section */}
             {/* Featured Products Section */}
-           <section className="container mx-auto px-4 py-16">
+         <section className="container mx-auto px-4 py-16">
     <motion.div
         initial="hidden"
         whileInView="show"
@@ -112,7 +112,7 @@ export default function HomePage() {
         {loading ? (
             <motion.div variants={itemVariants} className="text-center py-12">
                 <FiLoader className="inline-block animate-spin text-3xl text-purple-600 mb-3" />
-                <p className="text-">Loading featured products...</p>
+                <p className="text-white">Loading featured products...</p>
             </motion.div>
         ) : error ? (
             <motion.div variants={itemVariants} className="text-white bg-gradient-to-r from-red-400 to-red-600 p-4 rounded-lg text-center shadow-lg">
@@ -123,7 +123,7 @@ export default function HomePage() {
 
         <div className="relative">
             <div className="overflow-x-auto pb-6 scrollbar-hide">
-              <div className="inline-flex space-x-6 px-2 max-w-[1400px] mx-auto">
+                <div className="inline-flex space-x-6 px-2">
                     {(products.length > 0 ? products : Array.from({ length: 7 })).map((product, index) => (
                         <motion.div 
                             key={product?.id || index}
@@ -132,10 +132,10 @@ export default function HomePage() {
                             whileInView="show"
                             viewport={{ once: true }}
                             className={`
-                                w-[calc(50%-12px)] 
-                                sm:w-[calc(33%-16px)] 
-                                md:w-[calc(25%-18px)] 
-                                lg:w-[calc(20%-20px)]
+                                w-[180px]  // Fixed base width for mobile
+                                sm:w-[220px] 
+                                md:w-[240px] 
+                                lg:w-[280px]
                                 flex-shrink-0
                                 relative
                                 group
@@ -171,7 +171,7 @@ export default function HomePage() {
                                                     {product.name}
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-4 md:text-xl text-gray-900">
+                                                    <span className="text-sm md:text-xl text-gray-900">
                                                         ₦{product.price.toFixed(2)}
                                                     </span>
                                                     <FiShoppingBag className="text-purpleDark1 group-hover:text-purpleDark transition-colors" />
