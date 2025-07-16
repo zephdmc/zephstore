@@ -29,8 +29,8 @@ export default function ProductCard({ product }) {
                     onClick={() => addToCart(product)}
                     disabled={product.countInStock === 0}
                     className={`w-full py-2 px-4 rounded ${product.countInStock === 0
-                        ? 'bg-gray-300 cursor-not-allowed'
-                        : 'bg-primary text-gray-500 hover:bg-primary-dark'
+                        ? 'bg-purpleDark1 cursor-not-allowed'
+                        : 'bg-purpleDark text-purpleDark1 hover:bg-purpleLight'
                         } transition`}
                 >
                     {product.countInStock === 0 ? 'Out of Stock' : 'Add to Cart'}
