@@ -41,7 +41,7 @@ function App() {
                 <AuthProvider>
                     <ProductProvider>
                         <CartProvider>
-                            <div className="min-h-screen bg-purpleDark2 flex flex-col">
+                            <div className="min-h-screen bg-purplegradient flex flex-col">
                                 <Header />
                                 <main className="flex-grow container mx-auto px-4 py-8">
                                     <AppRoutes />
