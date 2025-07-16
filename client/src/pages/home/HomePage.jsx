@@ -164,14 +164,14 @@ export default function HomePage() {
                                             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
                                         )}
                                     </div>
-                                    <div className="p-4 flex-grow flex flex-col">
+                                    <div className="p-4 flex-grow flex flex-col bg-purpleLight">
                                         {product ? (
                                             <>
-                                                <h3 className="font-semibold text-gray-900 text-md md:text-lg mb-1 line-clamp-2">
+                                                <h3 className="font-semibold text-purpleDark1 text-sm md:text-lg mb-1 line-clamp-2">
                                                     {product.name}
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-sm md:text-xl font-bold text-gray-900">
+                                                    <span className="text-4 md:text-xl text-gray-900">
                                                         ${product.price.toFixed(2)}
                                                     </span>
                                                     <FiShoppingBag className="text-purpleDark1 group-hover:text-purpleDark transition-colors" />
