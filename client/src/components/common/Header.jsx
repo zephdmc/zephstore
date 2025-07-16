@@ -229,11 +229,11 @@ const handleClickOutside = (event) => {
                     <div className="flex items-center space-x-4">
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden text-gray-600 hover:text-primary transition"
+                            className="md:hidden text-purpleDark hover:text-purpleLigt transition"
                         >
                             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                         </button>
-                        <Link to="/" className="text-lg font-bold text-primary">
+                        <Link to="/" className="text-lg font-bold text-purpleDark1">
                             🛒 Bellebeau Aesthetics
                         </Link>
                     </div>
@@ -253,14 +253,14 @@ const handleClickOutside = (event) => {
                             />
                             <button
                                 onClick={handleSearch}
-                                className="absolute right-3 top-2.5 text-gray-500 hover:text-primary transition"
+                                className="absolute right-3 top-2.5 text-purpleDark1 hover:text-primary transition"
                             >
                                 <FiSearch size={18} />
                             </button>
 
                             {/* Search Suggestions */}
                             {showSuggestions && searchSuggestions.length > 0 && (
-                                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+                                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-purpleLight rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
                                     {searchSuggestions.map(item => (
                                         <div
                                             key={item.id}
@@ -272,9 +272,9 @@ const handleClickOutside = (event) => {
                                         >
                                             <div>
                                                 <div className="font-medium">{item.name}</div>
-                                                <div className="text-xs text-gray-500">{item.category}</div>
+                                                <div className="text-xs text-purpleDark1">{item.category}</div>
                                             </div>
-                                            <FiChevronDown className="text-gray-400 transform rotate-90" />
+                                            <FiChevronDown className="text-purpleDark transform rotate-90" />
                                         </div>
                                     ))}
                                 </div>
@@ -286,7 +286,7 @@ const handleClickOutside = (event) => {
                     <div className="flex items-center space-x-4">
                         {/* Mobile Search Button */}
                         <button
-                            className="md:hidden text-gray-600 hover:text-primary transition"
+                            className="md:hidden text-gray-purpleDark1 hover:text-primary transition"
                             onClick={() => {
                                 setMobileMenuOpen(false);
                                 searchRef.current?.focus();
@@ -299,12 +299,12 @@ const handleClickOutside = (event) => {
                         {currentUser && (
                             <div className="relative notifications-container">
                                 <button
-                                    className="text-gray-600 hover:text-primary transition relative"
+                                    className="text-purpleDark hover:text-primary transition relative"
                                     onClick={() => setShowNotifications(!showNotifications)}
                                 >
                                     <FiBell size={20} />
                                     {unreadNotifications > 0 && (
-                                        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                                        <span className="absolute -top-1 -right-1 bg-purpleDark1 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
                                             {unreadNotifications}
                                         </span>
                                     )}
@@ -327,12 +327,12 @@ const handleClickOutside = (event) => {
                                                 notifications.map(notification => (
                                                     <div
                                                         key={notification.id}
-                                                        className={`p-3 border-b flex justify-between items-start ${!notification.read ? 'bg-blue-50' : ''
+                                                        className={`p-3 border-b flex justify-between items-start ${!notification.read ? 'bg-purpleLight' : ''
                                                             }`}
                                                     >
                                                         <div>
                                                             <div className="text-sm">{notification.text}</div>
-                                                            <div className="text-xs text-gray-500 mt-1">{notification.date}</div>
+                                                            <div className="text-xs text-purpleDark1 mt-1">{notification.date}</div>
                                                         </div>
                                                         {!notification.read && (
                                                             <button
@@ -349,7 +349,7 @@ const handleClickOutside = (event) => {
                                                     </div>
                                                 ))
                                             ) : (
-                                                <div className="p-4 text-gray-500 text-center">No notifications</div>
+                                                <div className="p-4 text-purpleDark1 text-center">No notifications</div>
                                             )}
                                         </div>
                                     </div>
@@ -359,9 +359,9 @@ const handleClickOutside = (event) => {
 
                         {/* Cart */}
                         <Link to="/cart" className="relative group">
-                            <FiShoppingCart className="h-6 w-6 text-gray-600 group-hover:text-primary transition" />
+                            <FiShoppingCart className="h-6 w-6 text-purpleDark group-hover:text-primary transition" />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-red-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                                <span className="absolute -top-2 -right-2 bg-purpleLight text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                                     {cartCount}
                                 </span>
                             )}
@@ -372,7 +372,7 @@ const handleClickOutside = (event) => {
                             <div className="hidden md:block relative" ref={userMenuRef}>
                                 <button
                                     onClick={() => setShowUserDropdown(!showUserDropdown)}
-                                    className="flex items-center space-x-1 text-gray-600 hover:text-primary transition"
+                                    className="flex items-center space-x-1 text-purpleDark1 hover:text-primary transition"
                                 >
                                     <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
                                         {currentUser.photoURL ? (
@@ -452,7 +452,7 @@ const handleClickOutside = (event) => {
                                                         to="/admin"
                                                         onClick={() => setMobileMenuOpen(false)}
                                                         className={({ isActive }) =>
-                                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-gray-600'}`
+                                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark'}`
                                                         }
                                                     >
                                                         Dashboard
@@ -483,19 +483,19 @@ const handleClickOutside = (event) => {
                             <div className="hidden md:flex space-x-3">
                                 <Link
                                     to="/about"
-                                    className="text-gray-600 hover:text-primary transition"
+                                    className="text-purpleDark1 hover:text-primary transition"
                                 >
                                     About
                                 </Link>
                                 <Link
                                     to="/login"
-                                    className="text-gray-600 hover:text-primary transition"
+                                    className="text-purpleDark1 hover:text-primary transition"
                                 >
                                     Login
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className="bg-primary text-gray-600 px-3 py-1 rounded hover:bg-primary-dark transition"
+                                    className="text-purpleDark1 px-3 py-1 rounded hover:bg-primary-dark transition"
                                 >
                                     Register
                                 </Link>
@@ -511,14 +511,14 @@ const handleClickOutside = (event) => {
 <input
     type="text"
     placeholder="Search products..."
-    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+    className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
     ref={searchRef}
 />
                             <button
-    className="md:hidden text-gray-600 hover:text-primary transition mobile-search-button"
+    className="md:hidden text-purpleDark hover:text-primary transition mobile-search-button"
     onClick={(e) => {
         e.stopPropagation();
         setMobileMenuOpen(false);
@@ -540,7 +540,7 @@ const handleClickOutside = (event) => {
                             to="/"
                             onClick={() => setMobileMenuOpen(false)}
                             className={({ isActive }) =>
-                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-gray-600'}`
+                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
                             }
                         >
                             Home
@@ -549,7 +549,7 @@ const handleClickOutside = (event) => {
                             to="/products"
                             onClick={() => setMobileMenuOpen(false)}
                             className={({ isActive }) =>
-                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-gray-600'}`
+                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
                             }
                         >
                             Products
@@ -560,7 +560,7 @@ const handleClickOutside = (event) => {
                                     to="/orders"
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={({ isActive }) =>
-                                        `py-2 ${isActive ? 'text-primary font-medium' : 'text-gray-600'}`
+                                        `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
                                     }
                                 >
                                     Orders
@@ -579,7 +579,7 @@ const handleClickOutside = (event) => {
                                         to="/admin"
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={({ isActive }) =>
-                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-gray-600'}`
+                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
                                         }
                                     >
                                         Dashboard
@@ -594,7 +594,7 @@ const handleClickOutside = (event) => {
                                     <button
                                         onClick={handleLogout}
                                         disabled={logoutLoading}
-                                        className={`w-full text-left py-2 flex items-center space-x-2 ${logoutLoading ? 'opacity-50 cursor-wait' : 'text-gray-600 hover:text-primary'
+                                        className={`w-full text-left py-2 flex items-center space-x-2 ${logoutLoading ? 'opacity-50 cursor-wait' : 'text-purpleDark hover:text-primary'
                                             }`}
                                     >
                                         <FiLogOut className="h-5 w-5" />
@@ -607,14 +607,14 @@ const handleClickOutside = (event) => {
                                 <Link
                                     to="/login"
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="py-2 text-gray-600 hover:text-primary transition"
+                                    className="py-2 text-purpleDark hover:text-purpleLight transition"
                                 >
                                     Login
                                 </Link>
                                 <Link
                                     to="/register"
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="bg-primary text-white px-3 py-2 rounded hover:bg-primary-dark transition text-center"
+                                    className=" text-purpleDark1 py-2 rounded hover:bg-primary-dark transition text-center"
                                 >
                                     Register
                                 </Link>
