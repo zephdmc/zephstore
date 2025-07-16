@@ -59,7 +59,7 @@ export default function Login() {
     }, [currentUser, navigate, location.state?.from]);
 
     return (
-        <div className="max-w-md mx-4 sm:mx-auto my-6 sm:my-8 p-6 sm:p-8 bg-white rounded-xl shadow-sm">
+        <div className="max-w-md mx-4 sm:mx-auto my-8 sm:my-2 p-6 sm:p-8 bg-white rounded-xl shadow-sm">
             <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
                 <p className="text-sm sm:text-base text-gray-500">Sign in to access your account</p>
