@@ -1,13 +1,14 @@
 require('dotenv').config();
 const admin = require('firebase-admin');
-const serviceAccount = require('../config/serviceAccountKey.json');
+const serviceAccount = require('../config/keyla.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
-const email = 'zephdmc@gmail.com'; // Change this
+// const email = 'zephdmc@gmail.com'; // Change this
+const email = 'auaestheticsbellebeau@gmail.com'; // Change this
 
 async function setupAdmin() {
     try {
