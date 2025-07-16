@@ -518,7 +518,7 @@ const handleClickOutside = (event) => {
                                 ref={searchRef}
                             />
                             <button
-                                onClick={handleSearch}
+                                onClick={handleSearch()}
                                 className="mobile-search-input absolute right-3 top-2.5 text-purpleLight hover:text-primary transition"
                             >
                                 <FiSearch size={18} />
@@ -536,7 +536,7 @@ const handleClickOutside = (event) => {
                             to="/"
                             onClick={() => setMobileMenuOpen(false)}
                             className={({ isActive }) =>
-                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
+                                `py-2 ${isActive ? 'text-purpleDark1 font-medium' : 'text-purpleDark1'}`
                             }
                         >
                             Home
@@ -610,7 +610,7 @@ const handleClickOutside = (event) => {
                                 <Link
                                     to="/register"
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className=" text-purpleDark1 py-2 rounded hover:bg-primary-dark transition text-center"
+                                    className=" text-purpleDark1 py-2 hover:bg-primary-dark transition"
                                 >
                                     Register
                                 </Link>
