@@ -104,7 +104,7 @@ export default function HomePage() {
         </motion.h2>
         <motion.p 
             variants={itemVariants} 
-            className="text-gray-600 text-center max-w-2xl mx-auto mb-12 text-lg"
+            className="text-white text-center max-w-2xl mx-auto mb-12 text-lg"
         >
             Curated selections loved by our community <FiAward className="inline ml-1 text-yellow-500" />
         </motion.p>
@@ -123,7 +123,7 @@ export default function HomePage() {
 
         <div className="relative">
             <div className="overflow-x-auto pb-6 scrollbar-hide">
-                <div className="inline-flex space-x-6 px-2">
+              <div className="inline-flex space-x-6 px-2 max-w-[1400px] mx-auto">
                     {(products.length > 0 ? products : Array.from({ length: 7 })).map((product, index) => (
                         <motion.div 
                             key={product?.id || index}
