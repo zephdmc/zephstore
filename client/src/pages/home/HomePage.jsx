@@ -47,7 +47,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-purpleDark to-purpleLight">
             {/* Hero Section */}
-            <section className="relative overflow-hidden bg-purplegradientr bg-[url(/img/mountains.jpg)] bg-blend-overlay ">
+            <section className="relative overflow-hidden border-b-2 border-purplegradientr bg-[url(/img/mountains.jpg)] bg-blend-overlay ">
                 <div className="container mx-auto px-4 pt-4 pb-20  md:pt-28  md:pb-28 flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
