@@ -39,7 +39,7 @@ export default function ProductDetail() {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8">
                 <div className="bg-white p-4 rounded-lg shadow">
                     <img
                         src={product.image}
@@ -47,19 +47,19 @@ export default function ProductDetail() {
                         className="w-full h-96 object-contain"
                     />
                 </div>
-                <div className="bg-purplegradientr p-6 rounded-lg shadow">
+                <div className="bg-purpleLight p-6 rounded-lg shadow">
                     <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
                     <div className="mb-4">
                         <span className="text-purpleDark1 text-xl font-bold">
                             ₦{product.price.toLocaleString()}
                         </span>
                         {product.countInStock > 0 ? (
-                            <span className="ml-2 text-purplegradientr">In Stock</span>
+                            <span className="ml-2 text-white">In Stock</span>
                         ) : (
-                            <span className="ml-2 text-white">Out of Stock</span>
+                            <span className="ml-2 text-purpleDark1">Out of Stock</span>
                         )}
                     </div>
-                    <p className="text-purpleDark mb-6">{product.description}</p>
+                    <p className="text-white mb-6">{product.description}</p>
 
                     {product.countInStock > 0 && (
                         <div className="mb-6">
