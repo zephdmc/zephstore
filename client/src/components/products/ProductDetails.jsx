@@ -47,23 +47,23 @@ export default function ProductDetail() {
                         className="w-full h-96 object-contain"
                     />
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-purplegradientr p-6 rounded-lg shadow">
                     <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
                     <div className="mb-4">
                         <span className="text-primary text-xl font-bold">
                             ₦{product.price.toLocaleString()}
                         </span>
                         {product.countInStock > 0 ? (
-                            <span className="ml-2 text-green-600">In Stock</span>
+                            <span className="ml-2 text-purplegradientr">In Stock</span>
                         ) : (
                             <span className="ml-2 text-red-600">Out of Stock</span>
                         )}
                     </div>
-                    <p className="text-gray-700 mb-6">{product.description}</p>
+                    <p className="text-purpleDark mb-6">{product.description}</p>
 
                     {product.countInStock > 0 && (
                         <div className="mb-6">
-                            <label className="block text-gray-700 mb-2">Quantity</label>
+                            <label className="block text-purpleDark mb-2">Quantity</label>
                             <select
                                 value={quantity}
                                 onChange={(e) => setQuantity(parseInt(e.target.value))}
