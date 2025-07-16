@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     createUserWithEmailAndPassword,
@@ -68,7 +68,7 @@ export default function Register() {
     }, [setCurrentUser, navigate, location.state?.from]);
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-md mx-auto mt-2 md:mt-10 p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
             {error && (
                 <div className="mb-4 p-2 bg-red-100 text-red-700 rounded flex items-center">

@@ -8,8 +8,8 @@ export default function RegisterPage() {
                     Create a new account
                 </h2> */}
             </div>
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <div className="mt-2 md:mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                <div className="bg-white py-2 md:py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <Register />
                 </div>
             </div>

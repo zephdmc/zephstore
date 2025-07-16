@@ -64,7 +64,7 @@ export default function HomePage() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 to="/products"
-                                className="bg-pink-600 hover:bg-pink-700 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                className="bg-purplegradient hover:bg-pink-300 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
                             >
                                 Shop Now
                             </Link>

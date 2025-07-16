@@ -113,14 +113,14 @@ export default function Login() {
                             type="checkbox"
                             className="h-3 w-3 sm:h-4 sm:w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
                         />
-                        <label htmlFor="remember-me" className="ml-2 block text-xs sm:text-sm text-gray-700">
+                        <label htmlFor="remember-me" className="ml-2 block text-xs sm:text-sm purpleDark2">
                             Remember me
                         </label>
                     </div>
 
                     <Link
                         to="/forgotpassword"
-                        className="text-xs sm:text-sm font-medium text-primary-600 hover:text-primary-500"
+                        className="text-xs sm:text-sm font-medium purpleDark hover:text-primary-500"
                     >
                         Forgot password?
                     </Link>
@@ -129,12 +129,12 @@ export default function Login() {
                 <div className="space-y-3 sm:space-y-4">
                     <button
                         type="submit"
-                        className="w-full py-2.5 sm:py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                        className="w-full py-2.5 sm:py-3 px-4 bg-purplegradient hover:bg-purpleLight text-white text-sm sm:text-base font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
                         disabled={loading}
                     >
                         {loading ? (
                             <>
-                                <svg className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <svg className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
@@ -145,17 +145,17 @@ export default function Login() {
 
                     <Link
                         to="/forgotpassword"
-                        className="w-full py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-xs sm:text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 flex justify-center items-center"
+                        className="w-full py-2 px-4 border border-purpLight rounded-lg shadow-sm text-xs sm:text-sm font-medium text-purpleDark2 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 flex justify-center items-center"
                     >
                         Reset Password
                     </Link>
                 </div>
             </form>
 
-            <div className="mt-6 text-center text-xs sm:text-sm text-gray-500">
+            <div className="mt-6 text-center text-xs sm:text-sm text-purpleDark2">
                 <p>
                     Don't have an account?{' '}
-                    <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
+                    <Link to="/register" className="font-medium text-purpleDark2 hover:text-purpleDark2">
                         Sign up
                     </Link>
                 </p>
@@ -164,10 +164,10 @@ export default function Login() {
             <div className="mt-6 sm:mt-8">
                 <div className="relative">
                     <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-gray-300"></div>
+                        <div className="w-full border-t border-purpleLight"></div>
                     </div>
                     <div className="relative flex justify-center text-xs sm:text-sm">
-                        <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                        <span className="px-2 bg-white text-purpleDark2">Or continue with</span>
                     </div>
                 </div>
 
@@ -175,10 +175,10 @@ export default function Login() {
                     <button
                         onClick={handleGoogleSignIn}
                         disabled={googleLoading}
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-xs sm:text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                        className="w-full inline-flex justify-center py-2 px-4 border border-purpleDark2 rounded-lg shadow-sm text-xs sm:text-sm font-medium text-purpleDark2 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
                         {googleLoading ? (
-                            <svg className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <svg className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-purpleDark2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
