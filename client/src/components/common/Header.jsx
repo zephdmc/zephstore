@@ -244,7 +244,7 @@ const handleClickOutside = (event) => {
                             <input
                                 type="text"
                                 placeholder="Search products..."
-                                className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                className="w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-purpleLight focus:border-transparent"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -452,7 +452,7 @@ const handleClickOutside = (event) => {
                                                         to="/admin"
                                                         onClick={() => setMobileMenuOpen(false)}
                                                         className={({ isActive }) =>
-                                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark'}`
+                                                            `py-2 ${isActive ? 'text-purpleDark1 font-medium' : 'text-purpleDark'}`
                                                         }
                                                     >
                                                         Dashboard
@@ -483,19 +483,19 @@ const handleClickOutside = (event) => {
                             <div className="hidden md:flex space-x-3">
                                 <Link
                                     to="/about"
-                                    className="text-purpleDark1 hover:text-primary transition"
+                                    className="text-purpleDark1 hover:text-purpleLight transition"
                                 >
                                     About
                                 </Link>
                                 <Link
                                     to="/login"
-                                    className="text-purpleDark1 hover:text-primary transition"
+                                    className="text-purpleDark1 hover:text-purpleLight transition"
                                 >
                                     Login
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className="text-purpleDark1 px-3 py-1 rounded hover:bg-primary-purpleLight transition"
+                                    className="text-purpleDark1 hover:text-purpleLight transition"
                                 >
                                     Register
                                 </Link>
@@ -511,7 +511,7 @@ const handleClickOutside = (event) => {
  <input
                                 type="text"
                                 placeholder="Search products..."
-                                className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                className="mobile-search-input w-full pl-4 pr-10 py-2 border border-purpleLight rounded-lg focus:outline-none focus:ring-2 focus:ring-purpleDark1 focus:border-transparent"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -519,7 +519,7 @@ const handleClickOutside = (event) => {
                             />
                             <button
                                 onClick={handleSearch()}
-                                className="mobile-search-input absolute right-3 top-2.5 text-purpleLight hover:text-primary transition"
+                                className="mobile-search-input absolute right-3 top-2.5 text-purpleLight hover:text-purpleLight transition"
                             >
                                 <FiSearch size={18} />
                             </button>
@@ -545,7 +545,7 @@ const handleClickOutside = (event) => {
                             to="/products"
                             onClick={() => setMobileMenuOpen(false)}
                             className={({ isActive }) =>
-                                `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
+                                `py-2 ${isActive ? 'text-purpleDark1 font-medium' : 'text-purpleDark1'}`
                             }
                         >
                             Products
@@ -556,7 +556,7 @@ const handleClickOutside = (event) => {
                                     to="/orders"
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={({ isActive }) =>
-                                        `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
+                                        `py-2 ${isActive ? 'text-purpleDark1 font-medium' : 'text-purpleDark1'}`
                                     }
                                 >
                                     Orders
@@ -575,7 +575,7 @@ const handleClickOutside = (event) => {
                                         to="/admin"
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={({ isActive }) =>
-                                            `py-2 ${isActive ? 'text-primary font-medium' : 'text-purpleDark1'}`
+                                            `py-2 ${isActive ? 'text-purpleLight font-medium' : 'text-purpleDark1'}`
                                         }
                                     >
                                         Dashboard
@@ -590,7 +590,7 @@ const handleClickOutside = (event) => {
                                     <button
                                         onClick={handleLogout}
                                         disabled={logoutLoading}
-                                        className={`w-full text-left py-2 flex items-center space-x-2 ${logoutLoading ? 'opacity-50 cursor-wait' : 'text-purpleDark hover:text-primary'
+                                        className={`w-full text-left py-2 flex items-center space-x-2 ${logoutLoading ? 'opacity-50 cursor-wait' : 'text-purpleDark hover:text-purpleLight'
                                             }`}
                                     >
                                         <FiLogOut className="h-5 w-5" />
@@ -610,7 +610,7 @@ const handleClickOutside = (event) => {
                                 <Link
                                     to="/register"
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className=" text-purpleDark1 py-2 hover:bg-primary-dark transition"
+                                    className=" text-purpleDark1 py-2 hover:text-purpleLight  transition"
                                 >
                                     Register
                                 </Link>
