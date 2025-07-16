@@ -55,7 +55,7 @@ export default function HomePage() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-purpleDark mb-6">
+                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-purplegradient mb-6">
                             Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
                         </h1>
                         <p className="text-lg md:text-xl text-purpleDark mb-8 max-w-2xl mx-auto">
@@ -70,7 +70,7 @@ export default function HomePage() {
                             </Link>
                             <Link
                                 to="/skincare-quiz"
-                                className="border-2 border-purplegradient text-purpleLight hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+                                className="border-2 border-purplegradient text-purplegradient hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
                             >
                                 Start Your Skincare Journey
                             </Link>
@@ -80,9 +80,9 @@ export default function HomePage() {
 
                 {/* Decorative elements */}
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                    <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-pink-200 opacity-30 animate-float"></div>
-                    <div className="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-purple-200 opacity-30 animate-float animation-delay-2000"></div>
-                    <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-amber-200 opacity-30 animate-float animation-delay-4000"></div>
+                    <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-purpleLight opacity-30 animate-float"></div>
+                    <div className="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-2000"></div>
+                    <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-4000"></div>
                 </div>
             </section>
 
@@ -104,11 +104,11 @@ export default function HomePage() {
 
                     {loading ? (
                         <motion.div variants={itemVariants} className="text-center py-8">
-                            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-pink-600 mb-4"></div>
+                            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purplegradientv mb-4"></div>
                             <p>Loading featured products...</p>
                         </motion.div>
                     ) : error ? (
-                        <motion.div variants={itemVariants} className="text-red-500 bg-red-50 p-4 rounded-lg text-center">
+                        <motion.div variants={itemVariants} className="text-purplegradientv bg-red-50 p-4 rounded-lg text-center">
                             {error} (Showing placeholder products)
                         </motion.div>
                     ) : null}
@@ -132,7 +132,7 @@ export default function HomePage() {
                     ) : (
                         Array.from({ length: 4 }).map((_, index) => (
                             <motion.div key={index} variants={itemVariants}>
-                                <div className="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <div className="border rounded-lg p-4 bg-purpleLight shadow-sm hover:shadow-md transition-shadow">
                                     <div className="bg-purpleLight h-64 mb-4 rounded animate-pulse"></div>
                                     <div className="h-4 bg-purpleLight rounded w-3/4 mb-3 animate-pulse"></div>
                                     <div className="h-4 bg-purpleLight rounded w-1/2 animate-pulse"></div>
@@ -234,7 +234,7 @@ export default function HomePage() {
                     <div className="max-w-4xl mx-auto">
                         {/* Placeholder for TikTok feed integration */}
                         <div className="bg-purpleLight rounded-xl p-8 text-center">
-                            <p className="text-gray-500 mb-4">TikTok Feed Integration</p>
+                            <p className="text-purpleDark mb-4">TikTok Feed Integration</p>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {[1, 2, 3, 4].map((item) => (
                                     <div key={item} className="aspect-square bg-gray-200 rounded-lg animate-pulse"></div>
@@ -246,7 +246,7 @@ export default function HomePage() {
             </section>
 
             {/* Newsletter Section */}
-            <section className="bg-purpleDark1 text-white py-16">
+            <section className="bg-purpleDark1 text-purpleLight py-16">
                 <div className="container mx-auto px-4 text-center">
                     <motion.div
                         initial={{ opacity: 0 }}
