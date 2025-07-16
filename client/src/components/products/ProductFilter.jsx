@@ -35,7 +35,7 @@ export default function ProductFilter({ categories, onFilter }) {
         <form onSubmit={handleSubmit} className="bg-purplegradientr p-4 rounded-lg shadow mb-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
-                    <label className="block text-purpleDark mb-1">Search</label>
+                    <label className="block text-white mb-1">Search</label>
                     <input
                         type="text"
                         name="search"
