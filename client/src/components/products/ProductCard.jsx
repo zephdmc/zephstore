@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
                     {product.countInStock > 0 ? (
                         <span className="text-purpleDark text-sm">In Stock</span>
                     ) : (
-                        <span className="text-red-600 text-sm">Out of Stock</span>
+                        <span className="text-Danger text-sm">Out of Stock</span>
                     )}
                 </div>
                 <button
@@ -30,7 +30,7 @@ export default function ProductCard({ product }) {
                     disabled={product.countInStock === 0}
                     className={`w-full py-2 px-4 rounded ${product.countInStock === 0
                         ? 'bg-purpleDark1 cursor-not-allowed'
-                        : 'bg-purpleDark text-purpleDark1 hover:bg-purpleLight'
+                        : 'bg-purpleDark text-purpleLight hover:bg-purpleLight'
                         } transition`}
                 >
                     {product.countInStock === 0 ? 'Out of Stock' : 'Add to Cart'}
