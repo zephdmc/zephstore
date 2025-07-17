@@ -171,10 +171,10 @@ export default function HomePage() {
                                                     {product.name}
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-sm md:text-xl text-purpleLighter">
+                                                    <span className="text-sm md:text-xl text-white">
                                                         ₦{product.price.toFixed(2)}
                                                     </span>
-                                                    <FiShoppingBag className="text-purpleLighter group-hover:text-purpleDark transition-colors" />
+                                                    <FiShoppingBag className="text-white group-hover:text-purpleDark transition-colors" />
                                                 </div>
                                             </>
                                         ) : (
@@ -200,7 +200,7 @@ export default function HomePage() {
         >
             <Link
                 to="/products"
-                className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-purpleDark to-purpleLight hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
             >
                 View All Products
                 <FiArrowRight className="ml-2" />
