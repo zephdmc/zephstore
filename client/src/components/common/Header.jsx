@@ -234,7 +234,14 @@ const handleClickOutside = (event) => {
                             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                         </button>
                         <Link to="/" className="text-lg font-bold text-purpleDark1">
-                            🛒 Bellebeau Aesthetics
+<img 
+            src="/images/logo.png" // Replace with your image path
+            alt="Bellebeau Aesthetics "
+            className="size={24}" // Adjust opacity as needed (0.2 = 20%)
+        />
+
+                            
+                             Bellebeau Aesthetics
                         </Link>
                     </div>
 
