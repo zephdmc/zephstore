@@ -74,7 +74,7 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark1>Contact Us</h4>
+                        <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark1"> Contact Us</h4>
                         <ul className="space-y-4 text-white">
                             <li className="flex items-start">
                                 <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-purpleDark" />
