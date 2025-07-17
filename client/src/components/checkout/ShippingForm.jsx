@@ -35,7 +35,7 @@ export default function ShippingForm({ onSubmit }) {
             <h3 className="text-lg font-medium mb-4">Shipping Information</h3>
 
             <div className="mb-4">
-                <label className="block text-gray-700 mb-1">Email</label>
+                <label className="block text-purpleDark mb-1">Email</label>
                 <input
                     type="email"
                     name="email"
@@ -49,7 +49,7 @@ export default function ShippingForm({ onSubmit }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label className="block text-gray-700 mb-1">Address</label>
+                    <label className="block text-purpleDark mb-1">Address</label>
                     <input
                         type="text"
                         name="address"
@@ -60,7 +60,7 @@ export default function ShippingForm({ onSubmit }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">City</label>
+                    <label className="block text-purpleDark mb-1">City</label>
                     <input
                         type="text"
                         name="city"
@@ -74,7 +74,7 @@ export default function ShippingForm({ onSubmit }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label className="block text-gray-700 mb-1">State</label>
+                    <label className="block text-purpleDark mb-1">State</label>
                     <input
                         type="text"
                         name="state"
@@ -85,7 +85,7 @@ export default function ShippingForm({ onSubmit }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Postal Code</label>
+                    <label className="block text-purpleDark mb-1">Postal Code</label>
                     <input
                         type="text"
                         name="postalCode"
@@ -99,7 +99,7 @@ export default function ShippingForm({ onSubmit }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label className="block text-gray-700 mb-1">Country</label>
+                    <label className="block text-purpleDark mb-1">Country</label>
                     <select
                         name="country"
                         value={formData.country}
@@ -113,7 +113,7 @@ export default function ShippingForm({ onSubmit }) {
                     </select>
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Phone Number</label>
+                    <label className="block text-purpleDark mb-1">Phone Number</label>
                     <input
                         type="tel"
                         name="phone"
@@ -127,13 +127,13 @@ export default function ShippingForm({ onSubmit }) {
 
             <button
                 type="submit"
-                className="w-full bg-primary text-gray-700 py-3 px-4 rounded hover:bg-primary-dark transition font-medium"
+                className="w-full bg-purpleDark text-purpleLighter py-3 px-4 rounded hover:bg-purpleLighter transition font-medium"
             >
                 Continue to Payment
             </button>
             <Link
                 to="/products"
-                className="border border-primary text-gray-700 py-2 px-6 rounded hover:bg-gray-50 transition font-medium"
+                className="border border-purpleDark text-purpleDark py-2 px-6 rounded hover:bg-purpleLighter1 transition font-medium"
             >
                 Continue Shopping
             </Link>
