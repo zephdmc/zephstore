@@ -48,7 +48,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-purpleDark to-purpleLight">
             {/* Hero Section */}
-            <section className="relative overflow-hidden border-b-2 border-purplegradientr bg-[url(/img/mountains.jpg)] bg-blend-overlay ">
+{/*             <section className="relative overflow-hidden border-b-2 border-purplegradientr bg-[url(/img/mountains.jpg)] bg-blend-overlay ">
                 <div className="container mx-auto px-4 pt-4 pb-20  md:pt-28  md:pb-28 flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -80,12 +80,63 @@ export default function HomePage() {
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                    <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-purpleLight opacity-30 animate-float"></div>
-                    <div className="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-2000"></div>
-                    <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-4000"></div>
-                </div>
-            </section>
+            //     <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+            //         <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-purpleLight opacity-30 animate-float"></div>
+            //         <div className="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-2000"></div>
+            //         <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-4000"></div>
+            //     </div>
+            // </section> */}
+
+{/* Hero Section */}
+<section className="relative overflow-hidden border-b-2 border-purplegradientr">
+    {/* Background Image with Opacity */}
+    <div className="absolute inset-0 z-0">
+        <img 
+            src="/images/beauty-products.jpg" // Replace with your image path
+            alt="Beauty Products Background"
+            className="w-full h-full object-cover opacity-20" // Adjust opacity as needed (0.2 = 20%)
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-purpleDark to-purpleLight mix-blend-multiply"></div>
+    </div>
+    
+    {/* Content Container (unchanged) */}
+    <div className="container mx-auto px-4 pt-4 pb-20 md:pt-28 md:pb-28 flex flex-col items-center text-center relative z-10">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+        >
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-purplegradient mb-6">
+                Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
+            </h1>
+            <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">
+                Discover skincare made for you — Shop clean beauty, get expert recommendations, and follow the latest trends.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                    to="/products"
+                    className="bg-purplegradient hover:bg-purplegradientv text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                    Shop Now
+                </Link>
+                <Link
+                    to="/skincare-quiz"
+                    className="border-2 border-purplegradient text-purplegradient hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+                >
+                    Start Your Skincare Journey
+                </Link>
+            </div>
+        </motion.div>
+    </div>
+
+    {/* Decorative elements (unchanged) */}
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
+        <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-purpleLight opacity-30 animate-float"></div>
+        <div className="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-purpleLight opacity-30 animate-float animation-delay-4000"></div>
+    </div>
+</section>
 
             {/* Featured Products Section */}
             {/* Featured Products Section */}
