@@ -10,7 +10,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-bold">
-                            <span className="text-purpleDark ">Bellebeau</span>Aesthetics
+                            <span className="text-purplegradientv">Bellebeau</span>Aesthetics
                         </h3>
                         <p className="text-purpleLight  text-sm leading-relaxed">
                             Elevating beauty through premium aesthetic solutions. 
@@ -20,19 +20,19 @@ export default function Footer() {
                         
                         {/* Social Media */}
                         <div className="flex space-x-4 pt-2">
-                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
+                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FiFacebook size={20} />
                             </a>
-                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
+                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FiInstagram size={20} />
                             </a>
-                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
+                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FiTwitter size={20} />
                             </a>
-                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
+                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FaTiktok size={20} />
                             </a>
-                            <a href="#" className="text-purpleDark  hover:text-purpleLight transition-colors duration-300">
+                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FaPinterestP size={20} />
                             </a>
                         </div>
@@ -43,11 +43,11 @@ export default function Footer() {
                         <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark ">Quick Links</h4>
                         <ul className="space-y-3">
                             <li><a href="/" className="text-white hover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Home</a></li>
+                                <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Home</a></li>
                             <li><a href="/products" className="text-white hover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> Products</a></li>
+                                <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Products</a></li>
                             <li><a href="/about" className="text-white hover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> About Us</a></li>
+                                <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> About Us</a></li>
                             <li><a href="/blog" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Blog</a></li>
                             <li><a href="/faq" className="text-whitehover:text-purple-400 transition-colors flex items-center">
@@ -77,19 +77,19 @@ export default function Footer() {
                         <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark1"> Contact Us</h4>
                         <ul className="space-y-4 text-white">
                             <li className="flex items-start">
-                                <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-purpleDark" />
-                                <span>123 Beauty Avenue, Victoria Island, Lagos, Nigeria</span>
+                                <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-white" />
+                                <span>123 Beauty Avenue, Victoria Island, Port Harcourt, Nigeria</span>
                             </li>
                             <li className="flex items-center">
                                 <FiMail className="mr-3 text-white" />
                                 <a href="mailto:info@bellebeauaesthetics.com" className="hover:text-purple-400 transition-colors">
-                                    info@bellebeauaesthetics.com
+                                    bellebeauaesthetics001@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center">
                                 <FiPhone className="mr-3 text-white" />
                                 <a href="tel:+2348000000000" className="hover:text-purple-400 transition-colors">
-                                    +234 800 000 0000
+                                    +234 901 4727 839
                                 </a>
                             </li>
                         </ul>
@@ -103,7 +103,7 @@ export default function Footer() {
                                     placeholder="Your email address" 
                                     className="px-4 py-2 w-full text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 rounded-l"
                                 />
-                                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 text-sm font-medium rounded-r transition-colors">
+                                <button className="bg-purpleLighter hover:bg-purple-700 text-white px-4 py-2 text-sm font-medium rounded-r transition-colors">
                                     Subscribe
                                 </button>
                             </div>
@@ -121,10 +121,10 @@ export default function Footer() {
                         </div>
                         
                         <div className="flex space-x-6">
-                            <img src="/images/payment-methods/visa.svg" alt="Visa" className="h-6" />
+{/*                             <img src="/images/payment/visa.svg" alt="Visa" className="h-6" />
                             <img src="/images/payment-methods/mastercard.svg" alt="Mastercard" className="h-6" />
                             <img src="/images/payment-methods/verve.svg" alt="Verve" className="h-6" />
-                            <img src="/images/payment-methods/paypal.svg" alt="PayPal" className="h-6" />
+                            <img src="/images/payment-methods/paypal.svg" alt="PayPal" className="h-6" /> */}
                         </div>
                     </div>
                 </div>
