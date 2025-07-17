@@ -19,6 +19,7 @@ module.exports = {
               'purpleLighter': '#ba68c8',
                'purpleLighter1': '#ede7f6',
               'white': '#FFFFFF',
+              'red': '#e91e63',
                 primary: {
                      DEFAULT: '#4A2BA0',
                      light: '#ede7f6',
