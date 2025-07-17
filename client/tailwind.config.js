@@ -17,12 +17,13 @@ module.exports = {
                 'purpleLight': '#A18AE2',
                 'purpleDark2': '#380638',
               'purpleLighter': '#ba68c8',
-              'white': '#FFFFFF'
-                // primary: {
-                //     DEFAULT: '#4F46E5',
-                //     light: '#6366F1',
-                //     dark: '#4338CA',
-                // },
+               'purpleLighter1': '#ede7f6',
+              'white': '#FFFFFF',
+                primary: {
+                     DEFAULT: '#4A2BA0',
+                     light: '#ede7f6',
+                     dark: '#4A2BA0',
+                 },
                 // secondary: {
                 //     DEFAULT: '#10B981',
                 //     light: '#34D399',
