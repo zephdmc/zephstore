@@ -29,12 +29,12 @@ export default function ForgotPassword() {
         <div className="max-w-md mx-auto my-8 p-8 bg-white rounded-xl shadow-sm transition-all hover:shadow-md sm:my-12 sm:p-10">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2 sm:text-4xl">Reset Password</h2>
-                <p className="text-gray-500">Enter your email to receive a reset link</p>
+                <p className="text-purpleDark1">Enter your email to receive a reset link</p>
             </div>
 
             {message && (
                 <div className={`mb-6 p-3 text-sm rounded-lg border flex items-center ${message.includes('sent') ?
-                    'bg-green-50 text-green-600 border-green-100' :
+                    'bg-purpleLighter1 text-purpleDark border-purpleLight' :
                     'bg-red-50 text-red-600 border-red-100'
                     }`}>
                     {message}
@@ -49,7 +49,7 @@ export default function ForgotPassword() {
                     <input
                         type="email"
                         id="email"
-                        className="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                        className="w-full px-4 py-3 text-base border border-purpleDark rounded-lg focus:ring-2 focus:ring-purpleLighter focus:border-primary-500 transition"
                         placeholder="you@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ export default function ForgotPassword() {
 
                 <button
                     type="submit"
-                    className="w-full py-3 px-4 bg-blue-600 hover:bg-primary-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                    className="w-full py-3 px-4 bg-purpleDark hover:bg-purpleLight text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
                     disabled={loading}
                 >
                     {loading ? (
@@ -77,7 +77,7 @@ export default function ForgotPassword() {
             <div className="mt-6 text-center text-sm text-gray-500">
                 <p>
                     Remember your password?{' '}
-                    <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+                    <Link to="/login" className="font-medium text-purpleDark hover:text-primary-500">
                         Sign in
                     </Link>
                 </p>
