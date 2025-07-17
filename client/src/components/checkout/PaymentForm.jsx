@@ -468,20 +468,20 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-lg font-medium mb-4">Payment Details</h3>
 
-            <div className="mb-6 p-4 bg-blue-50 rounded border border-blue-100">
-                <div className="flex items-center text-blue-800 mb-1">
+            <div className="mb-6 p-4 bg-purpleLighter1 rounded border border-purpleLighter">
+                <div className="flex items-center text-purpleDark1 mb-1">
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                     </svg>
                     <span className="font-medium">Secure Payment</span>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-purpleDark2">
                     Your payment is securely processed via Flutterwave
                 </p>
             </div>
 
             <div className="mb-6">
-                <p className="text-gray-700 mb-2">Total Amount:</p>
+                <p className="text-purpleDark2 mb-2">Total Amount:</p>
                 <p className="text-2xl font-bold">₦{amount.toLocaleString()}</p>
             </div>
 
@@ -494,7 +494,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
             <button
                 onClick={initializePayment}
                 disabled={isLoading || !scriptReady}
-                className={`w-full bg-primary text-gray-900 py-3 px-4 rounded hover:bg-primary-dark transition font-medium flex items-center justify-center ${isLoading || !scriptReady ? 'opacity-75 cursor-not-allowed' : ''}`}
+                className={`w-full bg-purpleLighter text-purpleDark py-3 px-4 rounded hover:bg-purpleDark transition font-medium flex items-center justify-center ${isLoading || !scriptReady ? 'opacity-75 cursor-not-allowed' : ''}`}
             >
                 {isLoading ? (
                     <>
@@ -512,7 +512,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
             <button
                 type="button"
                 onClick={handlePaymentClose}
-                className="mt-4 w-full text-gray-600 hover:text-gray-800 text-sm font-medium"
+                className="mt-4 w-full text-purpleDark hover:text-purpleDark text-sm font-medium"
             >
                 ← Return to shipping
             </button>
