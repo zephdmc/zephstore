@@ -237,7 +237,13 @@ const handleClickOutside = (event) => {
 <img 
             src="/images/logo.png" // Replace with your image path
             alt="Bellebeau Aesthetics "
-            className="size={24}" // Adjust opacity as needed (0.2 = 20%)
+            className="
+      w-32 h-auto      // Mobile: 128px (8rem)
+      md:w-40          // Tablet: 160px (10rem)
+      lg:w-48          // Desktop: 192px (12rem)
+      xl:w-56          // Large screens: 224px (14rem)
+      hover:opacity-90 transition-opacity
+    " // Adjust opacity as needed (0.2 = 20%)
         />
 
                             
