@@ -81,13 +81,13 @@ export default function Register() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className="block text-gray-700 mb-2" htmlFor="email">
+                    <label className="block text-purpleDark mb-2" htmlFor="email">
                         Email
                     </label>
                     <input
                         type="email"
                         id="email"
-                        className="w-full p-2 border rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                        className="w-full p-2 border rounded focus:ring-2 focus:ring-purpleLighter focus:border-purpleLight transition"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -95,13 +95,13 @@ export default function Register() {
                 </div>
 
                 <div>
-                    <label className="block text-gray-700 mb-2" htmlFor="password">
+                    <label className="block text-purpleDark mb-2" htmlFor="password">
                         Password
                     </label>
                     <input
                         type="password"
                         id="password"
-                        className="w-full p-2 border rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                        className="w-full p-2 border rounded focus:ring-2 focus:ring-purpleLighter focus:border-purpleLighter transition"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -109,13 +109,13 @@ export default function Register() {
                 </div>
 
                 <div>
-                    <label className="block text-gray-700 mb-2" htmlFor="confirmPassword">
+                    <label className="block text-purpleDark mb-2" htmlFor="confirmPassword">
                         Confirm Password
                     </label>
                     <input
                         type="password"
                         id="confirmPassword"
-                        className="w-full p-2 border rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                        className="w-full p-2 border rounded focus:ring-2 focus:ring-purpleLighter focus:border-purpleLighter transition"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
@@ -124,7 +124,7 @@ export default function Register() {
 
                 <button
                     type="submit"
-                    className="w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-purpleDark text-white py-2 px-4 rounded hover:bg-primary-dark transition focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
                     disabled={loading}
                 >
                     {loading ? (
@@ -145,7 +145,7 @@ export default function Register() {
                         <div className="w-full border-t border-gray-300"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                        <span className="px-2 bg-white text-purpleDark">Or continue with</span>
                     </div>
                 </div>
 
@@ -154,7 +154,7 @@ export default function Register() {
                         type="button"
                         onClick={handleGoogleSignUp}
                         disabled={googleLoading}
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                        className="w-full inline-flex justify-center py-2 px-4 border border-purpleLighter rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
                         {googleLoading ? (
                             <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -169,15 +169,15 @@ export default function Register() {
                 </div>
             </div>
 
-            <div className="mt-6 text-center text-sm text-gray-500 space-y-2">
+            <div className="mt-6 text-center text-sm text-purpleDark space-y-2">
                 <p>
                     Already have an account?{' '}
-                    <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+                    <Link to="/login" className="font-medium text-purpleLight hover:text-purpleLighter">
                         Login
                     </Link>
                 </p>
                 <p>
-                    <Link to="/forgot-password" className="font-medium text-primary-600 hover:text-primary-500">
+                    <Link to="/forgot-password" className="font-medium text-purpleDark hover:text-purpleLighter">
                         Forgot password?
                     </Link>
                 </p>
