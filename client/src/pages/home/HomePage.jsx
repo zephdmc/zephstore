@@ -329,7 +329,7 @@ export default function HomePage() {
                         <p className="text-purpleLight max-w-2xl mx-auto mb-8">
                             Subscribe to our newsletter for exclusive offers, skincare tips, and new product launches.
                         </p>
-                        <div className="max-w-md mx-auto flex">
+                        <div className="max-w-sm mx-auto flex">
                             <input
                                 type="email"
                                 placeholder="Your email address"
