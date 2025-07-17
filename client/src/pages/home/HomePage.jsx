@@ -340,7 +340,7 @@ export default function HomePage() {
     }}
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
-    className="fixed bottom-6 right-6 z-50 cursor-grab active:cursor-grabbing"
+    className="fixed bottom-10 right-6 z-50 cursor-grab active:cursor-grabbing"
 >
     <a 
         href="https://wa.me/+2349014727839" // Replace PHONE_NUMBER with your actual WhatsApp number in international format (e.g., 2348000000000)
