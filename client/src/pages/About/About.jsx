@@ -21,7 +21,7 @@ const AboutPage = () => {
     const faqs = [
         {
             question: "How long does delivery take?",
-            answer: "Delivery typically takes 2-5 business days within Lagos and 3-7 business days for other states. We partner with reliable logistics providers to ensure timely delivery."
+            answer: "Delivery typically takes 2-5 business days within Port Harcout and 3-7 business days for other states. We partner with reliable logistics providers to ensure timely delivery."
         },
         {
             question: "Do your products work for oily skin?",
@@ -231,7 +231,7 @@ const AboutPage = () => {
                             <motion.a
                                 variants={item}
                                 whileHover={{ scale: 1.05 }}
-                                href="https://wa.me/234YOURNUMBER"
+                                href="https://wa.me/2349014727839"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="bg-green-600 hover:bg-green-700 p-4 rounded-lg flex flex-col items-center transition"
@@ -243,7 +243,7 @@ const AboutPage = () => {
                             <motion.a
                                 variants={item}
                                 whileHover={{ scale: 1.05 }}
-                                href="mailto:support@bellebeauaesthetics.ng"
+                                href="mailto:bellebeauesthetics001@gmail.com"
                                 className="bg-pink-600 hover:bg-pink-700 p-4 rounded-lg flex flex-col items-center transition"
                             >
                                 <FaEnvelope className="text-3xl mb-2" />
@@ -265,7 +265,7 @@ const AboutPage = () => {
                             <motion.a
                                 variants={item}
                                 whileHover={{ scale: 1.05 }}
-                                href="tel:+234YOURNUMBER"
+                                href="tel:+2349014727839"
                                 className="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg flex flex-col items-center transition"
                             >
                                 <FaPhone className="text-3xl mb-2" />
