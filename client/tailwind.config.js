@@ -16,6 +16,7 @@ module.exports = {
                 'purpleDark': '#4F2EAA',
                 'purpleLight': '#A18AE2',
                 'purpleDark2': '#380638',
+              'purpleLighter': '#ba68c8',
               'white': '#FFFFFF'
                 // primary: {
                 //     DEFAULT: '#4F46E5',
