@@ -49,7 +49,7 @@ export default function Footer() {
                             <li><a href="/about" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> About Us</a></li>
                             <li><a href="/blog" className="text-white hover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple- mr-2 rounded-full"></span> Blog</a></li>
+                                <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Blog</a></li>
                             <li><a href="/faq" className="text-whitehover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> FAQs</a></li>
                         </ul>
