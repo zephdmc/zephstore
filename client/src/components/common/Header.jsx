@@ -233,22 +233,52 @@ const handleClickOutside = (event) => {
                         >
                             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                         </button>
-                        <Link to="/" className="text-lg font-bold text-purpleDark1">
-<img 
-            src="/images/logo.png" // Replace with your image path
-            alt="Bellebeau Aesthetics "
-            className="
-      w-32 h-auto      // Mobile: 128px (8rem)
-      md:w-40          // Tablet: 160px (10rem)
-      lg:w-48          // Desktop: 192px (12rem)
-      xl:w-56          // Large screens: 224px (14rem)
-      hover:opacity-90 transition-opacity
-    " // Adjust opacity as needed (0.2 = 20%)
-        />
+                     <Link 
+  to="/" 
+  className="flex items-center gap-3 hover:opacity-90 transition-opacity group"
+>
+  {/* Logo Image - Optimized Sizing */}
+  <div className="
+    w-[50px] h-[50px]       // Base size
+    sm:w-[60px] sm:h-[60px]  // Small tablets
+    md:w-[70px] md:h-[70px]  // Tablets
+    lg:w-[80px] lg:h-[80px]  // Desktops
+  ">
+    <img 
+      src="/images/logo.png" 
+      alt="Bellebeau Aesthetics"
+      className="w-full h-full object-contain" 
+    />
+  </div>
 
-                            
-                             Bellebeau <span className="text-4"> Aesthetics </span>
-                        </Link>
+  {/* Text Container - Perfect Vertical Rhythm */}
+  <div className="flex flex-col leading-none">
+    <span className="
+      text-[28px]           // Mobile
+      sm:text-[32px]        // Small tablets
+      md:text-[36px]        // Tablets
+      lg:text-[40px]        // Desktops
+      font-bold 
+      text-purpleDark1
+      tracking-tight        // Slightly condensed
+      -mb-1                 // Tighten spacing
+    ">
+      Bellebeau
+    </span>
+    <span className="
+      text-[15px]           // Mobile
+      sm:text-[16px]        // Small tablets
+      md:text-[18px]        // Tablets
+      lg:text-[20px]        // Desktops
+      font-medium           // Slightly emphasized (not bold)
+      text-purpleDark1/80   // Subtle transparency
+      tracking-wider        // Letter spacing for elegance
+      mt-0.5                // Perfect vertical spacing
+    ">
+      Aesthetics
+    </span>
+  </div>
+</Link>
                     </div>
 
                     {/* Desktop Search Bar with Suggestions */}
