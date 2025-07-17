@@ -171,16 +171,16 @@ export default function HomePage() {
                                                     {product.name}
                                                 </h3>
                                                 <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-sm md:text-xl text-gray-900">
+                                                    <span className="text-sm md:text-xl text-purpleLighter">
                                                         ₦{product.price.toFixed(2)}
                                                     </span>
-                                                    <FiShoppingBag className="text-purpleDark1 group-hover:text-purpleDark transition-colors" />
+                                                    <FiShoppingBag className="text-purpleLighter group-hover:text-purpleDark transition-colors" />
                                                 </div>
                                             </>
                                         ) : (
                                             <>
-                                                <div className="h-5 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
-                                                <div className="h-5 bg-gray-200 rounded w-1/2 mt-auto animate-pulse"></div>
+                                                <div className="h-5 bg-purpleLighter1 rounded w-3/4 mb-3 animate-pulse"></div>
+                                                <div className="h-5 bg-purpleLighter rounded w-1/2 mt-auto animate-pulse"></div>
                                             </>
                                         )}
                                     </div>
