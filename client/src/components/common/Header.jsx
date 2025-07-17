@@ -241,7 +241,7 @@ const handleClickOutside = (event) => {
         />
 
                             
-                             Bellebeau Aesthetics
+                             Bellebeau <span className="text-4"> Aesthetics </span>
                         </Link>
                     </div>
 
