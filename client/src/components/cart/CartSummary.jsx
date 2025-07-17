@@ -5,7 +5,7 @@ export default function CartSummary() {
     const { cartTotal, cartCount, clearCart } = useCart();
 
     return (
-        <div className="bg-gray-50 p-6 rounded-lg">
+        <div className="bg-purpleLighter1 p-6 rounded-lg">
             <h3 className="text-lg font-medium mb-4">Order Summary</h3>
             <div className="space-y-2 mb-6">
                 <div className="flex justify-between">
@@ -27,13 +27,13 @@ export default function CartSummary() {
             </div>
             <button
                 onClick={clearCart}
-                className="w-full mb-4 bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition"
+                className="w-full mb-4 bg-purpleLighter text-purpleDark py-2 px-4 rounded hover:bg-purpleLighter1 transition"
             >
                 Clear Cart
             </button>
             <Link
                 to="/checkout"
-                className="block w-full bg-primary text-gray-600 py-2 px-4 rounded text-center hover:bg-primary-dark transition"
+                className="block w-full bg-purpleDark text-purpleLighter py-2 px-4 rounded text-center hover:bg-purpleLighter1 transition"
             >
                 Proceed to Checkout
             </Link>
