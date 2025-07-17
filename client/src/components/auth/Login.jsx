@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import {
     signInWithEmailAndPassword,
     signInWithPopup,
@@ -26,6 +28,8 @@ export default function Login() {
     const [googleLoading, setGoogleLoading] = useState(false);
     const navigate = useNavigate();
     const { currentUser } = useAuth();
+    const location = useLocation();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
