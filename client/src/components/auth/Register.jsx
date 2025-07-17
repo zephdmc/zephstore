@@ -177,7 +177,7 @@ export default function Register() {
                     </Link>
                 </p>
                 <p>
-                    <Link to="/forgot-password" className="font-medium text-purpleDark hover:text-purpleLighter">
+                    <Link to="/forgotpassword" className="font-medium text-purpleDark hover:text-purpleLighter">
                         Forgot password?
                     </Link>
                 </p>
