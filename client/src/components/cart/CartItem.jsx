@@ -13,7 +13,7 @@ export default function CartItem({ item }) {
                 />
                 <div>
                     <h3 className="font-medium">{item.name}</h3>
-                    <p className="text-gray-600">₦{item.price.toLocaleString()}</p>
+                    <p className="text-purpleDark">₦{item.price.toLocaleString()}</p>
                 </div>
             </div>
             <div className="flex items-center space-x-4">
