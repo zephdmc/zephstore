@@ -229,7 +229,7 @@ const handleClickOutside = (event) => {
                     <div className="flex items-center space-x-4">
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden text-purpleDark hover:text-purpleLigt transition"
+                            className="md:hidden text-purpleDark hover:text-purpleLight transition"
                         >
                             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                         </button>
