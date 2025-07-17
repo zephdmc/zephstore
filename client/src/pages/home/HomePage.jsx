@@ -7,6 +7,7 @@ import { getProducts } from '../../services/productServic';
 import TestimonialSlider from '../../pages/home/HomePageComponent/TestimonialSlider';
 import BlogTeaser from '../home/HomePageComponent/BlogTeaser';
 import { FiHeart, FiAward, FiLoader, FiAlertTriangle, FiShoppingBag, FiArrowRight } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 export default function HomePage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -328,6 +329,28 @@ export default function HomePage() {
                     </motion.div>
                 </div>
             </section>
+            {/* Floating WhatsApp Button */}
+<motion.div
+    drag
+    dragConstraints={{
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className="fixed bottom-6 right-6 z-50 cursor-grab active:cursor-grabbing"
+>
+    <a 
+        href="https://wa.me/+2349014727839" // Replace PHONE_NUMBER with your actual WhatsApp number in international format (e.g., 2348000000000)
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-purpleDark hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-colors duration-300"
+    >
+        <FaWhatsapp size={32} />
+    </a>
+</motion.div>
         </div>
     );
 }
