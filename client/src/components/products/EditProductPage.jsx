@@ -5,16 +5,15 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { auth } from '../../firebase/config';
 
 const SKINCARE_CATEGORIES = [
-    'Cleansers',
-    'Toners',
-    'Moisturizers',
+  'Cleansers',
     'Serums',
-    'Sunscreens',
-    'Masks',
-    'Exfoliators',
-    'Eye Care',
     'Treatments',
-    'Night Creams'
+	'Moisturizers',
+	'Sunscreens',
+	'Body Care',
+	'Acne Control',
+	'Hyperpigmentation',
+	'Bundle Offers',
 ];
 
 export default function EditProductPage() {
