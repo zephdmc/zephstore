@@ -66,7 +66,7 @@ export default function Login() {
         <div className="max-w-md mx-4 sm:mx-auto my-2 md:my-8 sm:my-2 p-2 sm:p-8 bg-white rounded-xl shadow-sm">
             <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-                <p className="text-sm sm:text-base text-gray-500">Sign in to access your account</p>
+                <p className="text-sm sm:text-base text-purpleLight">Sign in to access your account</p>
             </div>
 
             {error && (
@@ -124,7 +124,7 @@ export default function Login() {
 
                     <Link
                         to="/forgotpassword"
-                        className="text-xs sm:text-sm font-medium purpleDark hover:text-primary-500"
+                        className="text-xs sm:text-sm font-medium text-purpleDark hover:text-primary-500"
                     >
                         Forgot password?
                     </Link>
