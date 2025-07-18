@@ -69,7 +69,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
         >
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-purplegradient mb-6">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
                 Glow Naturally with <span className="text-purpleDark1">Bellebeau</span> Aesthetics
             </h1>
             <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">
