@@ -230,7 +230,7 @@ const handleClickOutside = (event) => {
             {/* Session Timeout Warning */}
             {showTimeoutWarning && (
                 <div className="bg-yellow-100 text-yellow-800 p-2 text-sm flex items-center justify-center gap-2">
-                    <FiAlertTriangle className="shrink-0" />
+                    <FiUser className="shrink-0" />
                     <span>Session expires in {formatTime(timeLeft)}. Move your mouse to extend.</span>
                 </div>
             )}
