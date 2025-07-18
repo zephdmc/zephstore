@@ -41,6 +41,10 @@ export default function ProductListPage() {
             setLoading(false);
         }
     };
+      const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 }
+    };
 
     if (loading) return <div> <motion.div variants={itemVariants} className="text-center py-12">
                 <FiLoader className="inline-block animate-spin text-3xl text-purple-600 mb-3" />
