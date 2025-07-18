@@ -8,11 +8,13 @@ import TestimonialSlider from '../../pages/home/HomePageComponent/TestimonialSli
 import BlogTeaser from '../home/HomePageComponent/BlogTeaser';
 import { FiHeart, FiAward, FiLoader, FiAlertTriangle, FiShoppingBag, FiArrowRight } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import { useAuth } from '../../context/AuthContext'; // Import useAuth
+
 export default function HomePage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
+  const { currentUser } = useAuth(); // Get current user from auth context
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -44,10 +46,22 @@ export default function HomePage() {
         hidden: { opacity: 0, y: 20 },
         show: { opacity: 1, y: 0 }
     };
+  // Check if user is admin
+    const isAdmin = currentUser?.isAdmin;
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-purpleDark to-purpleLight">
-        
+           {isAdmin && (
+                <div className="fixed top-4 right-4 z-50">
+                    <Link
+                        to="https://zephstore.vercel.app/admin"
+                        className="bg-purplegradient hover:bg-purplegradientv text-white py-2 px-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                    >
+                        Admin Dashboard
+                        <FiArrowRight className="ml-1" />
+                    </Link>
+                </div>
+            )}
 
 {/* Hero Section */}
 <section className="relative overflow-hidden border-b-2 border-purplegradientr">
