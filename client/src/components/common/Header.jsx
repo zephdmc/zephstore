@@ -218,7 +218,7 @@ const handleClickOutside = (event) => {
                         className="bg-purplegradient hover:bg-purplegradientv text-white py-2 px-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
                     >
                         Admin Dashboard
-                        <FiArrowRight className="ml-1" />
+                        <FiUser className="ml-1" />
                     </Link>
                 </div>
             </header>
