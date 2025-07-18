@@ -14,7 +14,8 @@ import {
     FiSearch,
     FiBell,
     FiChevronDown,
-    FiCheck
+    FiCheck,
+    FiArrowRight
 } from 'react-icons/fi';
 import debounce from 'lodash.debounce';
 import axios from 'axios';
@@ -208,8 +209,20 @@ const handleClickOutside = (event) => {
     };
 
 
-    if (isAdmin) {
-        return null; // Return nothing if user is admin
+      if (isAdmin) {
+        return (
+            <header className="bg-white shadow-sm sticky top-0 z-50">
+                <div className="container mx-auto px-4 py-4 flex justify-end">
+                    <Link
+                        to="https://zephstore.vercel.app/admin"
+                        className="bg-purplegradient hover:bg-purplegradientv text-white py-2 px-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                    >
+                        Admin Dashboard
+                        <FiArrowRight className="ml-1" />
+                    </Link>
+                </div>
+            </header>
+        );
     }
 
     return (
