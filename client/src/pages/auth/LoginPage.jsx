@@ -2,7 +2,7 @@ import Login from '../../components/auth/Login';
 
 export default function LoginPage() {
     return (
-        <div className="min-h-screen bg-purpleLight flex flex-col justify-center py-2   sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-purpleLight flex flex-col justify-center   sm:px-6 lg:px-8">
   {/* Background Image with Opacity */}
     <div className="absolute inset-0 z-0">
         <img 
@@ -12,7 +12,7 @@ export default function LoginPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-purpleDark to-purpleLight mix-blend-multiply"></div>
     </div>
-            <div className="mt-2 md:mt-8 sm:mx-auto sm:w-full z-20 sm:max-w-md">
+            <div className=" sm:mx-auto sm:w-full z-20 sm:max-w-md">
                 <div className="bg-white py-2 md:py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <Login />
                 </div>
