@@ -3,6 +3,7 @@ import ProductCard from '../../components/products/ProductCard';
 import ProductFilter from '../../components/products/ProductFilter';
 import { getProducts } from '../../services/productServic';
 import { motion } from 'framer-motion';
+import {  FiLoader } from 'react-icons/fi';
 export default function ProductListPage() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
