@@ -43,7 +43,7 @@ function App() {
                         <CartProvider>
                             <div className="min-h-screen bg-purplegradient flex flex-col">
                                 <Header />
-                                <main className="flex-grow container mx-auto px-4 py-8">
+                                <main className="flex-grow container mx-auto px-2">
                                     <AppRoutes />
                                 </main>
                                 <Footer />
