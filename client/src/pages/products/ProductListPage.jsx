@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ProductCard from '../../components/products/ProductCard';
 import ProductFilter from '../../components/products/ProductFilter';
 import { getProducts } from '../../services/productServic';
-
+import { motion } from 'framer-motion';
 export default function ProductListPage() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -42,7 +42,11 @@ export default function ProductListPage() {
         }
     };
 
-    if (loading) return <div>Loading products...</div>;
+    if (loading) return <div> <motion.div variants={itemVariants} className="text-center py-12">
+                <FiLoader className="inline-block animate-spin text-3xl text-purple-600 mb-3" />
+                <p className="text-white">Loading featured products...</p>
+            </motion.div>
+</div>;
     if (error) return <div className="text-red-500">{error}</div>;
 
     return (
