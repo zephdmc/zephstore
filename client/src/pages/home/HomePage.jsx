@@ -54,7 +54,7 @@ export default function HomePage() {
     {/* Background Image with Opacity */}
     <div className="absolute inset-0 z-0">
         <img 
-            src="/images/heroPage.jpeg" // Replace with your image path
+            src="/images/hero1.jpeg" // Replace with your image path
             alt="Beauty Products Background"
             className="w-full h-full object-cover opacity-20" // Adjust opacity as needed (0.2 = 20%)
         />
