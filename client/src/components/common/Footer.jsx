@@ -10,9 +10,9 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-bold">
-                            <span className="text-purplegradientv">Bellebeau</span>Aesthetics
+                            <span className="text-purplegradientv px-2">Bellebeau </span> Aesthetics
                         </h3>
-                        <p className="text-purpleLight  text-sm leading-relaxed">
+                        <p className="text-white  text-sm leading-relaxed">
                             Elevating beauty through premium aesthetic solutions. 
                             We deliver exceptional quality products with professional 
                             results you can trust.
@@ -26,15 +26,11 @@ export default function Footer() {
                             <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FiInstagram size={20} />
                             </a>
-                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
-                                <FiTwitter size={20} />
-                            </a>
+                            
                             <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
                                 <FaTiktok size={20} />
                             </a>
-                            <a href="#" className="text-purplegradientv  hover:text-purpleLight transition-colors duration-300">
-                                <FaPinterestP size={20} />
-                            </a>
+                           
                         </div>
                     </div>
 
@@ -51,7 +47,7 @@ export default function Footer() {
                             <li><a href="/blog" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Blog</a></li>
                             <li><a href="/faq" className="text-whitehover:text-purple-400 transition-colors flex items-center">
-                                <span className="w-1 h-1 bg-purple-400 mr-2 rounded-full"></span> FAQs</a></li>
+                                <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> FAQs</a></li>
                         </ul>
                     </div>
 
