@@ -97,7 +97,10 @@ export default function AddProductPage() {
             setLoading(true);
             const filename = `products/${Date.now()}-${file.name}`;
             const storageRef = ref(storage, filename);
-            await uploadBytes(storageRef, file);
+            await uploadBytes(storageRef, file,
+			      {
+                    contentType: file.type,  // 👈 crucial to avoid CORS/image issues
+                });
             const downloadURL = await getDownloadURL(storageRef);
             setFormData(prev => ({ ...prev, image: downloadURL }));
         } catch (err) {
