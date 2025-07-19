@@ -8,7 +8,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyDLMJv5uMy8QbT4r2uMdDxQ-bbSgizHvdg", // Replace with your actual API key
     authDomain: "bellebeauaesthetics-c1199.firebaseapp.com",
     projectId: "bellebeauaesthetics-c1199",
-    storageBucket: "bellebeauaesthetics-c1199.appspot.com",
+    storageBucket: "bellebeauaesthetics-c1199.firebasestorage.app",
     messagingSenderId: "893744528427",
     appId: "1:893744528427:web:a31ddada2407f52d1ebe6e"
 };
