@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../../services/productServic';
 import { auth } from '../../firebase/config';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { app } from '../../firebase/config';
+// To this:
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { auth, storage } from '../../firebase/config'; // Import storage directly from config
 
 const SKINCARE_CATEGORIES = [
    'Cleansers',
@@ -79,65 +80,55 @@ export default function AddProductPage() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleImageUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-        if (!file.type.match('image.*')) {
-            setError('Please upload an image file (jpg, png, etc.)');
-            return;
-        }
+    if (!file.type.match('image.*')) {
+        setError('Please upload an image file (jpg, png, etc.)');
+        return;
+    }
 
-        if (file.size > 1 * 1024 * 1024) {
-            setError('Image must be smaller than 5MB');
-            return;
-        }
+    if (file.size > 1 * 1024 * 1024) {
+        setError('Image must be smaller than 5MB');
+        return;
+    }
 
-        try {
-            setLoading(true);
-		
-    // Debug: Verify storage bucket
-    // Debug: Show full storage configuration
-    console.log("Storage instance:", {
-      host: storage._host,
-      bucket: storage._bucket,
-      fullUrl: `https://${storage._host}/v0/b/${storage._bucket}`
-    });
+    try {
+        setLoading(true);
+        
+        // Debug: Verify storage configuration
+        console.log("Storage configuration:", {
+            bucket: storage._location.bucket,
+            fullUrl: `https://${storage._location.host}/v0/b/${storage._location.bucket}`
+        });
 
-            const filename = `products/${Date.now()}-${file.name}`;
+        const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
+        const storageRef = ref(storage, filename);
+        
+        // Debug: Show exact upload URL
+        console.log("Uploading to:", 
+            `https://${storage._location.host}/v0/b/${storage._location.bucket}/o/${encodeURIComponent(filename)}`);
 
-  console.log("Storage configuration at upload time:", {
-    host: storage._location.host,
-    bucket: storage._location.bucket,
-    resolvedUrl: `https://${storage._location.host}/v0/b/${storage._location.bucket}/o/${encodeURIComponent(filename)}`
-  });
-
-
-		
-            const storageRef = ref(storage, filename);
-		
-           // Debug: Show the exact request URL that will be used
-    console.log("Request URL:", 
-      `https://${storage._host}/v0/b/${storage._bucket}/o?name=${encodeURIComponent(filename)}`);
-
-		
-        // Force metadata with explicit content type
-     // Upload with forced metadata
-    await uploadBytes(storageRef, file, {
-      contentType: file.type,
-      customMetadata: {
-        uploadedBy: currentUser?.uid || 'admin',
-        forcedBucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
-      }
-    });
-            const downloadURL = await getDownloadURL(storageRef);
-            setFormData(prev => ({ ...prev, image: downloadURL }));
-        } catch (err) {
-            setError('Failed to upload image');
-        } finally {
-            setLoading(false);
-        }
-    };
+        // Upload with metadata
+        await uploadBytes(storageRef, file, {
+            contentType: file.type,
+            customMetadata: {
+                uploadedBy: auth.currentUser?.uid || 'admin',
+                enforcedBucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
+            }
+        });
+        
+        const downloadURL = await getDownloadURL(storageRef);
+        setFormData(prev => ({ ...prev, image: downloadURL }));
+        
+    } catch (err) {
+        console.error("Upload error:", err);
+        setError('Failed to upload image. Please try again.');
+    } finally {
+        setLoading(false);
+    }
+};
 
     return (
         <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-6 max-w-4xl">
