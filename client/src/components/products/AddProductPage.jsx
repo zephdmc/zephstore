@@ -105,6 +105,15 @@ export default function AddProductPage() {
     });
 
             const filename = `products/${Date.now()}-${file.name}`;
+
+  console.log("Storage configuration at upload time:", {
+    host: storage._location.host,
+    bucket: storage._location.bucket,
+    resolvedUrl: `https://${storage._location.host}/v0/b/${storage._location.bucket}/o/${encodeURIComponent(filename)}`
+  });
+
+
+		
             const storageRef = ref(storage, filename);
 		
            // Debug: Show the exact request URL that will be used
