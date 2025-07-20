@@ -97,7 +97,14 @@ export default function AddProductPage() {
             setLoading(true);
             const filename = `products/${Date.now()}-${file.name}`;
             const storageRef = ref(storage, filename);
-            await uploadBytes(storageRef, file,
+		
+       
+            const metadata = {
+                contentType: file.type
+            };
+
+            await uploadBytes(storageRef, file, metadata,
+                {
 			      {
                     contentType: file.type,  // 👈 crucial to avoid CORS/image issues
                 });
