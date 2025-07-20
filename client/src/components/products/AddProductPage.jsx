@@ -97,16 +97,28 @@ export default function AddProductPage() {
             setLoading(true);
 		
     // Debug: Verify storage bucket
-    console.log("Storage bucket:", storage._host);
+    // Debug: Show full storage configuration
+    console.log("Storage instance:", {
+      host: storage._host,
+      bucket: storage._bucket,
+      fullUrl: `https://${storage._host}/v0/b/${storage._bucket}`
+    });
+
             const filename = `products/${Date.now()}-${file.name}`;
             const storageRef = ref(storage, filename);
 		
-       
+           // Debug: Show the exact request URL that will be used
+    console.log("Request URL:", 
+      `https://${storage._host}/v0/b/${storage._bucket}/o?name=${encodeURIComponent(filename)}`);
+
+		
         // Force metadata with explicit content type
+     // Upload with forced metadata
     await uploadBytes(storageRef, file, {
       contentType: file.type,
       customMetadata: {
-        uploadedBy: currentUser?.uid || 'admin'
+        uploadedBy: currentUser?.uid || 'admin',
+        forcedBucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
       }
     });
             const downloadURL = await getDownloadURL(storageRef);
