@@ -80,51 +80,33 @@ export default function AddProductPage() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-  const handleImageUpload = async (e) => {
+  import { storage } from '../../firebase/config'; // Import from your config
+
+const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
-    if (!file.type.match('image.*')) {
-        setError('Please upload an image file (jpg, png, etc.)');
-        return;
-    }
-
-    if (file.size > 1 * 1024 * 1024) {
-        setError('Image must be smaller than 5MB');
-        return;
-    }
 
     try {
         setLoading(true);
         
-        // Debug: Verify storage configuration
-        console.log("Storage configuration:", {
-            bucket: storage._location.bucket,
-            fullUrl: `https://${storage._location.host}/v0/b/${storage._location.bucket}`
-        });
-
         const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-        const storageRef = ref(storage, filename);
+        const storageRef = storage.ref(filename); // Use the custom storage instance
         
-        // Debug: Show exact upload URL
-        console.log("Uploading to:", 
-            `https://${storage._location.host}/v0/b/${storage._location.bucket}/o/${encodeURIComponent(filename)}`);
-
-        // Upload with metadata
-        await uploadBytes(storageRef, file, {
+        console.log("Uploading to:", storageRef.toString());
+        
+        const snapshot = await uploadBytes(storageRef, file, {
             contentType: file.type,
             customMetadata: {
-                uploadedBy: auth.currentUser?.uid || 'admin',
-                enforcedBucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
+                uploadedBy: auth.currentUser?.uid || 'admin'
             }
         });
         
-        const downloadURL = await getDownloadURL(storageRef);
+        const downloadURL = await getDownloadURL(snapshot.ref);
         setFormData(prev => ({ ...prev, image: downloadURL }));
         
     } catch (err) {
         console.error("Upload error:", err);
-        setError('Failed to upload image. Please try again.');
+        setError('Image upload failed');
     } finally {
         setLoading(false);
     }
