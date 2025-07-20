@@ -1,49 +1,32 @@
+import { initializeApp } from 'firebase/app';
+import { getStorage } from 'firebase/storage';
+import { getMessaging } from 'firebase/messaging';
 
-
-importScripts("https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js");
-importScripts("https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js");
-
-// Firebase config - use environment variables in vite.config.js
 const firebaseConfig = {
-    apiKey: "AIzaSyDLMJv5uMy8QbT4r2uMdDxQ-bbSgizHvdg", // Replace with your actual API key
-    authDomain: "bellebeauaesthetics-c1199.firebaseapp.com",
-    projectId: "bellebeauaesthetics-c1199",
-    storageBucket: "bellebeauaesthetics-c1199.firebasestorage.app",
-    messagingSenderId: "893744528427",
-    appId: "1:893744528427:web:a31ddada2407f52d1ebe6e"
+  apiKey: "AIzaSyDLMJv5uMy8QbT4r2uMdDxQ-bbSgizHvdg",
+  authDomain: "bellebeauaesthetics-c1199.firebaseapp.com",
+  projectId: "bellebeauaesthetics-c1199",
+  storageBucket: "bellebeauaesthetics-c1199.firebasestorage.app", // MUST match exactly
+  messagingSenderId: "893744528427",
+  appId: "1:893744528427:web:a31ddada2407f52d1ebe6e"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
-
-
+// Initialize main app
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 
-// Nuclear option: Override internal bucket reference
-storage._location = {
+// Initialize storage with forced bucket
+const storage = getStorage(app);
+storage._location = {  // Force the correct bucket
   ...storage._location,
   bucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
 };
 
-// Verify
-console.log("Storage initialized with bucket:", storage._location.bucket);
-console.log("Full base URL:", `https://${storage._location.host}/v0/b/${storage._location.bucket}`);
+// Initialize messaging
+const messaging = getMessaging(app);
 
-export { storage };
-// Background message handler
-messaging.onBackgroundMessage((payload) => {
-    console.log('Received background message: ', payload);
-    const notificationTitle = payload.notification?.title || 'New message';
-    const notificationOptions = {
-        body: payload.notification?.body || '',
-        icon: payload.notification?.icon || '/logo192.png'
-    };
+// Verification
+console.log("Storage bucket locked to:", storage._location.bucket);
+console.log("Sample upload URL:", 
+  `https://firebasestorage.googleapis.com/v0/b/${storage._location.bucket}/o/test.jpg`);
 
-    self.registration.showNotification(notificationTitle, notificationOptions);
-});
-
-
-
-
+export { app, storage, messaging };
