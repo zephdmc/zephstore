@@ -14,7 +14,7 @@ serviceAccountRaw.private_key = serviceAccountRaw.private_key.replace(/\\n/g, '\
 const firebaseApp = admin.initializeApp({
     credential: admin.credential.cert(serviceAccountRaw),
     databaseURL: `https://${serviceAccountRaw.project_id}.firebaseio.com`,
-    storageBucket: `${serviceAccountRaw.project_id}.appspot.com`
+    storageBucket: `${serviceAccountRaw.project_id}.firebasestorage.app`
 });
 
 const db = admin.firestore();
