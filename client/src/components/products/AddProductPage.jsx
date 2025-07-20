@@ -95,19 +95,20 @@ export default function AddProductPage() {
 
         try {
             setLoading(true);
+		
+    // Debug: Verify storage bucket
+    console.log("Storage bucket:", storage._host);
             const filename = `products/${Date.now()}-${file.name}`;
             const storageRef = ref(storage, filename);
 		
        
-            const metadata = {
-                contentType: file.type
-            };
-
-            await uploadBytes(storageRef, file, metadata,
-                {
-			      {
-                    contentType: file.type,  // 👈 crucial to avoid CORS/image issues
-                });
+        // Force metadata with explicit content type
+    await uploadBytes(storageRef, file, {
+      contentType: file.type,
+      customMetadata: {
+        uploadedBy: currentUser?.uid || 'admin'
+      }
+    });
             const downloadURL = await getDownloadURL(storageRef);
             setFormData(prev => ({ ...prev, image: downloadURL }));
         } catch (err) {
