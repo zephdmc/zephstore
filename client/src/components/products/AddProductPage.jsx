@@ -83,7 +83,6 @@ export default function AddProductPage() {
 // Remove this line (it's causing the conflict):
 // const storage = getStorage(app);
 
-// Update your handleImageUpload function:
 const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -91,13 +90,10 @@ const handleImageUpload = async (e) => {
     try {
         setLoading(true);
         
-        // Create a unique filename
         const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-        
-        // Create a reference using the ref() function
+        // Use the imported storage directly
         const storageRef = ref(storage, filename);
         
-        // Upload the file
         const snapshot = await uploadBytes(storageRef, file, {
             contentType: file.type,
             customMetadata: {
@@ -105,7 +101,6 @@ const handleImageUpload = async (e) => {
             }
         });
         
-        // Get the download URL
         const downloadURL = await getDownloadURL(snapshot.ref);
         setFormData(prev => ({ ...prev, image: downloadURL }));
         
