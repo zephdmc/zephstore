@@ -124,7 +124,7 @@ const handleImageUpload = async (e) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Skincarep Product</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Skincarek Product</h2>
             </div>
 
             {/* Status Messages */}
