@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../../services/productServic';
 // To this:
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { auth, db } from '../../firebase/config'; // Import storage directly from config
+import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage';
+import { auth, storage } from '../../firebase/config'; // Import storage directly from config
 
 const SKINCARE_CATEGORIES = [
    'Cleansers',
@@ -34,7 +34,7 @@ export default function AddProductPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
-    const db = getStorage(app);
+    const storage = getStorage(app);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -95,7 +95,7 @@ const handleImageUpload = async (e) => {
         const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
         
         // Create a reference using the ref() function
-        const storageRef = ref(db, filename);
+        const storageRef = ref(storage, filename);
         
         // Upload the file
         const snapshot = await uploadBytes(storageRef, file, {
