@@ -23,7 +23,7 @@ const storage = {
     _location: {
         ...baseStorage._location,
         bucket: 'bellebeauaesthetics-c1199.firebasestorage.app',
-        toString: () => 'bellebeauaesthetics-c1199.firebasestorage.app'
+        toString: () => 'bellebeauaesthetics-c1199.appspot.com'
     },
     ref: (path) => {
         const ref = baseStorage.ref(path);
