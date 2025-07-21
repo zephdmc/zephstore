@@ -79,7 +79,6 @@ export default function AddProductPage() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-  import { storage } from '../../firebase/config'; // Import from your config
 
 // Remove this line (it's causing the conflict):
 // const storage = getStorage(app);
