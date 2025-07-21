@@ -18,20 +18,6 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
-
-// Nuclear option: Override internal bucket reference
-storage._location = {
-  ...storage._location,
-  bucket: 'bellebeauaesthetics-c1199.firebasestorage.app'
-};
-
-// Verify
-console.log("Storage initialized with bucket:", storage._location.bucket);
-console.log("Full base URL:", `https://${storage._location.host}/v0/b/${storage._location.bucket}`);
-
-export { storage };
 // Background message handler
 messaging.onBackgroundMessage((payload) => {
     console.log('Received background message: ', payload);
