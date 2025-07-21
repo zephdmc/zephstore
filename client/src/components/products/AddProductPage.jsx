@@ -34,7 +34,6 @@ export default function AddProductPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
-    const storage = getStorage(app);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
