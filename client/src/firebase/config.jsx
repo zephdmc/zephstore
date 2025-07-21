@@ -1,8 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, signOut, getIdTokenResult, onIdTokenChanged } from "firebase/auth";
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut,
+    getIdTokenResult,
+    onIdTokenChanged
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
-import { getStorage } from 'firebase/storage'; // Add this import
 
 const firebaseConfig = {
     apiKey: "AIzaSyDLMJv5uMy8QbT4r2uMdDxQ-bbSgizHvdg",
@@ -13,43 +18,17 @@ const firebaseConfig = {
     appId: "1:893744528427:web:a31ddada2407f52d1ebe6e"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const baseStorage = getStorage(app); // Initialize base storage first
-
-// Create a custom storage instance that forces the correct URL
-const storage = {
-    ...baseStorage,
-    _location: {
-        ...baseStorage._location,
-        bucket: 'bellebeauaesthetics-c1199.firebasestorage.app',
-        toString: () => 'bellebeauaesthetics-c1199.appspot.com'
-    },
-    ref: (path) => {
-        const ref = baseStorage.ref(path);
-        // Override URL generation
-        ref.toString = () => 
-            `https://firebasestorage.googleapis.com/v0/b/bellebeauaesthetics-c1199.firebasestorage.app/o/${encodeURIComponent(path)}`;
-        return ref;
-    }
-};
-
-// Initialize other services
 const messaging = getMessaging(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Verification
-console.log("Storage initialized with bucket:", storage._location.bucket);
-console.log("Sample upload URL:", storage.ref('test.jpg').toString());
-
-// Export all services
+// Export all auth-related functions
 export {
     auth,
     db,
     app,
     messaging,
-    storage, // Export the custom storage instance
     onAuthStateChanged,
     signOut,
     getIdTokenResult,
