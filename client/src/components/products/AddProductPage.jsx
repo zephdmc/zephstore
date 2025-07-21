@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../../services/productServic';
 // To this:
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { auth, storage } from '../../firebase/config'; // Import storage directly from config
+import { auth, db } from '../../firebase/config'; // Import storage directly from config
 
 const SKINCARE_CATEGORIES = [
    'Cleansers',
@@ -34,7 +34,7 @@ export default function AddProductPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
-    const storage = getStorage(app);
+    const db = getStorage(app);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -95,7 +95,7 @@ const handleImageUpload = async (e) => {
         const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
         
         // Create a reference using the ref() function
-        const storageRef = ref(storage, filename);
+        const storageRef = ref(db, filename);
         
         // Upload the file
         const snapshot = await uploadBytes(storageRef, file, {
@@ -129,7 +129,7 @@ const handleImageUpload = async (e) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add SkincareP Product</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add SkincareT Product</h2>
             </div>
 
             {/* Status Messages */}
