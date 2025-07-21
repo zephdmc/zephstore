@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../../services/productServic';
-import { auth } from '../../firebase/config';
 // To this:
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { auth, storage } from '../../firebase/config'; // Import storage directly from config
@@ -82,6 +81,10 @@ export default function AddProductPage() {
 
   import { storage } from '../../firebase/config'; // Import from your config
 
+// Remove this line (it's causing the conflict):
+// const storage = getStorage(app);
+
+// Update your handleImageUpload function:
 const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -89,11 +92,13 @@ const handleImageUpload = async (e) => {
     try {
         setLoading(true);
         
+        // Create a unique filename
         const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-        const storageRef = storage.ref(filename); // Use the custom storage instance
         
-        console.log("Uploading to:", storageRef.toString());
+        // Create a reference using the ref() function
+        const storageRef = ref(storage, filename);
         
+        // Upload the file
         const snapshot = await uploadBytes(storageRef, file, {
             contentType: file.type,
             customMetadata: {
@@ -101,12 +106,13 @@ const handleImageUpload = async (e) => {
             }
         });
         
+        // Get the download URL
         const downloadURL = await getDownloadURL(snapshot.ref);
         setFormData(prev => ({ ...prev, image: downloadURL }));
         
     } catch (err) {
         console.error("Upload error:", err);
-        setError('Image upload failed');
+        setError('Image upload failed: ' + err.message);
     } finally {
         setLoading(false);
     }
