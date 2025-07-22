@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 export default function BlogTeaser({ post }) {
   // Safe data access with fallbacks
-  const coverImageUrl = post?.fields?.coverImage?.fields?.file?.url || '';
+  const coverImageUrl = post?.fields?.Picture_Flyer?.fields?.file?.url || '';
   const title = post?.fields?.title || 'No title available';
-  const excerpt = post?.fields?.excerpt || 'No excerpt available';
+  const excerpt = post?.fields?.subtitle || 'No excerpt available';
   const slug = post?.fields?.slug || '';
 
   // Loading state
