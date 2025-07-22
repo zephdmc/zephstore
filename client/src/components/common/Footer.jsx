@@ -78,13 +78,13 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center">
                                 <FiMail className="mr-3 text-white" />
-                                <a href="mailto:info@bellebeauaesthetics.com" className="hover:text-purple-400 transition-colors">
+                                <a href="mailto:bellebeauaesthetics001@gmail.com" className="hover:text-purple-400 transition-colors">
                                     bellebeauaesthetics001@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center">
                                 <FiPhone className="mr-3 text-white" />
-                                <a href="tel:+2348000000000" className="hover:text-purple-400 transition-colors">
+                                <a href="tel:+2349014727839" className="hover:text-purple-400 transition-colors">
                                     +234 901 4727 839
                                 </a>
                             </li>
