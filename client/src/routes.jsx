@@ -25,7 +25,7 @@ const BlogDetailPage = lazy(() => import('./pages/blog/BlogDetailPage'));  // âœ
 const NotFound = lazy(() => import('./pages/404'));
 const Privacy = lazy(() => import('./components/common/privacy'));
 const Returns = lazy(() => import('./components/common/returns'));
-const Shipping = lazy(() => import('./components/common/shipping'));
+const Shipping = lazy(() => import('./components/common/shiping'));
 const Terms = lazy(() => import('./components/common/terms'));
 const UserManagement = lazy(() => import('./pages/admin/UserManagement'));
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
