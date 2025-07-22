@@ -13,7 +13,7 @@ export default function BlogDetailPage() {
     const fetchPost = async () => {
       try {
         const res = await client.getEntries({
-          content_type: 'blogPost', // Match your Contentful content type ID
+          content_type: 'blog', // Match your Contentful content type ID
           'fields.slug': slug,
         });
         if (res.items.length > 0) setPost(res.items[0]);
