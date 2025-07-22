@@ -1,10 +1,10 @@
 export default function ReturnPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Head>
+      <div>
         <title> Return &amp Exchange Policy | Bellebeau Aesthetics</title>
         <meta name="description" content="Our return and exchange policy for skincare products" />
-      </Head>
+      </div>
 
       <main className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
