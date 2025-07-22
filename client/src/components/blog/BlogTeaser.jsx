@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function BlogTeaser({ post }) {
   // Safe data access with fallbacks
+  console.log(post)
   const coverImageUrl = post?.fields?.Picture_Flyer?.fields?.file?.url || '';
   const title = post?.fields?.title || 'No title available';
   const excerpt = post?.fields?.subtitlte || 'No excerpt available';
