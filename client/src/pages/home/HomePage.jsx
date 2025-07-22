@@ -11,10 +11,99 @@ import { useAuth } from '../../context/AuthContext'; // Import useAuth
 import { getBlogPosts } from '../../services/contentful'; // adjust path if needed
 import BlogTeaser from '../../components/blog/BlogTeaser';
 
+
+const SplashScreen = ({ onClose }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 6000); // 6 seconds
+
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed inset-0 z-50 bg-white flex items-center justify-center p-4"
+    >
+      <div className="max-w-6xl w-full">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          {/* First Offer */}
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex-1 bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-xl shadow-lg border border-purple-200"
+          >
+            <h3 className="text-lg md:text-xl font-medium text-purple-700 mb-2">FIRST ORDER</h3>
+            <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">10% OFF</h2>
+            <h4 className="text-2xl md:text-3xl font-semibold text-purple-800 mb-4">HELLOGLOW10</h4>
+            <p className="text-base md:text-lg text-purple-700 mb-6">
+              Enjoy 10% off your purchase with code HELLOGLOW10
+            </p>
+          </motion.div>
+
+          {/* Divider - Visible only on larger screens */}
+          <div className="hidden md:block h-64 w-px bg-purple-200"></div>
+
+          {/* Second Offer */}
+          <motion.div 
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex-1 bg-gradient-to-br from-purple-100 to-purple-200 p-8 rounded-xl shadow-lg border border-purple-300"
+          >
+            <h3 className="text-lg md:text-xl font-medium text-purple-800 mb-2">RETURNING</h3>
+            <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">15% OFF</h2>
+            <h4 className="text-2xl md:text-3xl font-semibold text-purple-800 mb-4">GLOWBACK15</h4>
+            <p className="text-base md:text-lg text-purple-700 mb-6">
+              Welcome back! Get 15% off your next order with code GLOWBACK15
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Shop Now Button */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-center mt-10"
+        >
+          <Link
+            to="/products"
+            onClick={onClose}
+            className="inline-block bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            SHOP NOW
+          </Link>
+        </motion.div>
+
+        {/* Close Button (optional) */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-purple-500 hover:text-purple-700"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+
+
+
+
 export default function HomePage() {
     const [products, setProducts] = useState([]);
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
+      const [showSplash, setShowSplash] = useState(true);
     const [error, setError] = useState('');
   const { currentUser } = useAuth(); // Get current user from auth context
     useEffect(() => {
@@ -64,6 +153,7 @@ useEffect(() => {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-purpleDark to-purpleLight">
+                  {showSplash && <SplashScreen onClose={() => setShowSplash(false)} />}
            {isAdmin && (
                 <div className="fixed top-4 right-4 z-50">
                     <Link
