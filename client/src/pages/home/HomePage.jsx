@@ -27,7 +27,7 @@ const SplashScreen = ({ onClose }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 opacity-25 bg-white backdrop-blur-xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 opacity-25 bg-white  flex items-center justify-center p-4"
     >
       <div className="max-w-6xl w-full">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
