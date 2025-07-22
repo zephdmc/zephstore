@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 export default function BlogTeaser({ post }) {
   // Safe data access with fallbacks
   console.log(post)
-  const coverImageUrl = post?.fields?.Picture_Flyer?.fields?.file?.url || '';
+  const coverImageUrl = post?.fields?.pictureFlyer?.fields?.file?.url || '';
 
-    console.log(post?.fields?.Picture_Flyer?.fields?.file?.url || 'ggg';)
+    console.log(post?.fields?.pictureFlyer?.fields?.file?.url || 'ggg';)
 
   const title = post?.fields?.title || 'No title available';
   const excerpt = post?.fields?.subtitlte || 'No excerpt available';
