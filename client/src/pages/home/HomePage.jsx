@@ -36,7 +36,7 @@ const SplashScreen = ({ onClose }) => {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex-1 bg-gradient-to-br backdrop-blur-xs from-purple-50 to-purple-100 p-8 rounded-xl shadow-lg border border-purple-200"
+            className="flex-1 bg-gradient-to-br backdrop-blur-xs from-purplegradient to-purpleDark1 p-8 rounded-xl shadow-lg border border-purple-200"
           >
             <h3 className="text-lg md:text-xl font-medium text-purple-700 mb-2">FIRST ORDER</h3>
             <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">10% OFF</h2>
@@ -75,7 +75,7 @@ const SplashScreen = ({ onClose }) => {
           <Link
             to="/products"
             onClick={onClose}
-            className="inline-block bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="inline-block bg-gradient-to-r from-purpleDark1 to-purpleLight hover:from-purple-700 hover:to-purple-900 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             SHOP NOW
           </Link>
