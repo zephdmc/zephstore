@@ -22,6 +22,10 @@ const OrderDetails = lazy(() => import('./pages/orders/OrderDetails'))
 const AdminOrders = lazy(() => import('./pages/admin/AdminOrders'));
 const AdminOrderDetails = lazy(() => import('./pages/admin/OrderDetails'));
 const NotFound = lazy(() => import('./pages/404'));
+import Privacy = lazy(() => import('./components/common/privacy'));
+import Returns = lazy(() => import('./components/common/returns'));
+import Shipping= lazy(() => import('./components/common/shipping'));
+import Terms = lazy(() => import('./components/common/terms'));
 const UserManagement = lazy(() => import('./pages/admin/UserManagement'));
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
 const AddProductPage = lazy(() => import('./components/products/AddProductPage'));
@@ -44,7 +48,11 @@ const AppRoutes = () => {
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route path="/orders/:id" element={<OrderDetails />} />
                 <Route path="/blog/:slug" element={<BlogDetailPage />} />
-                <Route path="/blog" element={<BlogListPage />} />
+                <Route path="/returns" element={<Returns />} />
+                <Route path="/shipping" element={<Shipping />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+
                 {/* ... other public routes */}
 
                 {/* Protected Routes */}
