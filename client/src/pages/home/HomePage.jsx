@@ -9,7 +9,7 @@ import { FiHeart, FiAward, FiLoader, FiAlertTriangle, FiShoppingBag, FiArrowRigh
 import { FaWhatsapp } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext'; // Import useAuth
 import { getBlogPosts } from '../../services/contentful'; // adjust path if needed
-import BlogTeaser from '../../components/BlogTeaser';
+import BlogTeaser from '../../components/blog/BlogTeaser';
 
 export default function HomePage() {
     const [products, setProducts] = useState([]);
