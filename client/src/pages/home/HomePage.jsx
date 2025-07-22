@@ -36,7 +36,7 @@ const SplashScreen = ({ onClose }) => {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex-1 bg-gradient-to-br  from-purplegradient to-purpleDark1 p-8 rounded-xl shadow-lg border border-purple-200"
+            className="flex-1 bg-purplegradient p-8 rounded-xl shadow-lg border border-purple-200"
           >
             <h3 className="text-lg md:text-xl font-medium text-purple-700 mb-2">FIRST ORDER</h3>
             <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">10% OFF</h2>
@@ -47,14 +47,14 @@ const SplashScreen = ({ onClose }) => {
           </motion.div>
 
           {/* Divider - Visible only on larger screens */}
-          <div className="hidden md:block h-64 w-px bg-purple-200"></div>
+          <div className="hidden md:block h-64 w-px bg-purpleLight"></div>
 
           {/* Second Offer */}
           <motion.div 
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex-1 bg-gradient-to-br backdrop-blur-xs from-purple-100 to-purple-200 p-8 rounded-xl shadow-lg border border-purple-300"
+            className="flex-1 bg-purplegradient p-8 rounded-xl shadow-lg border border-purple-300"
           >
             <h3 className="text-lg md:text-xl font-medium text-purple-800 mb-2">RETURNING</h3>
             <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">15% OFF</h2>
