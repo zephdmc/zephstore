@@ -26,11 +26,22 @@ const app = express();
 app.use(helmet());
 console.log(process.env.FRONTEND_URL)
 // Enable CORS
+const allowedOrigins = [
+  'https://bellebeauaesthetics.ng',
+  'https://www.bellebeauaesthetics.ng'
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    methods: ['POST', 'GET', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS: ' + origin));
+    }
+  },
+  methods: ['POST', 'GET', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 // Rate limiting
