@@ -292,7 +292,7 @@ useEffect(() => {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tips</h2>
+                        <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tipsy</h2>
                         <p className="text-purpleDark max-w-2xl mx-auto">Expert advice for your skincare journey</p>
                     </motion.div>
 
