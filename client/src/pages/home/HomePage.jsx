@@ -5,13 +5,15 @@ import { motion } from 'framer-motion';
 import ProductCard from '../../components/products/ProductCard';
 import { getProducts } from '../../services/productServic';
 import TestimonialSlider from '../../pages/home/HomePageComponent/TestimonialSlider';
-import BlogTeaser from '../home/HomePageComponent/BlogTeaser';
 import { FiHeart, FiAward, FiLoader, FiAlertTriangle, FiShoppingBag, FiArrowRight } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext'; // Import useAuth
+import { getBlogPosts } from '../../services/contentful'; // adjust path if needed
+import BlogTeaser from '../../components/BlogTeaser';
 
 export default function HomePage() {
     const [products, setProducts] = useState([]);
+    const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
   const { currentUser } = useAuth(); // Get current user from auth context
@@ -31,6 +33,17 @@ export default function HomePage() {
         fetchProducts();
     }, []);
 
+useEffect(() => {
+  const fetchBlogs = async () => {
+    try {
+      const posts = await getBlogPosts();
+      setBlogs(posts.slice(0, 3)); // Limit to 3 teasers
+    } catch (err) {
+      console.error("Failed to fetch blog posts:", err);
+    }
+  };
+  fetchBlogs();
+}, []);
     // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -238,27 +251,35 @@ export default function HomePage() {
 </section>
 
             {/* Trending Blog Section */}
-            <section className="bg-purpleLight py-16">
-                <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tips</h2>
-                        <p className="text-purpleDark max-w-2xl mx-auto">Expert advice for your skincare journey</p>
-                    </motion.div>
+         <section className="bg-purpleLight py-16">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl font-serif font-bold mb-4">From Our Blog</h2>
+      <p className="text-purpleDark max-w-2xl mx-auto">
+        Skincare insights, tips & beauty trends from the experts
+      </p>
+    </motion.div>
 
-                    <BlogTeaser
-                        title="Top 5 Ingredients for Glowing Skin in 2025"
-                        excerpt="Discover the powerhouse ingredients that will transform your skincare routine this year..."
-                        link="/blog/top-5-ingredients-2025"
-                        image="/images/blog-teaser.jpg"
-                    />
-                </div>
-            </section>
+    {blogs && blogs.length > 0 ? (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {blogs.map((post) => (
+          <BlogTeaser key={post.sys.id} post={post} />
+        ))}
+      </div>
+    ) : (
+      <div className="text-center py-8">
+        <p className="text-purpleDark">No blog posts available at the moment.</p>
+      </div>
+    )}
+  </div>
+</section>
+
 
 
             {/* Trending Blog Section */}
