@@ -27,7 +27,7 @@ const SplashScreen = ({ onClose }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 backdrop-blur-xs flex items-center justify-center p-4"
     >
       <div className="max-w-6xl w-full">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
@@ -36,7 +36,7 @@ const SplashScreen = ({ onClose }) => {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex-1 bg-gradient-to-br backdrop-blur-xs from-purplegradient to-purpleDark1 p-8 rounded-xl shadow-lg border border-purple-200"
+            className="flex-1 bg-gradient-to-br  from-purplegradient to-purpleDark1 p-8 rounded-xl shadow-lg border border-purple-200"
           >
             <h3 className="text-lg md:text-xl font-medium text-purple-700 mb-2">FIRST ORDER</h3>
             <h2 className="text-4xl md:text-6xl font-bold text-purple-900 mb-2">10% OFF</h2>
