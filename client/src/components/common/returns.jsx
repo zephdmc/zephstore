@@ -68,7 +68,7 @@ export default function ReturnPolicy() {
                 </ol>
               </section>
 
-              {/* Section 4 */}
+              {/* Section 4  */}
               <section>
                 <h2 className="text-xl font-bold text-purple-800 border-b border-purple-100 pb-2">
                   4. Return Shipping Costs
