@@ -39,14 +39,12 @@ const AppRoutes = () => {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/search" element={<SearchResultsPage />} />
-
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="products/:id" element={<ProductDetailPage />} />
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route path="/orders/:id" element={<OrderDetails />} />
                 <Route path="/blog/:slug" element={<BlogDetailPage />} />
                 <Route path="/blog" element={<BlogListPage />} />
-
                 {/* ... other public routes */}
 
                 {/* Protected Routes */}
