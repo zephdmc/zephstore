@@ -23,10 +23,10 @@ const AdminOrderDetails = lazy(() => import('./pages/admin/OrderDetails'));
 const BlogListPage = lazy(() => import('./pages/blog/BlogListPage'));  // ✅ Correct
 const BlogDetailPage = lazy(() => import('./pages/blog/BlogDetailPage'));  // ✅ Correct
 const NotFound = lazy(() => import('./pages/404'));
-import Privacy = lazy(() => import('./components/common/privacy'));
-import Returns = lazy(() => import('./components/common/returns'));
-import Shipping= lazy(() => import('./components/common/shipping'));
-import Terms = lazy(() => import('./components/common/terms'));
+const Privacy = lazy(() => import('./components/common/privacy'));
+const Returns = lazy(() => import('./components/common/returns'));
+const Shipping = lazy(() => import('./components/common/shipping'));
+const Terms = lazy(() => import('./components/common/terms'));
 const UserManagement = lazy(() => import('./pages/admin/UserManagement'));
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
 const AddProductPage = lazy(() => import('./components/products/AddProductPage'));
