@@ -2,11 +2,11 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div>
-        <title>Privacy Policy | Bellebeau Aesthetics</title>
+        <div>Privacy Policy | Bellebeau Aesthetics</div>
         <meta name="description" content="How we collect, use, and protect your personal information" />
       </div>
 
-      <main className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           {/* Header */}
           <div className="bg-purple-700 p-6 md:p-8 text-white">
@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
