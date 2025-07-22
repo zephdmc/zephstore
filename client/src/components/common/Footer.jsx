@@ -74,7 +74,7 @@ export default function Footer() {
                         <ul className="space-y-4 text-white">
                             <li className="flex items-start">
                                 <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-white" />
-                                <span>123 Beauty Avenue, Victoria Island, Port Harcourt, Nigeria</span>
+                                <span>330 PH/Aba Express way Rumukwurushi Port Harcourt</span>
                             </li>
                             <li className="flex items-center">
                                 <FiMail className="mr-3 text-white" />
