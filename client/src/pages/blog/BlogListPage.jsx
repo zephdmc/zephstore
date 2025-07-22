@@ -10,7 +10,7 @@ export default function BlogListPage() {
     const fetchBlogs = async () => {
       try {
         const entries = await client.getEntries({
-          content_type: 'blogPost',
+          content_type: 'blog',
           order: '-fields.publishDate',
         });
         setBlogs(entries.items);
