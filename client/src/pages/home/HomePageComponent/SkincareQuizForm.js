@@ -86,7 +86,7 @@ const handleSubmit = async (e) => {
     };
 
     // 2. Use your Google Apps Script URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
     
     // 3. Submit as form-urlencoded
     const formDataParams = new URLSearchParams();
