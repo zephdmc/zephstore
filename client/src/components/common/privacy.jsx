@@ -3,6 +3,7 @@ export default function PrivacyPolicy() {
     <div className="min-h-screen bg-gray-50">
             <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          
            {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
                 <div className="bg-purpleDark p-6 md:p-8 text-white">
@@ -15,6 +16,7 @@ export default function PrivacyPolicy() {
             </div>
           </div>
             <p className="mt-4">
+              
               At Bellebeau Aesthetics, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect the personal information you provide when visiting our website or interacting with our services.
             </p>
 
