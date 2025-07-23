@@ -1,20 +1,16 @@
 export default function ReturnPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div>
-        <div> Return & Exchange Policy - Bellebeau Aesthetics</div>
-      </div>
+     
 
       <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-          {/* Header */}
-          <div className="bg-purple-700 p-6 md:p-8 text-white">
-            <h1 className="text-3xl font-serif font-bold">Return & Exchange Policy</h1>
-            <p className="mt-2 opacity-90">Bellebeau Aesthetics</p>
-          </div>
-
-          {/* Content */}
+         {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
+             <div className="bg-purpleDark  text-white">
+            <h1 className="text-3xl font-serif p-6 md:p-8 font-bold">Return & Exchange Policy</h1>
+            <p className="mt-2 p-6 md:p-8 opacity-90">Bellebeau Aesthetics</p>
+          </div>
             <p className="text-gray-600">
               <strong>Effective Date:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
