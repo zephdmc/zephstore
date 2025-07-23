@@ -5,7 +5,6 @@ export default function ShippingPolicy() {
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                 {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
-            <div className="bg-purple-700 p-6 md:p-8 text-white">
               <div className="p-6 md:p-8 prose prose-purple max-w-none">
              <div className="bg-purpleDark  text-white">
             <h1 className="text-3xl px-2 font-serif pt-6 md:pt-8 font-bold">Shipping Policy</h1>
@@ -128,7 +127,8 @@ export default function ShippingPolicy() {
             </div>
           </div>
         </div>
-  
+  </div>
+      </div>
   
   );
 }
