@@ -35,7 +35,7 @@ export default function BlogDetailPage() {
   const { title, pictureFlyer, publishDate, body } = post.fields;
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-4xl">
+    <div className="container bg-white mx-auto px-4 py-16 max-w-4xl">
       <h1 className="text-4xl font-bold mb-4">{title || 'Untitled'}</h1>
       <p className="text-gray-500 mb-6">
         Published on{' '}
