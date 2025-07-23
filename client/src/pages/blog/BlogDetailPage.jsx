@@ -41,7 +41,7 @@ export default function BlogDetailPage() {
         Published on{' '}
         {publishDate ? new Date(publishDate).toLocaleDateString() : 'Unknown date'}
       </p>
-      {coverImage?.fields?.file?.url && (
+      {coverImage?.pictureFlyer?.fields?.file?.url && (
         <img
           src={coverImage.fields.file.url}
           alt={title || 'Blog cover'}
