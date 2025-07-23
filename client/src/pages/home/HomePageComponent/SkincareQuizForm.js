@@ -72,7 +72,7 @@ export default function SkincareQuizForm({ onClose }) {
     
     try {
       // Send data to Google Sheets
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyK3wIRT2K7wzGvPOeo_Kjl4nsYqitheRrMbgygfCO-pxJWGtDYRu8xT4jSBkiH4wCW/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
