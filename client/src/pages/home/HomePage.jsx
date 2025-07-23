@@ -372,28 +372,7 @@ useEffect(() => {
 
 
 
-            {/* Trending Blog Section */}
-            <section className="bg-white py-16">
-                <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl font-serif font-bold mb-4">Trending Beauty Tipsy</h2>
-                        <p className="text-purpleDark max-w-2xl mx-auto">Expert advice for your skincare journey</p>
-                    </motion.div>
-
-                    <BlogTeaser
-                        title="Top 5 Ingredients for Glowing Skin in 2025"
-                        excerpt="Discover the powerhouse ingredients that will transform your skincare routine this year..."
-                        link="/blog/top-5-ingredients-2025"
-                        image="/images/blog-teaser.jpg"
-                    />
-                </div>
-            </section>
+         
 
             {/* Testimonials Section */}
             <section className="bg-pink-50 py-16">
