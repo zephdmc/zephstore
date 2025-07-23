@@ -101,13 +101,13 @@ export default function ReturnPolicy() {
                 <h2 className="text-xl font-bold text-purple-800">7. Contact Us</h2>
                 <div className="mt-3 space-y-2">
                   <p className="flex items-center">
-                    <span className="mr-2">📞</span> WhatsApp: [Insert Number]
+                    <span className="mr-2">📞</span> WhatsApp: +234 901 4727 839
                   </p>
                   <p className="flex items-center">
-                    <span className="mr-2">📧</span> Email: [Insert Email Address]
+                    <span className="mr-2">📧</span> Email: bellebeauaesthetics001@gmail.com
                   </p>
                   <p className="flex items-center">
-                    <span className="mr-2">📍</span> Port Harcourt, Nigeria
+                    <span className="mr-2">📍</span> 330 PH/Aba Express way Rumukwurushi Port Harcourt
                   </p>
                 </div>
               </section>
