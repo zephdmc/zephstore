@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
 
           {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
-                <div className="bg-purple-700 p-6 md:p-8 text-white">
+                <div className="bg-purpleDark p-6 md:p-8 text-white">
             <h1 className="text-3xl font-serif font-bold">Privacy Policy</h1>
             <div className="flex justify-between items-start mt-2">
               <p className="opacity-90">Bellebeau Aesthetics</p>
