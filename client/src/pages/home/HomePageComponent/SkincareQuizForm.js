@@ -65,56 +65,6 @@ export default function SkincareQuizForm({ onClose }) {
   };
 
 
-  const handleSubmit = (e) => {
-  e.preventDefault();
-  
-  // 1. Prepare ALL fields - include EVERY field
-  const formData = {
-    fullName: document.getElementById('fullName').value,
-    phone: document.getElementById('phone').value,
-    email: document.getElementById('email').value || '',
-    skinType: document.querySelector('input[name="skinType"]:checked')?.value || '',
-    skinConcerns: Array.from(document.querySelectorAll('input[name="concerns"]:checked'))
-                 .map(el => el.value).join(','),
-    otherConcern: document.getElementById('otherConcern').value || '',
-    routineDescription: document.getElementById('routine').value || '',
-    contactMethod: document.querySelector('input[name="contactMethod"]:checked')?.value || '',
-    consent: document.getElementById('consent').checked ? 'true' : 'false'
-  };
-
-  // 2. Create hidden iframe
-  const iframe = document.createElement('iframe');
-  iframe.name = 'submit-iframe-' + Date.now();
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  // 3. Create form with ALL data
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
-  form.target = iframe.name;
-  form.style.display = 'none';
-
-  // Add ALL fields to form
-  Object.entries(formData).forEach(([key, value]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  // 4. Submit and clean up
-  document.body.appendChild(form);
-  form.submit();
-  
-  setTimeout(() => {
-    document.body.removeChild(form);
-    document.body.removeChild(iframe);
-    alert('Form submitted! Check your spreadsheet.');
-  }, 3000);
-};
-
 
 
   
