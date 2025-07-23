@@ -65,41 +65,38 @@ export default function SkincareQuizForm({ onClose }) {
   };
 
 
-  
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
   e.preventDefault();
-  if (!validate()) return;
   
-  setIsSubmitting(true);
-  setErrors({});
+  // 1. Prepare ALL fields - include EVERY field
+  const formData = {
+    fullName: document.getElementById('fullName').value,
+    phone: document.getElementById('phone').value,
+    email: document.getElementById('email').value || '',
+    skinType: document.querySelector('input[name="skinType"]:checked')?.value || '',
+    skinConcerns: Array.from(document.querySelectorAll('input[name="concerns"]:checked'))
+                 .map(el => el.value).join(','),
+    otherConcern: document.getElementById('otherConcern').value || '',
+    routineDescription: document.getElementById('routine').value || '',
+    contactMethod: document.querySelector('input[name="contactMethod"]:checked')?.value || '',
+    consent: document.getElementById('consent').checked ? 'true' : 'false'
+  };
 
-  // 1. Create hidden iframe
+  // 2. Create hidden iframe
   const iframe = document.createElement('iframe');
-  iframe.name = 'form-iframe-' + Date.now();
+  iframe.name = 'submit-iframe-' + Date.now();
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
 
-  // 2. Create hidden form
+  // 3. Create form with ALL data
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
+  form.action = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
   form.target = iframe.name;
   form.style.display = 'none';
 
-  // 3. Add form data - ensure ALL fields included
-  const formPayload = {
-    fullName: formData.fullName || '',
-    phone: formData.phone || '',
-    email: formData.email || '',
-    skinType: formData.skinType || '',
-    skinConcerns: JSON.stringify(formData.skinConcerns || []),
-    otherConcern: formData.otherConcern || '',
-    routineDescription: formData.routineDescription || '',
-    contactMethod: formData.contactMethod || '',
-    consent: formData.consent ? 'true' : 'false'
-  };
-
-  Object.entries(formPayload).forEach(([key, value]) => {
+  // Add ALL fields to form
+  Object.entries(formData).forEach(([key, value]) => {
     const input = document.createElement('input');
     input.type = 'hidden';
     input.name = key;
@@ -107,21 +104,20 @@ const handleSubmit = (e) => {
     form.appendChild(input);
   });
 
-  // 4. Submit form
+  // 4. Submit and clean up
   document.body.appendChild(form);
   form.submit();
-
-  // 5. Clean up and show success
+  
   setTimeout(() => {
     document.body.removeChild(form);
     document.body.removeChild(iframe);
-    setIsSuccess(true);
-    setIsSubmitting(false);
-    
-    // Optional: Add manual verification step
-    alert('Form submitted! Please check your Google Sheet.');
+    alert('Form submitted! Check your spreadsheet.');
   }, 3000);
 };
+
+
+
+  
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
       <motion.div 
