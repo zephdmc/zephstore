@@ -91,7 +91,7 @@ export default function SkincareQuizForm({ onClose }) {
   // 3. Create form with ALL data
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
   form.target = iframe.name;
   form.style.display = 'none';
 
