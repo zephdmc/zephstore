@@ -64,64 +64,48 @@ export default function SkincareQuizForm({ onClose }) {
     return Object.keys(newErrors).length === 0;
   };
 
-
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   
   try {
-    // Create a hidden iframe
-    const iframe = document.createElement('iframe');
-    iframe.name = 'skincare-form-iframe';
-    iframe.style.display = 'none';
-    
-    // Create a form
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
-    form.target = 'skincare-form-iframe';
-    
-    // Add form data
-    const addInput = (name, value) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = name;
-      input.value = typeof value === 'object' ? JSON.stringify(value) : value;
-      form.appendChild(input);
-    };
-    
-    addInput('fullName', formData.fullName);
-    addInput('phone', formData.phone);
-    addInput('email', formData.email);
-    addInput('skinType', formData.skinType);
-    addInput('skinConcerns', formData.skinConcerns);
-    addInput('otherConcern', formData.otherConcern);
-    addInput('routineDescription', formData.routineDescription);
-    addInput('contactMethod', formData.contactMethod);
-    addInput('consent', formData.consent);
-    
-    // Add to DOM and submit
-    document.body.appendChild(iframe);
-    document.body.appendChild(form);
-    form.submit();
-    
-    // Listen for success message from iframe
-    window.addEventListener('message', (event) => {
-      if (event.data === 'skincareFormSubmitted') {
-        setIsSuccess(true);
-        // Clean up
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-          document.body.removeChild(form);
-        }, 1000);
-      }
+    // Convert form data to URLSearchParams
+    const formData = new URLSearchParams();
+    formData.append('fullName', formData.fullName);
+    formData.append('phone', formData.phone);
+    formData.append('email', formData.email);
+    formData.append('skinType', formData.skinType);
+    formData.append('skinConcerns', JSON.stringify(formData.skinConcerns));
+    formData.append('otherConcern', formData.otherConcern);
+    formData.append('routineDescription', formData.routineDescription);
+    formData.append('contactMethod', formData.contactMethod);
+    formData.append('consent', formData.consent.toString());
+
+    // Submit with proper headers
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString()
     });
-    
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const result = await response.json();
+    if (result.success) {
+      setIsSuccess(true);
+    } else {
+      throw new Error('Submission failed');
+    }
   } catch (error) {
     console.error('Error submitting form:', error);
     setErrors({ submit: 'Failed to submit form. Please try again.' });
+  } finally {
     setIsSubmitting(false);
   }
 };
