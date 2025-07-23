@@ -63,41 +63,60 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+ const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fullName: formData.fullName,
-        phone: formData.phone,
-        email: formData.email,
-        skinType: formData.skinType,
-        skinConcerns: formData.skinConcerns,
-        otherConcern: formData.otherConcern,
-        routineDescription: formData.routineDescription,
-        contactMethod: formData.contactMethod,
-        consent: formData.consent
-      })
-    });
+    // Create a hidden iframe
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hidden-form-iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 
-    const result = await response.json();
-    if (result.success) {
+    // Create a hidden form
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
+    form.target = 'hidden-form-iframe';
+    form.style.display = 'none';
+
+    // Add form data
+    const addInput = (name, value) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = typeof value === 'object' ? JSON.stringify(value) : value;
+      form.appendChild(input);
+    };
+
+    addInput('fullName', formData.fullName);
+    addInput('phone', formData.phone);
+    addInput('email', formData.email);
+    addInput('skinType', formData.skinType);
+    addInput('skinConcerns', formData.skinConcerns);
+    addInput('otherConcern', formData.otherConcern);
+    addInput('routineDescription', formData.routineDescription);
+    addInput('contactMethod', formData.contactMethod);
+    addInput('consent', formData.consent.toString());
+
+    // Submit form
+    document.body.appendChild(form);
+    form.submit();
+
+    // Clean up after submission
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
       setIsSuccess(true);
-    } else {
-      throw new Error('Submission failed');
-    }
+    }, 1000);
+
   } catch (error) {
     console.error('Error submitting form:', error);
     setErrors({ submit: 'Failed to submit form. Please try again.' });
-  } finally {
     setIsSubmitting(false);
   }
 };
