@@ -9,8 +9,6 @@ export default function TermsOfService() {
 
           {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
-
-                      <div className="p-6 md:p-8 prose prose-purple max-w-none">
                 <div className="bg-purpleDark p-6 md:p-8 text-white">
             <h1 className="text-3xl font-serif font-bold">Terms of Service</h1>
             <div className="flex justify-between items-start mt-2">
