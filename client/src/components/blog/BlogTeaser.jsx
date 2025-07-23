@@ -5,7 +5,7 @@ export default function BlogTeaser({ post }) {
   console.log(post)
   const coverImageUrl = post?.fields?.pictureFlyer?.fields?.file?.url || '';
 
-  console.log(post?.fields?.pictureFlyer?.fields?.file?.url;)
+  console.log(post?.fields?.pictureFlyer?.fields?.file?.url)
 
   const title = post?.fields?.title || 'No title available';
   const excerpt = post?.fields?.subtitlte || 'No excerpt available';
