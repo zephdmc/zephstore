@@ -105,6 +105,9 @@ export default function HomePage() {
     const [loading, setLoading] = useState(true);
       const [showSplash, setShowSplash] = useState(true);
     const [error, setError] = useState('');
+  // Add this state to your HomePage component
+const [showQuizForm, setShowQuizForm] = useState(false);
+
   const { currentUser } = useAuth(); // Get current user from auth context
     useEffect(() => {
         const fetchProducts = async () => {
@@ -199,12 +202,16 @@ useEffect(() => {
                 >
                     Shop Now
                 </Link>
-                <Link
-                    to="/skincare-quiz"
-                    className="border-2 border-purplegradient text-purplegradient hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
-                >
-                    Start Your Skincare Journey
-                </Link>
+             <Link
+  to="#"
+  onClick={(e) => {
+    e.preventDefault();
+    setShowQuizForm(true);
+  }}
+  className="border-2 border-purplegradient text-purplegradient hover:bg-purplelight py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+>
+  Start Your Skincare Journey
+</Link>
             </div>
         </motion.div>
     </div>
@@ -468,6 +475,9 @@ useEffect(() => {
         <FaWhatsapp size={32} />
     </a>
 </motion.div>
+
+          {showQuizForm && <SkincareQuizForm onClose={() => setShowQuizForm(false)} />}
+
         </div>
     );
 }
