@@ -63,55 +63,59 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   
-  try {
-    // Prepare form data
-    const formPayload = {
-      fullName: formData.fullName,
-      phone: formData.phone,
-      email: formData.email,
-      skinType: formData.skinType,
-      skinConcerns: JSON.stringify(formData.skinConcerns),
-      otherConcern: formData.otherConcern,
-      routineDescription: formData.routineDescription,
-      contactMethod: formData.contactMethod,
-      consent: formData.consent.toString()
-    };
-
-    // Create URLSearchParams
-    const formDataParams = new URLSearchParams();
-    for (const key in formPayload) {
-      formDataParams.append(key, formPayload[key]);
-    }
-
-    // Submit using fetch
-    const response = await fetch('https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formDataParams.toString()
-    });
-
-    const result = await response.json();
-    
-    if (result.success) {
-      setIsSuccess(true);
-    } else {
-      throw new Error(result.error || 'Submission failed');
-    }
-    
-  } catch (error) {
-    console.error('Submission error:', error);
-    setErrors({ submit: error.message });
-  } finally {
+  // 1. Create hidden iframe
+  const iframe = document.createElement('iframe');
+  iframe.name = 'form-iframe-' + Date.now();
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+  
+  // 2. Create hidden form
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
+  form.target = iframe.name;
+  form.style.display = 'none';
+  
+  // 3. Add form data
+  const formData = {
+    fullName: formData.fullName,
+    phone: formData.phone,
+    email: formData.email,
+    skinType: formData.skinType,
+    skinConcerns: JSON.stringify(formData.skinConcerns),
+    otherConcern: formData.otherConcern,
+    routineDescription: formData.routineDescription,
+    contactMethod: formData.contactMethod,
+    consent: formData.consent.toString()
+  };
+  
+  Object.entries(formData).forEach(([key, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+  
+  // 4. Submit form
+  document.body.appendChild(form);
+  form.submit();
+  
+  // 5. Clean up and show success
+  setTimeout(() => {
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
+    setIsSuccess(true);
     setIsSubmitting(false);
-  }
+  }, 3000);
 };
 
   return (
