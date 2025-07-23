@@ -129,6 +129,6 @@ export default function ShippingPolicy() {
           </div>
         </div>
   
-    </div>
+  
   );
 }
