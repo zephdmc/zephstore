@@ -102,21 +102,7 @@ export default function ShippingPolicy() {
                 </p>
               </section>
 
-              {/* Contact Section */}
-              <section className="bg-purple-50 p-4 rounded-lg">
-                <h2 className="text-xl font-bold text-purple-800">Contact Us</h2>
-                <div className="mt-3 space-y-2">
-                  <p className="flex items-center">
-                    <span className="mr-2">📞</span> Customer Care: [Insert WhatsApp Number]
-                  </p>
-                  <p className="flex items-center">
-                    <span className="mr-2">📧</span> Email: [Insert Email Address]
-                  </p>
-                  <p className="flex items-center">
-                    <span className="mr-2">📍</span> Location: Port Harcourt, Nigeria
-                  </p>
-                </div>
-              </section>
+            
 
               {/* Closing */}
               <section className="text-center py-4">
