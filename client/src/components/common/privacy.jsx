@@ -8,8 +8,8 @@ export default function PrivacyPolicy() {
                 <div className="bg-purpleDark p-6 md:p-8 text-white">
             <h1 className="text-3xl font-serif font-bold">Privacy Policy</h1>
             <div className="flex justify-between items-start mt-2">
-              <p className="opacity-90">Bellebeau Aesthetics</p>
-              <p className="text-sm opacity-80">
+              <p className="opacity-90 text-white">Bellebeau Aesthetics</p>
+              <p className="text-sm text-purpleLight opacity-80">
                 Effective: July 22, 2025
               </p>
             </div>
