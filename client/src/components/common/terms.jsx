@@ -117,22 +117,7 @@ export default function TermsOfService() {
                 </p>
               </section>
 
-              {/* Contact Section */}
-              <section className="bg-purple-50 p-4 rounded-lg">
-                <h2 className="text-xl font-bold text-purple-800">10. Contact Us</h2>
-                <div className="mt-3 space-y-2">
-                  <p className="flex items-center">
-                    <span className="mr-2">📞</span> WhatsApp: [Insert Number]
-                  </p>
-                  <p className="flex items-center">
-                    <span className="mr-2">📧</span> Email: [Insert Email Address]
-                  </p>
-                </div>
-                <p className="mt-4 text-sm text-purple-700">
-                  If you have any questions about these Terms, please contact us using the information above.
-                </p>
-              </section>
-            </div>
+                         </div>
           </div>
         </div>
       </div>
