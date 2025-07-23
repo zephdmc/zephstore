@@ -81,7 +81,7 @@ const handleSubmit = async (e) => {
     // Create a hidden form
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
+    form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
     form.target = iframe.name;
     form.style.display = 'none';
 
