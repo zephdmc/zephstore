@@ -90,7 +90,7 @@ const handleSubmit = async (e) => {
     }
 
     // Submit using fetch
-    const response = await fetch('YOUR_SCRIPT_URL', {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
