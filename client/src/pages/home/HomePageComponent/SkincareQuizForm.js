@@ -63,35 +63,54 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+  
+  setIsSubmitting(true);
+  
+  try {
+    // Create a hidden form to submit to Google Apps Script
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
+    form.target = '_blank';
     
-    setIsSubmitting(true);
+    // Add form data as hidden inputs
+    const addInput = (name, value) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
+    };
     
-    try {
-      // Send data to Google Sheets
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      
-      if (response.ok) {
-        setIsSuccess(true);
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setErrors({ submit: 'Failed to submit form. Please try again.' });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    addInput('fullName', formData.fullName);
+    addInput('phone', formData.phone);
+    addInput('email', formData.email);
+    addInput('skinType', formData.skinType);
+    addInput('skinConcerns', JSON.stringify(formData.skinConcerns));
+    addInput('otherConcern', formData.otherConcern);
+    addInput('routineDescription', formData.routineDescription);
+    addInput('contactMethod', formData.contactMethod);
+    addInput('consent', formData.consent);
+    
+    // Submit the form
+    document.body.appendChild(form);
+    form.submit();
+    
+    // Remove the form after submission
+    setTimeout(() => document.body.removeChild(form), 1000);
+    
+    // Show success message
+    setIsSuccess(true);
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    setErrors({ submit: 'Failed to submit form. Please try again.' });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
