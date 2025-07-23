@@ -8,8 +8,8 @@ export default function ReturnPolicy() {
          {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
              <div className="bg-purpleDark  text-white">
-            <h1 className="text-3xl font-serif pt-6 md:pt-8 font-bold">Return & Exchange Policy</h1>
-            <p className="mt-2 p-2 md:p-4 pb-6 md:pb-8 opacity-90">Bellebeau Aesthetics</p>
+            <h1 className="text-3xl px-2 font-serif pt-6 md:pt-8 font-bold">Return & Exchange Policy</h1>
+            <p className="mt-2 p-2 px-2 md:p-4 pb-6 md:pb-8 opacity-90">Bellebeau Aesthetics</p>
           </div>
             <p className="text-gray-600">
               <strong>Effective Date:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
