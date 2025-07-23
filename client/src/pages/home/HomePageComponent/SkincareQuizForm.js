@@ -63,7 +63,6 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
@@ -71,30 +70,23 @@ const handleSubmit = async (e) => {
   setIsSubmitting(true);
   
   try {
-    // Convert form data to URLSearchParams
-    const formData = new URLSearchParams();
-    formData.append('fullName', formData.fullName);
-    formData.append('phone', formData.phone);
-    formData.append('email', formData.email);
-    formData.append('skinType', formData.skinType);
-    formData.append('skinConcerns', JSON.stringify(formData.skinConcerns));
-    formData.append('otherConcern', formData.otherConcern);
-    formData.append('routineDescription', formData.routineDescription);
-    formData.append('contactMethod', formData.contactMethod);
-    formData.append('consent', formData.consent.toString());
-
-    // Submit with proper headers
     const response = await fetch('https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      body: formData.toString()
+      body: JSON.stringify({
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        skinType: formData.skinType,
+        skinConcerns: formData.skinConcerns,
+        otherConcern: formData.otherConcern,
+        routineDescription: formData.routineDescription,
+        contactMethod: formData.contactMethod,
+        consent: formData.consent
+      })
     });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
 
     const result = await response.json();
     if (result.success) {
