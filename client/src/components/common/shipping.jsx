@@ -21,6 +21,14 @@ export default function ShippingPolicy() {
 
           {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
+            <div className="bg-purple-700 p-6 md:p-8 text-white">
+            <h1 className="text-3xl font-serif font-bold">Shipping Policy</h1>
+            <div className="flex justify-between items-start mt-2">
+              <p className="opacity-90">Bellebeau Aesthetics</p>
+              <p className="text-sm opacity-80">
+                Effective: July 22, 2025
+              </p>
+            </div>
             <p className="mt-4">
               Welcome to Bellebeau Aesthetics! We are committed to delivering your skincare essentials quickly, safely, and reliably. Please review our shipping policy before placing your order.
             </p>
