@@ -119,8 +119,6 @@ export default function SkincareQuizForm({ onClose }) {
     }, 3000);
   };
 
-  // ... rest of your component code remains the same ...
-}
 
   
   return (
