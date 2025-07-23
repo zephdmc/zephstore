@@ -1,26 +1,26 @@
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div>
-        <div>Terms of Service | Bellebeau Aesthetics</div>
-        <meta name="description" content="Terms governing your use of Bellebeau Aesthetics services" />
-      </div>
-
+      
       <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-purple-700 p-6 md:p-8 text-white">
+        
+
+          {/* Content */}
+          <div className="p-6 md:p-8 prose prose-purple max-w-none">
+
+                      <div className="p-6 md:p-8 prose prose-purple max-w-none">
+                <div className="bg-purpleDark p-6 md:p-8 text-white">
             <h1 className="text-3xl font-serif font-bold">Terms of Service</h1>
             <div className="flex justify-between items-start mt-2">
-              <p className="opacity-90">Bellebeau Aesthetics</p>
-              <p className="text-sm opacity-80">
+              <p className="opacity-90 text-white">Bellebeau Aesthetics</p>
+              <p className="text-sm text-purpleLight opacity-80">
                 Effective: July 22, 2025
               </p>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="p-6 md:p-8 prose prose-purple max-w-none">
             <p className="mt-4">
               Welcome to Bellebeau Aesthetics! These Terms of Service govern your use of our website, products, and services. By using our platform, you agree to these terms. Please read them carefully.
             </p>
