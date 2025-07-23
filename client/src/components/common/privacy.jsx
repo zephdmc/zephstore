@@ -21,6 +21,12 @@ export default function PrivacyPolicy() {
 
           {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
+
+
+
+
+
+            
             <p className="mt-4">
               At Bellebeau Aesthetics, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect the personal information you provide when visiting our website or interacting with our services.
             </p>
