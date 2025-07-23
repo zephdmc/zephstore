@@ -10,6 +10,8 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext'; // Import useAuth
 import { getBlogPosts } from '../../services/contentful'; // adjust path if needed
 import BlogTeaser from '../../components/blog/BlogTeaser';
+// Add this import with your other imports
+import SkincareQuizForm from './HomePageComponent/SkincareQuizForm'; // Adjust the path as needed
 
 
 const SplashScreen = ({ onClose }) => {
