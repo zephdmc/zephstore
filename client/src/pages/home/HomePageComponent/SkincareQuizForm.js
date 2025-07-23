@@ -63,25 +63,26 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   
   try {
+    // Create a unique ID for this submission
+    const submissionId = Date.now();
+    
     // Create a hidden iframe
     const iframe = document.createElement('iframe');
-    iframe.name = 'hidden-form-iframe';
+    iframe.name = `form-submission-${submissionId}`;
     iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
+    
     // Create a hidden form
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
-    form.target = 'hidden-form-iframe';
+    form.target = iframe.name;
     form.style.display = 'none';
 
     // Add form data
@@ -103,17 +104,24 @@ export default function SkincareQuizForm({ onClose }) {
     addInput('contactMethod', formData.contactMethod);
     addInput('consent', formData.consent.toString());
 
-    // Submit form
+    // Add to DOM
+    document.body.appendChild(iframe);
     document.body.appendChild(form);
+    
+    // Submit form
     form.submit();
-
-    // Clean up after submission
+    
+    // Set timeout to handle completion
     setTimeout(() => {
+      // Clean up
       document.body.removeChild(form);
       document.body.removeChild(iframe);
+      
+      // Assume success (since we can't get response directly)
       setIsSuccess(true);
-    }, 1000);
-
+      setIsSubmitting(false);
+    }, 2000);
+    
   } catch (error) {
     console.error('Error submitting form:', error);
     setErrors({ submit: 'Failed to submit form. Please try again.' });
