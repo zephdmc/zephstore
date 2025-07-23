@@ -64,59 +64,64 @@ export default function SkincareQuizForm({ onClose }) {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
+
+  
+const handleSubmit = (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   setErrors({});
-  
-  try {
-    // 1. Prepare form data
-    const formData = {
-      fullName: formData.fullName,
-      phone: formData.phone,
-      email: formData.email,
-      skinType: formData.skinType,
-      skinConcerns: JSON.stringify(formData.skinConcerns),
-      otherConcern: formData.otherConcern,
-      routineDescription: formData.routineDescription,
-      contactMethod: formData.contactMethod,
-      consent: formData.consent.toString()
-    };
 
-    // 2. Use your Google Apps Script URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
-    
-    // 3. Submit as form-urlencoded
-    const formDataParams = new URLSearchParams();
-    for (const key in formData) {
-      formDataParams.append(key, formData[key]);
-    }
-    
-    // 4. Submit with error handling
-    const response = await fetch(SCRIPT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formDataParams.toString(),
-      mode: 'no-cors' // Important for CORS
-    });
-    
-    // Note: With 'no-cors' we can't read response but assume success
+  // 1. Create hidden iframe
+  const iframe = document.createElement('iframe');
+  iframe.name = 'form-iframe-' + Date.now();
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  // 2. Create hidden form
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
+  form.target = iframe.name;
+  form.style.display = 'none';
+
+  // 3. Add form data - ensure ALL fields included
+  const formPayload = {
+    fullName: formData.fullName || '',
+    phone: formData.phone || '',
+    email: formData.email || '',
+    skinType: formData.skinType || '',
+    skinConcerns: JSON.stringify(formData.skinConcerns || []),
+    otherConcern: formData.otherConcern || '',
+    routineDescription: formData.routineDescription || '',
+    contactMethod: formData.contactMethod || '',
+    consent: formData.consent ? 'true' : 'false'
+  };
+
+  Object.entries(formPayload).forEach(([key, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  // 4. Submit form
+  document.body.appendChild(form);
+  form.submit();
+
+  // 5. Clean up and show success
+  setTimeout(() => {
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
     setIsSuccess(true);
-    
-  } catch (error) {
-    console.error('Submission error:', error);
-    setErrors({ 
-      submit: 'Form submitted! Please check your spreadsheet.'
-    });
-  } finally {
     setIsSubmitting(false);
-  }
+    
+    // Optional: Add manual verification step
+    alert('Form submitted! Please check your Google Sheet.');
+  }, 3000);
 };
-
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
       <motion.div 
