@@ -2,33 +2,15 @@
 export default function ShippingPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div>
-        <div>Shipping Policy | Bellebeau Aesthetics</div>
-      </div>
-
-      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-          {/* Header */}
-          <div className="bg-purple-700 p-6 md:p-8 text-white">
-            <h1 className="text-3xl font-serif font-bold">Shipping Policy</h1>
-            <div className="flex justify-between items-start mt-2">
-              <p className="opacity-90">Bellebeau Aesthetics</p>
-              <p className="text-sm opacity-80">
-                Effective: July 22, 2025
-              </p>
-            </div>
-          </div>
-
-          {/* Content */}
+    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                {/* Content */}
           <div className="p-6 md:p-8 prose prose-purple max-w-none">
             <div className="bg-purple-700 p-6 md:p-8 text-white">
-            <h1 className="text-3xl font-serif font-bold">Shipping Policy</h1>
-            <div className="flex justify-between items-start mt-2">
-              <p className="opacity-90">Bellebeau Aesthetics</p>
-              <p className="text-sm opacity-80">
-                Effective: July 22, 2025
-              </p>
-            </div>
+              <div className="p-6 md:p-8 prose prose-purple max-w-none">
+             <div className="bg-purpleDark  text-white">
+            <h1 className="text-3xl px-2 font-serif pt-6 md:pt-8 font-bold">Shipping Policy</h1>
+            <p className="mt-2 p-2 px-2 md:p-4 pb-6 md:pb-8 opacity-90">Bellebeau Aesthetics</p>
+          </div>
             <p className="mt-4">
               Welcome to Bellebeau Aesthetics! We are committed to delivering your skincare essentials quickly, safely, and reliably. Please review our shipping policy before placing your order.
             </p>
