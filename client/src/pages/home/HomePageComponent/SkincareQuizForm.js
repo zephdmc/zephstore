@@ -63,25 +63,32 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
   
   setIsSubmitting(true);
   
   try {
-    // Create a hidden form to submit to Google Apps Script
+    // Create a hidden iframe
+    const iframe = document.createElement('iframe');
+    iframe.name = 'skincare-form-iframe';
+    iframe.style.display = 'none';
+    
+    // Create a form
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = 'https://script.google.com/macros/s/AKfycbzAcRYBG8rScPxXNAxIGCec6J24KTlvW4iH3t1wcSM3i0PmeiFZMlSmRso8H-OtE3Yf/exec';
-    form.target = '_blank';
+    form.target = 'skincare-form-iframe';
     
-    // Add form data as hidden inputs
+    // Add form data
     const addInput = (name, value) => {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = name;
-      input.value = value;
+      input.value = typeof value === 'object' ? JSON.stringify(value) : value;
       form.appendChild(input);
     };
     
@@ -89,25 +96,32 @@ const handleSubmit = async (e) => {
     addInput('phone', formData.phone);
     addInput('email', formData.email);
     addInput('skinType', formData.skinType);
-    addInput('skinConcerns', JSON.stringify(formData.skinConcerns));
+    addInput('skinConcerns', formData.skinConcerns);
     addInput('otherConcern', formData.otherConcern);
     addInput('routineDescription', formData.routineDescription);
     addInput('contactMethod', formData.contactMethod);
     addInput('consent', formData.consent);
     
-    // Submit the form
+    // Add to DOM and submit
+    document.body.appendChild(iframe);
     document.body.appendChild(form);
     form.submit();
     
-    // Remove the form after submission
-    setTimeout(() => document.body.removeChild(form), 1000);
+    // Listen for success message from iframe
+    window.addEventListener('message', (event) => {
+      if (event.data === 'skincareFormSubmitted') {
+        setIsSuccess(true);
+        // Clean up
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+          document.body.removeChild(form);
+        }, 1000);
+      }
+    });
     
-    // Show success message
-    setIsSuccess(true);
   } catch (error) {
     console.error('Error submitting form:', error);
     setErrors({ submit: 'Failed to submit form. Please try again.' });
-  } finally {
     setIsSubmitting(false);
   }
 };
