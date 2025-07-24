@@ -11,6 +11,7 @@ export default function ShippingForm({ onSubmit }) {
         postalCode: '',
         country: 'Nigeria',
         phone: '',
+        promocode: '',
         email: currentUser?.email || ''
     });
 
@@ -90,6 +91,17 @@ export default function ShippingForm({ onSubmit }) {
                         type="text"
                         name="postalCode"
                         value={formData.postalCode}
+                        onChange={handleChange}
+                        className="w-full p-2 border rounded"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block text-purpleDark mb-1">Postal Code</label>
+                    <input
+                        type="text"
+                        name="promocode"
+                        value={formData.promocode}
                         onChange={handleChange}
                         className="w-full p-2 border rounded"
                         required
