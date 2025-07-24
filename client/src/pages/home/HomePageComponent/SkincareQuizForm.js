@@ -63,7 +63,6 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
@@ -84,20 +83,18 @@ const handleSubmit = async (e) => {
   };
 
   try {
-    fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(formData)
-})
-    .then(res => res.json())
-.then(data => console.log("Success:", data))
-.catch(err => console.error("Submission error:", err));
+    // Add no-cors mode and proper headers
+    const response = await fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
+      method: "POST",
+      mode: "no-cors", // Important for Google Apps Script
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(payload)
+    });
 
-    const result = await res.json(); // Or .text(), depending on your script
-    console.log(result);
-
+    // Note: With no-cors mode, you won't be able to read the response
+    // But the data should still be saved to your sheet
     setIsSuccess(true);
   } catch (err) {
     console.error('Submission error:', err);
