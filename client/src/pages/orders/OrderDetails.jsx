@@ -134,6 +134,9 @@ export default function OrderDetails() {
                                         <p className="mt-1 text-sm text-gray-500">
                                             Quantity: {item.quantity}
                                         </p>
+                                         <p className="mt-1 text-sm text-gray-500">
+                                            Promo Code: {item.promocode}
+                                        </p>
                                         <p className="mt-2 text-lg font-medium">
                                             Subtotal: ₦{(item.price * item.quantity).toLocaleString()}
                                         </p>
