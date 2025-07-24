@@ -89,7 +89,7 @@ export default function SkincareQuizForm({ onClose }) {
     // Use the full URL including /exec
  
 
-      const res = await fetch('/api/google-sheet-proxy', {
+      const res = await fetch('/api/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
