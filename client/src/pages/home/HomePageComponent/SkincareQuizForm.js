@@ -99,8 +99,7 @@ export default function SkincareQuizForm({ onClose }) {
     const result = await res.json();
     console.log('Response from Google Sheet:', result);
 
-    // Handle the response
-    const result = await response.json();
+    
     
     if (result.success) {
       setIsSuccess(true);
