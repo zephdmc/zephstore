@@ -49,6 +49,7 @@ export default function CheckoutPage() {
             const backendItems = cartItems.map(item => ({
                 productId: item.id,  // Changed from 'id' to 'productId'
                 name: item.name,
+                promocode: item.promocode,
                 price: Number(item.price),
                 quantity: Number(item.quantity),
                 image: item.image
