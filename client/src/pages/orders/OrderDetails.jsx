@@ -134,9 +134,7 @@ export default function OrderDetails() {
                                         <p className="mt-1 text-sm text-gray-500">
                                             Quantity: {item.quantity}
                                         </p>
-                                         <p className="mt-1 text-sm text-gray-500">
-                                            Promo Code: {item.promocode}
-                                        </p>
+                                        
                                         <p className="mt-2 text-lg font-medium">
                                             Subtotal: ₦{(item.price * item.quantity).toLocaleString()}
                                         </p>
@@ -235,6 +233,7 @@ export default function OrderDetails() {
                                     <h3 className="text-sm font-medium text-gray-500">Contact</h3>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.email}</p>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.phone}</p>
+                                    <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.promocode}</p>
                                 </div>
                                 <div>
                                     <h3 className="text-sm font-medium text-gray-500">Shipping Address</h3>
