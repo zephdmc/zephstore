@@ -97,7 +97,7 @@ export default function ShippingForm({ onSubmit }) {
                     />
                 </div>
                 <div>
-                    <label className="block text-purpleDark mb-1">Postal Code</label>
+                    <label className="block text-purpleDark mb-1">Promo Code</label>
                     <input
                         type="text"
                         name="promocode"
