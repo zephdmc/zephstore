@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     consent,
   } = req.body;
 
-  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec'; // Replace with your actual Apps Script URL
+  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
 
   try {
     const response = await fetch(sheetScriptURL, {
@@ -36,10 +36,18 @@ export default async function handler(req, res) {
       }),
     });
 
-    const result = await response.json();
-    return res.status(200).json({ success: true, result });
+    const raw = await response.text(); // Always read as text first
+    console.log('Google Script Raw Response:', raw);
+
+    try {
+      const result = JSON.parse(raw); // Try parsing as JSON
+      return res.status(200).json({ success: true, result });
+    } catch (jsonError) {
+      console.error('Invalid JSON from Google Script:', jsonError.message);
+      return res.status(500).json({ success: false, error: 'Google Script did not return valid JSON', raw });
+    }
   } catch (error) {
-    console.error('Proxy Error:', error);
+    console.error('Fetch Error:', error.message);
     return res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
