@@ -88,7 +88,7 @@ const handleSubmit = async (e) => {
       method: "POST",
       mode: "no-cors", // Important for Google Apps Script
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(payload)
     });
