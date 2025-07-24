@@ -84,13 +84,16 @@ const handleSubmit = async (e) => {
   };
 
   try {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: new URLSearchParams(payload).toString()
-    });
+    fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(formData)
+})
+    .then(res => res.json())
+.then(data => console.log("Success:", data))
+.catch(err => console.error("Submission error:", err));
 
     const result = await res.json(); // Or .text(), depending on your script
     console.log(result);
