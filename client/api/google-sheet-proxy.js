@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     consent,
   } = req.body;
 
-  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbyuQMNBHVlXDmh7x6g29ynqb8Em8CHLaCZYjmOLiWINUFLyFj3JCbLc3AVluWpL8gx5OA/exec';
+  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbyAdCaqw8bzjum4eIEFleTJo7Nf21ZqHZI7Oj40py2oUsZj0EpY3-S9s_if80Be-LLKZQ/exec';
 
   try {
     const response = await fetch(sheetScriptURL, {
