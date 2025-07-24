@@ -64,60 +64,46 @@ export default function SkincareQuizForm({ onClose }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    
-    setIsSubmitting(true);
-    setErrors({});
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
 
-    // Prepare the form payload
-    const payload = {
-      fullName: formData.fullName,
-      phone: formData.phone,
-      email: formData.email,
-      skinType: formData.skinType,
-      skinConcerns: formData.skinConcerns.join(','),
-      otherConcern: formData.otherConcern,
-      routineDescription: formData.routineDescription,
-      contactMethod: formData.contactMethod,
-      consent: formData.consent ? 'true' : 'false'
-    };
+  setIsSubmitting(true);
+  setErrors({});
 
-    // Create hidden iframe for submission
-    const iframe = document.createElement('iframe');
-    iframe.name = 'submit-iframe-' + Date.now();
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+  const payload = {
+    fullName: formData.fullName,
+    phone: formData.phone,
+    email: formData.email,
+    skinType: formData.skinType,
+    skinConcerns: formData.skinConcerns.join(','),
+    otherConcern: formData.otherConcern,
+    routineDescription: formData.routineDescription,
+    contactMethod: formData.contactMethod,
+    consent: formData.consent ? 'true' : 'false'
+  };
 
-    // Create form element
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
-    form.target = iframe.name;
-    form.style.display = 'none';
-
-    // Add all fields to the form
-    Object.entries(payload).forEach(([key, value]) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = value;
-      form.appendChild(input);
+  try {
+    const res = await fetch('https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams(payload).toString()
     });
 
-    // Submit the form
-    document.body.appendChild(form);
-    form.submit();
-    
-    // Clean up and show success
-    setTimeout(() => {
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 3000);
-  };
+    const result = await res.json(); // Or .text(), depending on your script
+    console.log(result);
+
+    setIsSuccess(true);
+  } catch (err) {
+    console.error('Submission error:', err);
+    alert('There was an error submitting the form. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
 
   
