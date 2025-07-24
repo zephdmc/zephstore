@@ -56,14 +56,13 @@ export default defineConfig({
         port: 3000,
         strictPort: true,
         host: true,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:5000',
-                changeOrigin: true,
-                rewrite: path => path.replace(/^\/api/, ''),
-                secure: false
-            }
-        },
+      proxy: {
+      '/api/submit': {
+        target: 'https://script.google.com/macros/s/AKfycbyAdCaqw8bzjum4eIEFleTJo7Nf21ZqHZI7Oj40py2oUsZj0EpY3-S9s_if80Be-LLKZQ/exec',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/submit/, ''),
+      },
+    },
         watch: {
             usePolling: true,
             interval: 100
