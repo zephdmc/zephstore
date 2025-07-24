@@ -36,15 +36,27 @@ export default async function handler(req, res) {
       }),
     });
 
-    const raw = await response.text(); // Always read as text first
-    console.log('Google Script Raw Response:', raw);
+    const contentType = response.headers.get('content-type');
+    const status = response.status;
+    const raw = await response.text();
 
-    try {
-      const result = JSON.parse(raw); // Try parsing as JSON
+    console.log('Google Script Raw Response:', raw);
+    console.log('Status:', status);
+    console.log('Content-Type:', contentType);
+
+    if (contentType && contentType.includes('application/json')) {
+      // If response is already JSON
+      const result = JSON.parse(raw);
       return res.status(200).json({ success: true, result });
-    } catch (jsonError) {
-      console.error('Invalid JSON from Google Script:', jsonError.message);
-      return res.status(500).json({ success: false, error: 'Google Script did not return valid JSON', raw });
+    } else {
+      // Response is likely an error page or script exception
+      return res.status(500).json({
+        success: false,
+        error: 'Google Script did not return valid JSON',
+        status,
+        contentType,
+        raw,
+      });
     }
   } catch (error) {
     console.error('Fetch Error:', error.message);
