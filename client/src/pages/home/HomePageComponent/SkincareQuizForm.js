@@ -84,14 +84,14 @@ const handleSubmit = async (e) => {
 
   try {
     // Add no-cors mode and proper headers
-    const response = await fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
-      method: "POST",
-      mode: "no-cors", // Important for Google Apps Script
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload)
-    });
+const response = await fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(payload)
+});
+
 
     // Note: With no-cors mode, you won't be able to read the response
     // But the data should still be saved to your sheet
