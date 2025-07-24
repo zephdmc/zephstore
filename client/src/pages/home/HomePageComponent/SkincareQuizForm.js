@@ -71,8 +71,6 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   const payload = {
-    fullName: formData.fullName,
-    phone: formData.phone,
     email: formData.email,
     skinType: formData.skinType,
     skinConcerns: formData.skinConcerns.join(','),
