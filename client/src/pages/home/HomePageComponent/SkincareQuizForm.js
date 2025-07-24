@@ -87,18 +87,17 @@ export default function SkincareQuizForm({ onClose }) {
 
   try {
     // Use the full URL including /exec
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", 
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-        // Important for Google Apps Script
-        redirect: "follow"
-      }
-    );
+ 
+
+      const res = await fetch('/api/google-sheet-proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+         redirect: "follow"
+    });
+
+    const result = await res.json();
+    console.log('Response from Google Sheet:', result);
 
     // Handle the response
     const result = await response.json();
