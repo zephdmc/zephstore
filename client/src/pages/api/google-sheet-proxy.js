@@ -3,12 +3,22 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  const { fullName, phone, email, skinType, skinConcerns, otherConcern, routineDescription, contactMethod, consent } = req.body;
+  const {
+    fullName,
+    phone,
+    email,
+    skinType,
+    skinConcerns,
+    otherConcern,
+    routineDescription,
+    contactMethod,
+    consent,
+  } = req.body;
 
-  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec'; // 🔁 Replace this with your actual deployed script URL
+  const sheetScriptURL = 'https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec';
 
   try {
-    const googleRes = await fetch(sheetScriptURL, {
+    const response = await fetch(sheetScriptURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,16 +36,11 @@ export default async function handler(req, res) {
       }),
     });
 
-    const data = await googleRes.json();
+    const result = await response.json();
 
-    if (googleRes.ok) {
-      res.status(200).json({ success: true, data });
-    } else {
-      res.status(500).json({ success: false, error: data.error || 'Google Sheet error' });
-    }
-  } catch (err) {
-    console.error('Proxy error:', err);
-    res.status(500).json({ success: false, error: 'Server error' });
+    return res.status(200).json({ success: true, result });
+  } catch (error) {
+    console.error('Proxy Error:', error);
+    return res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
-
