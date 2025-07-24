@@ -63,37 +63,51 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
   setIsSubmitting(true);
   setErrors({});
 
+  // Prepare the payload with ALL required fields
   const payload = {
+    fullName: formData.fullName,
+    phone: formData.phone,
     email: formData.email,
     skinType: formData.skinType,
-    skinConcerns: formData.skinConcerns.join(','),
+    skinConcerns: formData.skinConcerns, // Already an array
     otherConcern: formData.otherConcern,
     routineDescription: formData.routineDescription,
     contactMethod: formData.contactMethod,
-    consent: formData.consent ? 'true' : 'false'
+    consent: formData.consent
   };
 
   try {
-    // Add no-cors mode and proper headers
-const response = await fetch("https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(payload)
-});
+    // Use the full URL including /exec
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbw692QxPLyirY9i1vOgyU7NitKJMOfbr1dMvzhFqszFmqZyHd_ywRMiYtvA3l-StpvF/exec", 
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        // Important for Google Apps Script
+        redirect: "follow"
+      }
+    );
 
-
-    // Note: With no-cors mode, you won't be able to read the response
-    // But the data should still be saved to your sheet
-    setIsSuccess(true);
+    // Handle the response
+    const result = await response.json();
+    
+    if (result.success) {
+      setIsSuccess(true);
+    } else {
+      throw new Error(result.error || "Failed to submit form");
+    }
   } catch (err) {
     console.error('Submission error:', err);
     alert('There was an error submitting the form. Please try again.');
