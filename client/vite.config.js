@@ -58,7 +58,7 @@ export default defineConfig({
         host: true,
       proxy: {
       '/api/submit': {
-        target: 'https://script.google.com/macros/s/AKfycbwx2XNpgby9Kwbt_tdocuwq9xSa8OxrioDLqPWIto0Dh4c7A6DHegtVoLHbGTG7MY__2w/exec',
+        target: 'https://script.google.com/macros/s/AKfycbwmurUvQstoAFxG1KmgA0ZyqbyInhbrYPSFeRXK8z2pA9PTXvcpd_n_-AQlJsVR4NQmiw/exec',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/submit/, ''),
       },
