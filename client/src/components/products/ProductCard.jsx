@@ -14,7 +14,7 @@ export default function ProductCard({ product }) {
         <div className="bg-purpleLight rounded-lg shadow-md overflow-hidden hover:shadow-lg transition relative">
             {/* Discount Badge - Top Left */}
             {hasDiscount && (
-                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                <div className="absolute top-2 left-2 bg-red-500 text-purpleDark text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
                     {product.discountPercentage}% OFF
                 </div>
             )}
