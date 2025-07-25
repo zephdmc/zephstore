@@ -321,17 +321,17 @@ useEffect(() => {
                                 {product.discountPercentage > 0 ? (
                                     <>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[12px] md:text-lg text-white line-through">
-                                                ₦{(product.price + (product.price * (product.discountPercentage / 100))).toFixed(2)}
+                                            <span className="text-[14px] md:text-lg text-white line-through">
+                                                ₦{(product.price + (product.price * (product.discountPercentage / 100))).toLocaleString()}
                                             </span>
-                                            <span className="text-[12px] md:text-lg text-purpleDark1 font-bold">
-                                                ₦{product.price.toFixed(2)}
+                                            <span className="text-[14px] md:text-lg text-purpleDark1 font-bold">
+                                                ₦{product.price.toLocaleString()}
                                             </span>
                                         </div>
                                     </>
                                 ) : (
-                                    <span className="text-[12px] md:text-xl text-white">
-                                        ₦{product.price.toFixed(2)}
+                                    <span className="text-[14px] md:text-xl text-white">
+                                        ₦{product.price.toLocaleString()}
                                     </span>
                                 )}
                             </div>
