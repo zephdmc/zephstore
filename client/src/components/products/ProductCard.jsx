@@ -34,15 +34,29 @@ export default function ProductCard({ product }) {
                 <div className="flex flex-col mb-4">
                     <div className="flex items-center gap-2">
                         {/* Original Price with strikethrough if there's a discount */}
-                        <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-white'}`}>
-                             ₦{expectedPrice.toLocaleString()}
-                        </span>
-                        {/* Expected Price (only shown if there's a discount) */}
-                        {hasDiscount && (
-                            <span className="text-white font-bold">
-                             ₦{product.price.toLocaleString()}
-                            </span>
-                        )}
+                    
+
+<div className="mt-auto">
+                                {/* Price Display */}
+                                {product.discountPercentage > 0 ? (
+                                    <>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px] md:text-lg text-white line-through">
+                                                ₦{(product.price + (product.price * (product.discountPercentage / 100))).toFixed(2)}
+                                            </span>
+                                            <span className="text-[12px] md:text-lg text-purpleDark1 font-bold">
+                                                ₦{product.price.toFixed(2)}
+                                            </span>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <span className="text-[12px] md:text-xl text-white">
+                                        ₦{product.price.toFixed(2)}
+                                    </span>
+                                )}
+                            </div>
+
+                        
                     </div>
                     {/* Stock Status */}
                     <div className="mt-1">
