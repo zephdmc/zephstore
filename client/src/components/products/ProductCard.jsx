@@ -13,11 +13,11 @@ export default function ProductCard({ product }) {
     return (
         <div className="bg-purpleLight rounded-lg shadow-md overflow-hidden hover:shadow-lg transition relative">
             {/* Discount Badge - Top Left */}
-            {hasDiscount && (
-                <div className="absolute top-2 left-2 bg-white text-purpleDark text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
-                    {product.discountPercentage}% OFF
-                </div>
-            )}
+           {product.discountPercentage > 0 && (
+                                <div className="absolute top-2 left-2 bg-white text-purpleDark1 text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                                    {product.discountPercentage}% OFF
+                                </div>
+                            )}
             <Link to={`/products/${product.id}`}>
                 <img
                     src={product.image}
