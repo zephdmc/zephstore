@@ -63,7 +63,9 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
@@ -71,31 +73,49 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbxOUnwRbXtdBJyMTisVRDvUZNPQoyuo4WUYJxjo_eDW9wgd3V2idabtCncsAm8DpWbztA/exec',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      }
-    );
-
-    if (!response.ok) {
-      // Handle HTTP errors
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(
-        errorData.error || 
-        `Server responded with status ${response.status}`
-      );
-    }
-
-    const result = await response.json();
+    // USE YOUR ACTUAL DEPLOYMENT URL HERE
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycby3uBDxwvaeWIf9DiXCZpDDzYjoEslBr0MJB9yXPAcnOsvxYeq6oyWZitDFcDaqnJb6xg/exec';
     
-    if (!result.success) {
-      throw new Error(result.error || "Submission failed");
+    // Create form data with proper formatting
+    const payload = {
+      fullName: formData.fullName.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim(),
+      skinType: formData.skinType,
+      skinConcerns: formData.skinConcerns,
+      otherConcern: formData.otherConcern.trim(),
+      routineDescription: formData.routineDescription.trim(),
+      contactMethod: formData.contactMethod,
+      consent: formData.consent
+    };
+
+    // Critical fetch configuration
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      // Mode and redirect are CRUCIAL for Google Apps Script
+      mode: 'no-cors',
+      redirect: 'follow'
+    });
+
+    // Google Script returns a redirect, so we need to handle it
+    if (response.redirected) {
+      // The actual response is in the redirected URL
+      const redirectedResponse = await fetch(response.url);
+      const result = await redirectedResponse.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || "Submission failed");
+      }
+      
+      setIsSuccess(true);
+    } else {
+      throw new Error("Unexpected response from server");
     }
 
-    setIsSuccess(true);
   } catch (err) {
     console.error('Submission error:', err);
     setErrors({
@@ -105,8 +125,6 @@ const handleSubmit = async (e) => {
     setIsSubmitting(false);
   }
 };
-
-
 
   
   return (
