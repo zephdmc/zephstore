@@ -13,6 +13,7 @@ class Product {
         this.skinType = data.skinType || '';
         this.size = data.size || '';
         this.benefits = data.benefits || '';
+       this.discountPercentage = data.discountPercentage || 0;
         this.createdAt = data.createdAt || new Date().toISOString();
         this.updatedAt = data.updatedAt || new Date().toISOString();
     }
@@ -29,6 +30,7 @@ class Product {
             skinType: this.skinType,
             size: this.size,
             benefits: this.benefits,
+            discountPercentage: this.discountPercentage,
             createdAt: this.createdAt,
             updatedAt: this.updatedAt
         };
@@ -47,6 +49,7 @@ class Product {
             skinType: data.skinType,
             size: data.size,
             benefits: data.benefits,
+            discountPercentage: data.discountPercentage,
             createdAt: data.createdAt,
             updatedAt: data.updatedAt
         });
