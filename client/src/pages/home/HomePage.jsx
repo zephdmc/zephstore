@@ -401,60 +401,7 @@ useEffect(() => {
                 </div>
             </section>
 
-            {/* TikTok Feed Section */}
-            <section className="py-16 bg-white">
-                <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl font-serif font-bold mb-4">Join Our Community</h2>
-                        <p className="text-purpleDark max-w-2xl mx-auto">Follow us for daily skincare tips and transformations</p>
-                    </motion.div>
-
-                    <div className="max-w-4xl mx-auto">
-                        {/* Placeholder for TikTok feed integration */}
-                        <div className="bg-purpleLight rounded-xl p-8 text-center">
-                            <p className="text-purpleDark mb-4">TikTok Feed Integration</p>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                {[1, 2, 3, 4].map((item) => (
-                                    <div key={item} className="aspect-square bg-gray-200 rounded-lg animate-pulse"></div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Newsletter Section */}
-            <section className="bg-purpleDark1 text-purpleLight py-16">
-                <div className="container mx-auto px-4 text-center">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-3xl font-serif font-bold mb-4">Stay Connected</h2>
-                        <p className="text-purpleLight max-w-2xl mx-auto mb-8">
-                            Subscribe to our newsletter for exclusive offers, skincare tips, and new product launches.
-                        </p>
-                        <div className=" mx-auto flex">
-                            <input
-                                type="email"
-                                placeholder="Your email address"
-                                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-purpleDark"
-                            />
-                            <button className="bg-purplegradient hover:bg-pink-700 px-6 py-3 rounded-r-lg font-medium transition-colors">
-                                Subscribe
-                            </button>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+           
             {/* Floating WhatsApp Button */}
 <motion.div
     drag
