@@ -66,7 +66,7 @@ export default function SkincareQuizForm({ onClose }) {
 
 
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
@@ -74,37 +74,48 @@ export default function SkincareQuizForm({ onClose }) {
   setErrors({});
 
   try {
-    // USE YOUR ACTUAL GOOGLE SCRIPT URL (from deployment)
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxOUnwRbXtdBJyMTisVRDvUZNPQoyuo4WUYJxjo_eDW9wgd3V2idabtCncsAm8DpWbztA/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxGV_Kp62r9xRGbIGeJf2P_aE1q8xzKgr-yfDTFnmxm_L0muUrDUqJH5QeTrU3PbW_dyA/exec';
 
-    // Prepare the data payload
-    const payload = {
-      fullName: formData.fullName,
-      phone: formData.phone,
-      email: formData.email,
-      skinType: formData.skinType,
-      skinConcerns: formData.skinConcerns,
-      otherConcern: formData.otherConcern,
-      routineDescription: formData.routineDescription,
-      contactMethod: formData.contactMethod,
-      consent: formData.consent
+    // Create a hidden iframe to handle the submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'google-script-iframe';
+    document.body.appendChild(iframe);
+
+    // Create a form
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = scriptUrl;
+    form.target = 'google-script-iframe'; // Target the iframe
+
+    // Add all form data
+    const addInput = (name, value) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = typeof value === 'object' ? JSON.stringify(value) : value;
+      form.appendChild(input);
     };
 
-    // Critical fetch configuration
-    const response = await fetch(scriptUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-      // Required for Google Apps Script
-      redirect: 'follow',
-      mode: 'no-cors' // Bypes CORS restrictions
-    });
+    addInput('fullName', formData.fullName);
+    addInput('phone', formData.phone);
+    addInput('email', formData.email);
+    addInput('skinType', formData.skinType);
+    addInput('skinConcerns', formData.skinConcerns);
+    addInput('otherConcern', formData.otherConcern);
+    addInput('routineDescription', formData.routineDescription);
+    addInput('contactMethod', formData.contactMethod);
+    addInput('consent', formData.consent);
 
-    // Since we're using no-cors mode, we can't read the response directly
-    // Assume success if we get here (no errors)
-    setIsSuccess(true);
+    document.body.appendChild(form);
+    form.submit();
+
+    // Consider it successful after a short delay
+    setTimeout(() => {
+      setIsSuccess(true);
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 1000);
 
   } catch (err) {
     console.error('Submission error:', err);
@@ -115,7 +126,6 @@ export default function SkincareQuizForm({ onClose }) {
     setIsSubmitting(false);
   }
 };
-  
   
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
