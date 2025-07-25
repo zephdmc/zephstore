@@ -63,7 +63,6 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
@@ -72,17 +71,21 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    // Use your EXACT Google Script URL (from deployment)
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbxOUnwRbXtdBJyMTisVRDvUZNPQoyuo4WUYJxjo_eDW9wgd3V2idabtCncsAm8DpWbztA/exec';
 
-    // Create a hidden form to submit the data
+    // Create a hidden iframe to handle the submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'google-script-iframe';
+    document.body.appendChild(iframe);
+
+    // Create a form
     const form = document.createElement('form');
-    form.style.display = 'none';
     form.method = 'POST';
     form.action = scriptUrl;
-    form.target = '_blank'; // Open response in new tab (won't actually open)
+    form.target = 'google-script-iframe'; // Target the iframe
 
-    // Add all form data as hidden inputs
+    // Add all form data
     const addInput = (name, value) => {
       const input = document.createElement('input');
       input.type = 'hidden';
@@ -104,22 +107,22 @@ const handleSubmit = async (e) => {
     document.body.appendChild(form);
     form.submit();
 
-    // Consider this a success (since we can't get response directly)
-    setIsSuccess(true);
-    
-    // Clean up after a delay
-    setTimeout(() => document.body.removeChild(form), 1000);
+    // Consider it successful after a short delay
+    setTimeout(() => {
+      setIsSuccess(true);
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 1000);
 
   } catch (err) {
     console.error('Submission error:', err);
     setErrors({
-      submit: 'Form submitted! You may need to refresh the page to see results.'
+      submit: 'Form submitted successfully! You may need to refresh to see results.'
     });
   } finally {
     setIsSubmitting(false);
   }
 };
-
   
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
