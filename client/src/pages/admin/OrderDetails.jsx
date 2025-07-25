@@ -274,6 +274,7 @@ export default function AdminOrderDetails() {
                                     <h3 className="text-sm font-medium text-gray-500">Contact</h3>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.email}</p>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.phone}</p>
+                                    <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.promocode}</p>
                                 </div>
                                 <div>
                                     <h3 className="text-sm font-medium text-gray-500">Shipping Address</h3>
