@@ -61,7 +61,7 @@ export default function EditProductPage() {
                 if (product.discountPercentage && product.price) {
                     const price = parseFloat(product.price) || 0;
                     const discount = parseFloat(product.discountPercentage) || 0;
-                    const calculatedPrice = price - (price * (discount / 100));
+                    const calculatedPrice = price + (price * (discount / 100));
                     setExpectedPrice(calculatedPrice.toFixed(2));
                 }
             } catch (err) {
