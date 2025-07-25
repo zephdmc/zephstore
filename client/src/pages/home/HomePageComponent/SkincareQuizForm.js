@@ -64,48 +64,32 @@ export default function SkincareQuizForm({ onClose }) {
     return Object.keys(newErrors).length === 0;
   };
 
-
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
   setIsSubmitting(true);
   setErrors({});
 
-  // Prepare the payload with ALL required fields
-  const payload = {
-    fullName: formData.fullName,
-    phone: formData.phone,
-    email: formData.email,
-    skinType: formData.skinType,
-    skinConcerns: formData.skinConcerns, // Already an array
-    otherConcern: formData.otherConcern,
-    routineDescription: formData.routineDescription,
-    contactMethod: formData.contactMethod,
-    consent: formData.consent
-  };
-
   try {
-    // Use the full URL including /exec
- 
+    // Call Google Apps Script directly
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbx82NEYlK9u9dyz5k0KKvWM1jtJi8lKXxRm-ZQJtTeR2ROvALUZLyHkXuVsYx5rN77T5Q/exec',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+        // Remove redirect: "follow" as it might cause issues
+      }
+    );
 
-      const res = await fetch('/api/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-         redirect: "follow"
-    });
-
-    const result = await res.json();
-    console.log('Response from Google Sheet:', result);
-
+    const result = await response.json();
     
-    
-    if (result.success) {
-      setIsSuccess(true);
-    } else {
+    if (!response.ok) {
       throw new Error(result.error || "Failed to submit form");
     }
+
+    setIsSuccess(true);
   } catch (err) {
     console.error('Submission error:', err);
     alert('There was an error submitting the form. Please try again.');
