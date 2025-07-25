@@ -64,7 +64,9 @@ export default function SkincareQuizForm({ onClose }) {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
@@ -113,7 +115,6 @@ const handleSubmit = async (e) => {
     setIsSubmitting(false);
   }
 };
-
   
   
   return (
