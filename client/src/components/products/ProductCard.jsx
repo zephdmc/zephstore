@@ -1,9 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+
 export default function ProductCard({ product }) {
     const { addToCart } = useCart();
+    
+    // Calculate expected price if discount exists
+    const hasDiscount = product.discountPercentage && product.discountPercentage > 0;
+    const expectedPrice = hasDiscount 
+        ? product.price + (product.price * (product.discountPercentage / 100))
+        : product.price;
+
     return (
-        <div className="bg-purpleLight rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+        <div className="bg-purpleLight rounded-lg shadow-md overflow-hidden hover:shadow-lg transition relative">
+            {/* Discount Badge - Top Left */}
+            {hasDiscount && (
+                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                    {product.discountPercentage}% OFF
+                </div>
+            )}
+            
             <Link to={`/products/${product.id}`}>
                 <img
                     src={product.image}
@@ -17,13 +32,27 @@ export default function ProductCard({ product }) {
                         {product.name}
                     </h3>
                 </Link>
-                <div className="flex justify-between items-center mb-4">
-                    <span className="text-purpDark font-bold">₦{product.price.toLocaleString()}</span>
-                    {product.countInStock > 0 ? (
-                        <span className="text-purpleDark text-sm">In Stock</span>
-                    ) : (
-                        <span className="text-Danger text-sm">Out of Stock</span>
-                    )}
+                <div className="flex flex-col mb-4">
+                    <div className="flex items-center gap-2">
+                        {/* Original Price with strikethrough if there's a discount */}
+                        <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-purpDark'}`}>
+                            ₦{product.price.toLocaleString()}
+                        </span>
+                        {/* Expected Price (only shown if there's a discount) */}
+                        {hasDiscount && (
+                            <span className="text-purpDark font-bold">
+                                ₦{expectedPrice.toLocaleString()}
+                            </span>
+                        )}
+                    </div>
+                    {/* Stock Status */}
+                    <div className="mt-1">
+                        {product.countInStock > 0 ? (
+                            <span className="text-purpleDark text-sm">In Stock</span>
+                        ) : (
+                            <span className="text-Danger text-sm">Out of Stock</span>
+                        )}
+                    </div>
                 </div>
                 <button
                     onClick={() => addToCart(product)}
@@ -35,7 +64,7 @@ export default function ProductCard({ product }) {
                 >
                     {product.countInStock === 0 ? 'Out of Stock' : 'Add to Cart'}
                 </button>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 }
