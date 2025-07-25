@@ -264,69 +264,92 @@ useEffect(() => {
         <div className="relative">
             <div className="overflow-x-auto pb-6 scrollbar-hide">
                 <div className="inline-flex space-x-6 px-2">
-                    {(products.length > 0 ? products : Array.from({ length: 7 })).map((product, index) => (
-                        <motion.div 
-                            key={product?.id || index}
-                            variants={itemVariants}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                            className={`
-                                w-[180px]  // Fixed base width for mobile
-                                sm:w-[220px] 
-                                md:w-[240px] 
-                                lg:w-[280px]
-                                flex-shrink-0
-                                relative
-                                group
-                            `}
-                            whileHover={{ 
-                                y: -8,
-                                transition: { duration: 0.3 }
-                            }}
-                        >
-                            <Link 
-                                to={product ? `/products/${product.id}` : '#'}
-                                className="block"
-                            >
-                                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-purplelight hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                                    <div className="relative pt-[100%] bg-gray-50 overflow-hidden">
-                                        {product ? (
-                                            <>
-                                                <img 
-                                                    src={product.image} 
-                                                    alt={product.name}
-                                                    className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-                                            </>
-                                        ) : (
-                                            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
-                                        )}
-                                    </div>
-                                    <div className="p-4 flex-grow flex flex-col bg-purpleLight">
-                                        {product ? (
-                                            <>
-                                                <h3 className="font-semibold text-purpleDark1 text-sm md:text-lg mb-1 line-clamp-2">
-                                                    {product.name}
-                                                </h3>
-                                                <div className="mt-auto flex items-center justify-between">
-                                                    <span className="text-sm md:text-xl text-white">
-                                                        ₦{product.price.toFixed(2)}
-                                                    </span>
-                                                    <FiShoppingBag className="text-white group-hover:text-purpleDark transition-colors" />
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className="h-5 bg-purpleLighter1 rounded w-3/4 mb-3 animate-pulse"></div>
-                                                <div className="h-5 bg-purpleLighter rounded w-1/2 mt-auto animate-pulse"></div>
-                                            </>
-                                        )}
-                                    </div>
+                   {(products.length > 0 ? products : Array.from({ length: 7 })).map((product, index) => (
+    <motion.div 
+        key={product?.id || index}
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className={`
+            w-[180px]  // Fixed base width for mobile
+            sm:w-[220px] 
+            md:w-[240px] 
+            lg:w-[280px]
+            flex-shrink-0
+            relative
+            group
+        `}
+        whileHover={{ 
+            y: -8,
+            transition: { duration: 0.3 }
+        }}
+    >
+        <Link 
+            to={product ? `/products/${product.id}` : '#'}
+            className="block"
+        >
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-purplelight hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                <div className="relative pt-[100%] bg-gray-50 overflow-hidden">
+                    {product ? (
+                        <>
+                            {/* Discount Badge */}
+                            {product.discountPercentage > 0 && (
+                                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                                    {product.discountPercentage}% OFF
                                 </div>
-                            </Link>
-                        </motion.div>
+                            )}
+                            <img 
+                                src={product.image} 
+                                alt={product.name}
+                                className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                        </>
+                    ) : (
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
+                    )}
+                </div>
+                <div className="p-4 flex-grow flex flex-col bg-purpleLight">
+                    {product ? (
+                        <>
+                            <h3 className="font-semibold text-purpleDark1 text-sm md:text-lg mb-1 line-clamp-2">
+                                {product.name}
+                            </h3>
+                            <div className="mt-auto">
+                                {/* Price Display */}
+                                {product.discountPercentage > 0 ? (
+                                    <>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-sm md:text-xl text-white line-through">
+                                                ₦{(product.price + (product.price * (product.discountPercentage / 100))).toFixed(2)}
+                                            </span>
+                                            <span className="text-sm md:text-xl text-purpleDark1 font-bold">
+                                                ₦{product.price.toFixed(2)}
+                                            </span>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <span className="text-sm md:text-xl text-white">
+                                        ₦{product.price.toFixed(2)}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex items-center justify-between mt-2">
+                                <FiShoppingBag className="text-white group-hover:text-purpleDark transition-colors" />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="h-5 bg-purpleLighter1 rounded w-3/4 mb-3 animate-pulse"></div>
+                            <div className="h-5 bg-purpleLighter rounded w-1/2 mt-auto animate-pulse"></div>
+                        </>
+                    )}
+                </div>
+            </div>
+        </Link>
+    </motion.div>
+))}
                     ))}
                 </div>
             </div>
