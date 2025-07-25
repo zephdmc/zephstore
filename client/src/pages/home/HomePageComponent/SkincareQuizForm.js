@@ -128,7 +128,7 @@ const handleSubmit = async (e) => {
 };
   
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto  backdrop-blur-sm bg-purpleDark bg-opacity-50 bg-opacity-50 flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
