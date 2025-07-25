@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
                         </span>
                         {/* Expected Price (only shown if there's a discount) */}
                         {hasDiscount && (
-                            <span className="text-purpDark font-bold">
+                            <span className="text-white font-bold">
                              ₦{product.price.toLocaleString()}
                             </span>
                         )}
