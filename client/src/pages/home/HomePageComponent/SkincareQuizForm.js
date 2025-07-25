@@ -63,7 +63,9 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
@@ -71,58 +73,47 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxGV_Kp62r9xRGbIGeJf2P_aE1q8xzKgr-yfDTFnmxm_L0muUrDUqJH5QeTrU3PbW_dyA/exec';
-
-    // Create a hidden iframe to handle the submission
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.name = 'google-script-iframe';
-    document.body.appendChild(iframe);
-
-    // Create a form
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = scriptUrl;
-    form.target = 'google-script-iframe'; // Target the iframe
-
-    // Add all form data
-    const addInput = (name, value) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = name;
-      input.value = typeof value === 'object' ? JSON.stringify(value) : value;
-      form.appendChild(input);
+    const scriptUrl = 'YOUR_SCRIPT_URL';
+    
+    // Convert form data to proper JSON format
+    const jsonData = {
+      fullName: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      skinType: formData.skinType,
+      skinConcerns: formData.skinConcerns, // Already an array
+      otherConcern: formData.otherConcern,
+      routineDescription: formData.routineDescription,
+      contactMethod: formData.contactMethod,
+      consent: formData.consent
     };
 
-    addInput('fullName', formData.fullName);
-    addInput('phone', formData.phone);
-    addInput('email', formData.email);
-    addInput('skinType', formData.skinType);
-    addInput('skinConcerns', formData.skinConcerns);
-    addInput('otherConcern', formData.otherConcern);
-    addInput('routineDescription', formData.routineDescription);
-    addInput('contactMethod', formData.contactMethod);
-    addInput('consent', formData.consent);
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(jsonData)
+    });
 
-    document.body.appendChild(form);
-    form.submit();
+    const result = await response.json();
+    
+    if (!result.success) {
+      throw new Error(result.error || "Submission failed");
+    }
 
-    // Consider it successful after a short delay
-    setTimeout(() => {
-      setIsSuccess(true);
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-    }, 1000);
-
+    setIsSuccess(true);
+    
   } catch (err) {
     console.error('Submission error:', err);
     setErrors({
-      submit: 'Form submitted successfully! You may need to refresh to see results.'
+      submit: err.message || 'Failed to submit form. Please try again.'
     });
   } finally {
     setIsSubmitting(false);
   }
 };
+
+
+  
   
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
