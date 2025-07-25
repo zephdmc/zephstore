@@ -28,12 +28,14 @@ export default function EditProductPage() {
         ingredients: '',
         skinType: '',
         size: '',
-        benefits: ''
+        benefits: '',
+        discountPercentage: '', // Added new field
     });
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useState(true);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [expectedPrice, setExpectedPrice] = useState(''); // Added for calculated price display
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -51,8 +53,17 @@ export default function EditProductPage() {
                     ingredients: product.ingredients || '',
                     skinType: product.skinType || '',
                     size: product.size || '',
-                    benefits: product.benefits || ''
+                    benefits: product.benefits || '',
+                    discountPercentage: product.discountPercentage || '', // Initialize discount percentage
                 });
+                
+                // Calculate initial expected price if discount exists
+                if (product.discountPercentage && product.price) {
+                    const price = parseFloat(product.price) || 0;
+                    const discount = parseFloat(product.discountPercentage) || 0;
+                    const calculatedPrice = price - (price * (discount / 100));
+                    setExpectedPrice(calculatedPrice.toFixed(2));
+                }
             } catch (err) {
                 setError('Failed to load product details');
             } finally {
@@ -76,7 +87,8 @@ export default function EditProductPage() {
             const productToUpdate = {
                 ...formData,
                 price: parseFloat(formData.price),
-                countInStock: parseInt(formData.countInStock)
+                countInStock: parseInt(formData.countInStock),
+                discountPercentage: formData.discountPercentage ? parseFloat(formData.discountPercentage) : 0, // Include discount percentage
             };
 
             const response = await updateProduct(id, productToUpdate);
@@ -100,7 +112,19 @@ export default function EditProductPage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData(prev => {
+            const updatedData = { ...prev, [name]: value };
+            
+            // Calculate expected price when either price or discount changes
+            if (name === 'price' || name === 'discountPercentage') {
+                const price = parseFloat(updatedData.price) || 0;
+                const discount = parseFloat(updatedData.discountPercentage) || 0;
+                const calculatedPrice = price - (price * (discount / 100));
+                setExpectedPrice(calculatedPrice.toFixed(2));
+            }
+            
+            return updatedData;
+        });
     };
 
     const handleImageUpload = async (e) => {
@@ -188,6 +212,47 @@ export default function EditProductPage() {
                                 onChange={handleChange}
                                 required
                                 className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Discount Percentage */}
+                    <div>
+                        <label htmlFor="discountPercentage" className="block text-sm font-medium text-gray-700 mb-1">
+                            Discount Percentage (%)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">%</span>
+                            <input
+                                type="number"
+                                id="discountPercentage"
+                                name="discountPercentage"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                value={formData.discountPercentage}
+                                onChange={handleChange}
+                                className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+                                placeholder="0.00"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Expected Price (read-only) */}
+                    <div>
+                        <label htmlFor="expectedPrice" className="block text-sm font-medium text-gray-700 mb-1">
+                            Expected Price After Discount (₦)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">₦</span>
+                            <input
+                                type="text"
+                                id="expectedPrice"
+                                name="expectedPrice"
+                                value={expectedPrice || ''}
+                                readOnly
+                                className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-sm sm:text-base"
+                                placeholder="Will be calculated automatically"
                             />
                         </div>
                     </div>
