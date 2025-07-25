@@ -32,18 +32,19 @@ export default function ProductCard({ product }) {
                     </h3>
                 </Link>
                 <div className="flex flex-col mb-4">
-                    <div className="flex items-center gap-2">
-                        {/* Original Price with strikethrough if there's a discount */}
-                        <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-purpDark'}`}>
-                             ₦{expectedPrice.toLocaleString()}
-                        </span>
-                        {/* Expected Price (only shown if there's a discount) */}
-                        {hasDiscount && (
-                            <span className="text-purpDark font-bold">
-                             ₦{product.price.toLocaleString()}
-                            </span>
-                        )}
-                    </div>
+                   {typeof product.price === 'number' && product.price > 0 && (
+    <div className="flex items-center gap-2">
+        {hasDiscount && (
+            <span className="font-bold text-gray-500 line-through text-sm">
+                ₦{(product.price + (product.price * product.discountPercentage / 100)).toLocaleString()}
+            </span>
+        )}
+        <span className="text-purpDark font-bold">
+            ₦{product.price.toLocaleString()}
+        </span>
+    </div>
+)}
+
                     {/* Stock Status */}
                     <div className="mt-1">
                         {product.countInStock > 0 ? (
