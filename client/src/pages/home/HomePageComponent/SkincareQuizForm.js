@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxHGXski8YfaaviDtmk9OkyNdtJ1cZ9wfW-eFLOLD_UFAxtndv049yi9przVwx7ev0L/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyyJtlxxHrOVCU9nmmAh-045s-BoSV8crwPFYVu37eGbtvFHpdZReAezVLfBuoHDOVblA/exec';
 
     // Create a hidden iframe to handle the submission
     const iframe = document.createElement('iframe');
