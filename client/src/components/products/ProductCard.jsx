@@ -18,7 +18,6 @@ export default function ProductCard({ product }) {
                     {product.discountPercentage}% OFF
                 </div>
             )}
-            
             <Link to={`/products/${product.id}`}>
                 <img
                     src={product.image}
