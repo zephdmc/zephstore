@@ -73,7 +73,7 @@ export default function SkincareQuizForm({ onClose }) {
   setErrors({});
 
   try {
-    const scriptUrl = 'YOUR_SCRIPT_URL';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxHGXski8YfaaviDtmk9OkyNdtJ1cZ9wfW-eFLOLD_UFAxtndv049yi9przVwx7ev0L/exec';
     
     // Convert form data to proper JSON format
     const jsonData = {
