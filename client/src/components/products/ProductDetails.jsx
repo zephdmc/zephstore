@@ -49,7 +49,7 @@ export default function ProductDetail() {
                 <div className="bg-white p-4 rounded-lg shadow relative">
                     {/* Discount Badge - Top Left */}
                     {hasDiscount && (
-                        <div className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                        <div className="absolute top-4 left-4 bg-red-500 text-purpleDark1 text-sm font-bold px-3 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
                             {product.discountPercentage}% OFF
                         </div>
                     )}
