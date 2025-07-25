@@ -28,11 +28,13 @@ export default function AddProductPage() {
         ingredients: '',
         skinType: '',
         size: '',
-        benefits: ''
+        benefits: '',
+        discountPercentage: '', // Added new field
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [expectedPrice, setExpectedPrice] = useState(''); // Added for calculated price display
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -54,6 +56,7 @@ export default function AddProductPage() {
                 ...formData,
                 price: parseFloat(formData.price),
                 countInStock: parseInt(formData.countInStock),
+                discountPercentage: formData.discountPercentage ? parseFloat(formData.discountPercentage) : 0, // Include discount percentage
             };
 
             const response = await createProduct(productToSubmit);
@@ -75,41 +78,49 @@ export default function AddProductPage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData(prev => {
+            const updatedData = { ...prev, [name]: value };
+            
+            // Calculate expected price when either price or discount changes
+            if (name === 'price' || name === 'discountPercentage') {
+                const price = parseFloat(updatedData.price) || 0;
+                const discount = parseFloat(updatedData.discountPercentage) || 0;
+                const calculatedPrice = price - (price * (discount / 100));
+                setExpectedPrice(calculatedPrice.toFixed(2));
+            }
+            
+            return updatedData;
+        });
     };
 
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-// Remove this line (it's causing the conflict):
-// const storage = getStorage(app);
-
-const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    try {
-        setLoading(true);
-        
-        const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-        // Use the imported storage directly
-        const storageRef = ref(storage, filename);
-        
-        const snapshot = await uploadBytes(storageRef, file, {
-            contentType: file.type,
-            customMetadata: {
-                uploadedBy: auth.currentUser?.uid || 'admin'
-            }
-        });
-        
-        const downloadURL = await getDownloadURL(snapshot.ref);
-        setFormData(prev => ({ ...prev, image: downloadURL }));
-        
-    } catch (err) {
-        console.error("Upload error:", err);
-        setError('Image upload failed: ' + err.message);
-    } finally {
-        setLoading(false);
-    }
-};
+        try {
+            setLoading(true);
+            
+            const filename = `products/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
+            // Use the imported storage directly
+            const storageRef = ref(storage, filename);
+            
+            const snapshot = await uploadBytes(storageRef, file, {
+                contentType: file.type,
+                customMetadata: {
+                    uploadedBy: auth.currentUser?.uid || 'admin'
+                }
+            });
+            
+            const downloadURL = await getDownloadURL(snapshot.ref);
+            setFormData(prev => ({ ...prev, image: downloadURL }));
+            
+        } catch (err) {
+            console.error("Upload error:", err);
+            setError('Image upload failed: ' + err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-6 max-w-4xl">
@@ -123,7 +134,7 @@ const handleImageUpload = async (e) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Skincare Ne Product</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Skincare New Product</h2>
             </div>
 
             {/* Status Messages */}
@@ -175,6 +186,47 @@ const handleImageUpload = async (e) => {
                                 required
                                 className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                                 placeholder="0.00"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Discount Percentage */}
+                    <div>
+                        <label htmlFor="discountPercentage" className="block text-sm font-medium text-gray-700 mb-1">
+                            Discount Percentage (%)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">%</span>
+                            <input
+                                type="number"
+                                id="discountPercentage"
+                                name="discountPercentage"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                value={formData.discountPercentage}
+                                onChange={handleChange}
+                                className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+                                placeholder="0.00"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Expected Price (read-only) */}
+                    <div>
+                        <label htmlFor="expectedPrice" className="block text-sm font-medium text-gray-700 mb-1">
+                            Expected Price After Discount (₦)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">₦</span>
+                            <input
+                                type="text"
+                                id="expectedPrice"
+                                name="expectedPrice"
+                                value={expectedPrice || ''}
+                                readOnly
+                                className="w-full pl-8 pr-3 sm:pr-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-sm sm:text-base"
+                                placeholder="Will be calculated automatically"
                             />
                         </div>
                     </div>
