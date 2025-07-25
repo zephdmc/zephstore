@@ -295,7 +295,7 @@ useEffect(() => {
                         <>
                             {/* Discount Badge */}
                             {product.discountPercentage > 0 && (
-                                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                                <div className="absolute top-2 left-2 bg-white text-purpleDark1 text-xs font-bold px-2 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
                                     {product.discountPercentage}% OFF
                                 </div>
                             )}
@@ -321,16 +321,16 @@ useEffect(() => {
                                 {product.discountPercentage > 0 ? (
                                     <>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[6px] md:text-lg text-white line-through">
+                                            <span className="text-[12px] md:text-lg text-white line-through">
                                                 ₦{(product.price + (product.price * (product.discountPercentage / 100))).toFixed(2)}
                                             </span>
-                                            <span className="text-[10px] md:text-lg text-purpleDark1 font-bold">
+                                            <span className="text-[12px] md:text-lg text-purpleDark1 font-bold">
                                                 ₦{product.price.toFixed(2)}
                                             </span>
                                         </div>
                                     </>
                                 ) : (
-                                    <span className="text-[10px] md:text-xl text-white">
+                                    <span className="text-[12px] md:text-xl text-white">
                                         ₦{product.price.toFixed(2)}
                                     </span>
                                 )}
