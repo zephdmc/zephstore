@@ -85,7 +85,7 @@ export default function AddProductPage() {
             if (name === 'price' || name === 'discountPercentage') {
                 const price = parseFloat(updatedData.price) || 0;
                 const discount = parseFloat(updatedData.discountPercentage) || 0;
-                const calculatedPrice = price - (price * (discount / 100));
+                const calculatedPrice = price + (price * (discount / 100));
                 setExpectedPrice(calculatedPrice.toFixed(2));
             }
             
