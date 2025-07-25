@@ -37,10 +37,22 @@ export default function ProductDetail() {
     if (error) return <div className="text-red-500">{error}</div>;
     if (!product) return <div>Product not found</div>;
 
+    // Calculate expected price if discount exists
+    const hasDiscount = product.discountPercentage && product.discountPercentage > 0;
+    const expectedPrice = hasDiscount 
+        ? product.price + (product.price * (product.discountPercentage / 100))
+        : product.price;
+
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8">
-                <div className="bg-white p-4 rounded-lg shadow">
+                <div className="bg-white p-4 rounded-lg shadow relative">
+                    {/* Discount Badge - Top Left */}
+                    {hasDiscount && (
+                        <div className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full z-10 transform -rotate-12 shadow-md">
+                            {product.discountPercentage}% OFF
+                        </div>
+                    )}
                     <img
                         src={product.image}
                         alt={product.name}
@@ -50,13 +62,22 @@ export default function ProductDetail() {
                 <div className="bg-purpleLight p-6 rounded-lg shadow">
                     <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
                     <div className="mb-4">
-                        <span className="text-purpleDark1 text-xl font-bold">
-                            ₦{product.price.toLocaleString()}
-                        </span>
+                        <div className="flex items-center gap-2">
+                            {/* Expected Price with strikethrough if there's a discount */}
+                            <span className={`text-purpleDark1 text-xl font-bold ${hasDiscount ? 'line-through text-gray-400' : ''}`}>
+                                ₦{expectedPrice.toLocaleString()}
+                            </span>
+                            {/* Current Price (only shown if there's a discount) */}
+                            {hasDiscount && (
+                                <span className="text-purpleDark1 text-xl font-bold">
+                                    ₦{product.price.toLocaleString()}
+                                </span>
+                            )}
+                        </div>
                         {product.countInStock > 0 ? (
-                            <span className="ml-2 text-white">In Stock</span>
+                            <span className="text-white">In Stock</span>
                         ) : (
-                            <span className="ml-2 text-purpleDark1">Out of Stock</span>
+                            <span className="text-purpleDark1">Out of Stock</span>
                         )}
                     </div>
                     <p className="text-white mb-6">{product.description}</p>
