@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
                 <div className="flex flex-col mb-4">
                     <div className="flex items-center gap-2">
                         {/* Original Price with strikethrough if there's a discount */}
-                        <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-purpDark'}`}>
+                        <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-white'}`}>
                              ₦{expectedPrice.toLocaleString()}
                         </span>
                         {/* Expected Price (only shown if there's a discount) */}
