@@ -324,13 +324,13 @@ useEffect(() => {
                                             <span className="text-[6px] md:text-lg text-white line-through">
                                                 ₦{(product.price + (product.price * (product.discountPercentage / 100))).toFixed(2)}
                                             </span>
-                                            <span className="text-[6px] md:text-lg text-purpleDark1 font-bold">
+                                            <span className="text-[10px] md:text-lg text-purpleDark1 font-bold">
                                                 ₦{product.price.toFixed(2)}
                                             </span>
                                         </div>
                                     </>
                                 ) : (
-                                    <span className="text-[6px] md:text-xl text-white">
+                                    <span className="text-[10px] md:text-xl text-white">
                                         ₦{product.price.toFixed(2)}
                                     </span>
                                 )}
