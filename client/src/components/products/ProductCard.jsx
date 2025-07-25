@@ -36,12 +36,12 @@ export default function ProductCard({ product }) {
                     <div className="flex items-center gap-2">
                         {/* Original Price with strikethrough if there's a discount */}
                         <span className={`font-bold ${hasDiscount ? 'text-gray-500 line-through text-sm' : 'text-purpDark'}`}>
-                            ₦{product.price.toLocaleString()}
+                             ₦{expectedPrice.toLocaleString()}
                         </span>
                         {/* Expected Price (only shown if there's a discount) */}
                         {hasDiscount && (
                             <span className="text-purpDark font-bold">
-                                ₦{expectedPrice.toLocaleString()}
+                             ₦{product.price.toLocaleString()}
                             </span>
                         )}
                     </div>
