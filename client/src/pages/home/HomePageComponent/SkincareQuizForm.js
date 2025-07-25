@@ -63,7 +63,6 @@ export default function SkincareQuizForm({ onClose }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validate()) return;
@@ -72,27 +71,36 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    // Call Google Apps Script directly
     const response = await fetch(
       'https://script.google.com/macros/s/AKfycbx82NEYlK9u9dyz5k0KKvWM1jtJi8lKXxRm-ZQJtTeR2ROvALUZLyHkXuVsYx5rN77T5Q/exec',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-        // Remove redirect: "follow" as it might cause issues
       }
     );
 
+    if (!response.ok) {
+      // Handle HTTP errors
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        errorData.error || 
+        `Server responded with status ${response.status}`
+      );
+    }
+
     const result = await response.json();
     
-    if (!response.ok) {
-      throw new Error(result.error || "Failed to submit form");
+    if (!result.success) {
+      throw new Error(result.error || "Submission failed");
     }
 
     setIsSuccess(true);
   } catch (err) {
     console.error('Submission error:', err);
-    alert('There was an error submitting the form. Please try again.');
+    setErrors({
+      submit: err.message || 'Failed to submit form. Please try again.'
+    });
   } finally {
     setIsSubmitting(false);
   }
