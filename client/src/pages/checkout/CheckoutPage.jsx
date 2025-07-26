@@ -114,7 +114,7 @@ export default function CheckoutPage() {
             {step === 1 && <ShippingForm onSubmit={handleShippingSubmit} />}
             {step === 2 && (
                 <PaymentForm
-                    amount={cartTotal}
+                    amount={cartTotal + (shippingData?.shippingPrice || 0)}
                     onSuccess={handlePaymentSuccess}
                     onClose={() => setStep(1)}
                     cartItems={cartItems}
