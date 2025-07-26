@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 
 export default function ShippingForm({ onSubmit }) {
     const { currentUser } = useAuth();
+    const { cartTotal } = useCart();
+
     const [formData, setFormData] = useState({
         address: '',
         city: '',
@@ -12,7 +15,9 @@ export default function ShippingForm({ onSubmit }) {
         country: 'Nigeria',
         phone: '',
         promocode: '',
-        email: currentUser?.email || ''
+        email: currentUser?.email || '',
+         deliveryMethod: 'pickup',  // 🆕 default method
+    shippingPrice: 0           // 🆕 shipping price
     });
 
     const handleChange = (e) => {
@@ -21,6 +26,21 @@ export default function ShippingForm({ onSubmit }) {
             [e.target.name]: e.target.value,
         });
     };
+const deliveryPrices = {
+    pickup: 0,
+    portHarcourt: 3500,
+    outsidePortHarcourt: 6500
+};
+
+const handleDeliveryChange = (e) => {
+    const method = e.target.value;
+    const price = deliveryPrices[method];
+    setFormData((prev) => ({
+        ...prev,
+        deliveryMethod: method,
+        shippingPrice: price
+    }));
+};
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -136,6 +156,25 @@ export default function ShippingForm({ onSubmit }) {
                     />
                 </div>
             </div>
+
+            <div className="mb-4">
+    <label className="block text-purpleDark mb-1">Delivery Method</label>
+    <select
+        name="deliveryMethod"
+        value={formData.deliveryMethod}
+        onChange={handleDeliveryChange}
+        className="w-full p-2 border rounded"
+        required
+    >
+        <option value="portHarcourt">Within Port Harcourt (₦3,500)</option>
+        <option value="outsidePortHarcourt">Outside Port Harcourt (₦6,500)</option>
+        <option value="pickup">Pick up at Store (Free)</option>
+    </select>
+</div>
+<div className="mb-4 text-right font-semibold">
+  Total Fee: ₦{(cartTotal + formData.shippingPrice).toLocaleString()}
+</div>
+
 
             <button
                 type="submit"
