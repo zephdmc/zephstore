@@ -68,9 +68,9 @@ export default function CheckoutPage() {
                     verifiedAt: verification.verifiedAt || new Date().toISOString()
                 },
                 itemsPrice: Number(cartTotal),
-                shippingPrice: 0,
+                 shippingPrice: shippingData.shippingPrice,
                 taxPrice: 0,
-                totalPrice: Number(cartTotal)
+                totalPrice: Number(cartTotal) + shippingData.shippingPrice,
             };
 
             const createdOrder = await createOrder(orderData);
