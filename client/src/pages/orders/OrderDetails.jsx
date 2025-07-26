@@ -33,7 +33,7 @@ export default function OrderDetails() {
             <div className="container mx-auto px-4 py-8">
                 <div className="text-center py-12">
                     <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary mb-4"></div>
-                    <p className="text-gray-500">Loading order details...</p>
+                    <p className="text-gray-500">Loading order details....</p>
                 </div>
             </div>
         );
