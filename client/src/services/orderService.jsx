@@ -36,7 +36,6 @@ export const createOrder = async (orderData) => {
             }
         );
 
-        console.log('✅ Raw Axios Response:', response);
         return response;
 
     } catch (error) {
@@ -59,7 +58,6 @@ export const getOrderById = async (id) => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('✅ Raw Axios Response:', response); // Add this
 
         return response.data;
 
@@ -85,7 +83,6 @@ export const getOrdersByUser = async () => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('✅ Raw Axios Response:', response); // Add this
 
         return response;
 
@@ -108,7 +105,6 @@ export const getAllOrders = async () => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('✅ Raw Axios Response:', response); // Add this
 
         return response;
 
@@ -131,7 +127,6 @@ export const updateOrderToDelivered = async (orderId) => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('✅ Raw Axios Response:', response); // Add this
 
         return response;
 
