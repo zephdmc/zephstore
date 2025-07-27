@@ -2,9 +2,7 @@ import API from './api';
 import { auth } from '../firebase/config';
 export const getProducts = async (params = {}) => {
 
-    console.log("🔥 AUTH VALUE:", auth);
-    console.log("🔥 CURRENT USER:", auth.currentUser);
-
+   
     try {
         const response = await API.get('api/products', { params });
         return response;
@@ -34,7 +32,6 @@ export const createProduct = async (productData) => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('✅ Raw Axios Response:', response); // Add this
 
         return response;
     } catch (error) {
