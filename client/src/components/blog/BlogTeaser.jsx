@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 export default function BlogTeaser({ post }) {
   // Safe data access with fallbacks
-  console.log(post)
   const coverImageUrl = post?.fields?.pictureFlyer?.fields?.file?.url || '';
 
 
