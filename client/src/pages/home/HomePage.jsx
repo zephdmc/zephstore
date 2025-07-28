@@ -31,14 +31,14 @@ const SplashScreen = ({ onClose }) => {
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-50 bg-purpleLight/30 backdrop-invert backdrop-opacity-20 flex items-center justify-center p-2 sm:p-4"
     >
-      <div className="w-full max-w-md sm:max-w-6xl">
-        <div className="flex flex-col items-center gap-6 sm:gap-8 sm:flex-row sm:gap-12">
+      <div className="w-full max-w-sm sm:max-w-6xl">
+        <div className="flex flex-col items-center gap-4 sm:gap-8 sm:flex-row sm:gap-12">
           {/* First Offer */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="w-full sm:flex-1 bg-purplegradient p-4 sm:p-8 rounded-xl shadow-lg border border-purple-200"
+            className="w-full bg-purplegradient p-4 sm:p-8 rounded-xl shadow-lg border border-purple-200"
           >
             <h3 className="text-base sm:text-xl font-medium text-white mb-1 sm:mb-2">FIRST ORDER</h3>
             <h2 className="text-2xl sm:text-6xl font-bold text-purpleLight mb-1 sm:mb-2">10% OFF</h2>
@@ -48,20 +48,17 @@ const SplashScreen = ({ onClose }) => {
             </p>
           </motion.div>
 
-          {/* Divider - Visible only on larger screens */}
-          <div className="hidden sm:block h-64 w-px bg-purpleLight"></div>
-
-          {/* Second Offer - Hidden on mobile */}
+          {/* Second Offer - Now visible on mobile */}
           <motion.div 
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="hidden sm:flex sm:flex-1 bg-purplegradient p-8 rounded-xl shadow-lg border border-purple-300"
+            className="w-full bg-purplegradient p-4 sm:p-8 rounded-xl shadow-lg border border-purple-300"
           >
-            <h3 className="text-lg sm:text-xl font-medium text-white mb-2">RETURNING</h3>
-            <h2 className="text-4xl sm:text-6xl font-bold text-purpleLight mb-2">15% OFF</h2>
-            <h4 className="text-2xl sm:text-3xl font-semibold text-white mb-4">GLOWBACK15</h4>
-            <p className="text-base sm:text-lg text-white mb-6">
+            <h3 className="text-base sm:text-xl font-medium text-white mb-1 sm:mb-2">RETURNING</h3>
+            <h2 className="text-2xl sm:text-6xl font-bold text-purpleLight mb-1 sm:mb-2">15% OFF</h2>
+            <h4 className="text-lg sm:text-3xl font-semibold text-white mb-2 sm:mb-4">GLOWBACK15</h4>
+            <p className="text-sm sm:text-lg text-white mb-4 sm:mb-6">
               Welcome back! Get 15% off your next order with code GLOWBACK15
             </p>
           </motion.div>
