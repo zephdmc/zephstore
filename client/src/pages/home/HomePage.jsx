@@ -350,7 +350,7 @@ useEffect(() => {
         </Link>
     </motion.div>
 ))}
-                    ))}
+                  
                 </div>
             </div>
         </div>
