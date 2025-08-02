@@ -268,6 +268,7 @@ import { generateSecurityToken } from '../../utils/securityUtils';
 import { logPaymentEvent } from '../../services/analyticsService';
 import API from '../../services/api';
 import { auth } from '../../firebase/config';
+const logoUrl = `${window.location.origin}/images/logo.png`;
 
 const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
     const { currentUser } = useAuth();
@@ -366,7 +367,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
                 customizations: {
                     title: 'Bellebeau Aesthetics.ng',
                     description: 'Payment for skincare products',
-                    logo: 'images/logo.png'
+                    logo: logoUrl,
                 },
                 callback: handlePaymentCallback,
                 onclose: handlePaymentClose
