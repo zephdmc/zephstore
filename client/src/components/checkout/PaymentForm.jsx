@@ -89,12 +89,18 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
 
 
 //console.log('Initializing Flutterwave with cartItems:', cartItems);
+const itemIds = cartItems
+  .map(i => i?.id)
+  .filter(id => id !== undefined && id !== null);
+
+// Serialize the array into a string
 const metaPayload = {
   securityToken,
   userId: currentUser.uid,
   nonce: nonceRef.current.nonce,
-  items: cartItems.map(i => i?.id).filter(Boolean)
+  items: JSON.stringify(itemIds) // <--- serialize here
 };
+
 console.log(metaPayload, 'do')
             
             window.FlutterwaveCheckout({
@@ -152,7 +158,9 @@ console.log(metaPayload, 'do')
                     amount,
                     meta: {
                         userId,
-                        items: cartItems.map(i => i?.id).filter(Boolean),
+                        items: JSON.stringify(
+    cartItems.map(i => i?.id).filter(Boolean)
+  ),
                         txRef,
                         securityToken
                     }
