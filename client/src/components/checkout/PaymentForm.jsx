@@ -349,6 +349,27 @@ console.log(securityToken, 'eye')
                 itemsCount: cartItems.length
             });
 
+
+
+            // Validate cartItems and extracted item IDs
+let itemIds = [];
+try {
+  if (!Array.isArray(cartItems)) {
+    throw new Error('cartItems is not an array');
+  }
+  itemIds = cartItems.map(item => {
+    if (!item || (item.id === undefined || item.id === null)) {
+      throw new Error(`Invalid item in cartItems: ${JSON.stringify(item)}`);
+    }
+    return item.id;
+  });
+} catch (err) {
+  console.error('Error extracting item IDs:', err);
+  setError('There was a problem with your cart items.');
+  setIsLoading(false);
+  return;
+}
+
             window.FlutterwaveCheckout({
                 public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY,
                 tx_ref: txRef,
