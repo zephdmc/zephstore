@@ -305,7 +305,6 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         };
     }, []);
 
-console.log('Using Flutterwave public key prefix:', import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY?.slice(0, 10));
 
     
     const initializePayment = async () => {
@@ -333,7 +332,6 @@ console.log('Using Flutterwave public key prefix:', import.meta.env.VITE_FLUTTER
 
             // ✅ Store nonce in ref
             nonceRef.current = nonceResponse.nonce;
-console.log(nonceRef.current, 'nonce')
             const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
 
@@ -363,10 +361,10 @@ console.log(nonceRef.current, 'nonce')
                     phone_number: ''
                 },
                 meta: {
-                    //securityToken,
-                    //userId: currentUser.uid,
+                    securityToken,
+                    userId: currentUser.uid,
                     nonce: nonceRef.current.nonce,
-                    //items: cartItems.map(item => item.id)
+                    items: cartItems.map(item => item.id)
                 },
                 customizations: {
                     title: 'Bellebeau Aesthetics',
