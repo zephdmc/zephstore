@@ -305,7 +305,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         };
     }, []);
 
-console.log('meta data', securityToken, currentUser.uid, nonce: nonceRef.current.nonce)
+console.log('meta data', securityToken, currentUser.uid, nonceRef.current.nonce)
     
     const initializePayment = async () => {
         if (!scriptReady) {
