@@ -386,6 +386,7 @@ try {
                     userId: currentUser.uid,
                     nonce: nonceRef.current.nonce,
                     //items: cartItems.map(item => item.id)
+                    items: itemIds,
                 },
                 customizations: {
                     title: 'Bellebeau Aesthetics',
