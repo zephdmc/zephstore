@@ -87,8 +87,8 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
             });
 
 
-
-
+const itemis = cartItems.map(i => i?.id).filter(Boolean);
+console.log(itemis, 'do')
 
 //console.log('Initializing Flutterwave with cartItems:', cartItems);
 const metaPayload = {
