@@ -43,7 +43,8 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
     }, []);
 
 
-    consoole.log(cartItems, 'catItems')
+   console.log('cartItems passed into PaymentForm:', cartItems);
+
     const initializePayment = async () => {
         if (!scriptReady) {
             setError('Payment processor is still loading. Please wait.');
@@ -71,7 +72,6 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
             nonceRef.current = nonceResponse.nonce;
             const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
-console.log(securityToken, 'eye')
             // Store all payment data in ref
             nonceRef.current = {
                 nonce: nonceResponse.nonce,
