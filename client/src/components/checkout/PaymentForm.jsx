@@ -305,7 +305,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         };
     }, []);
 
-console.log('meta data', currentUser.uid, nonceRef.current.nonce)
+console.log('meta data', currentUser.uid, nonceRef.current)
     
     const initializePayment = async () => {
         if (!scriptReady) {
@@ -334,7 +334,7 @@ console.log('meta data', currentUser.uid, nonceRef.current.nonce)
             nonceRef.current = nonceResponse.nonce;
             const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
-console.log(securityToken, 'eye)
+console.log(securityToken, 'eye')
             // Store all payment data in ref
             nonceRef.current = {
                 nonce: nonceResponse.nonce,
