@@ -267,6 +267,7 @@ import { useAuth } from '../../context/AuthContext';
 import { generateSecurityToken } from '../../utils/securityUtils';
 import { logPaymentEvent } from '../../services/analyticsService';
 import API from '../../services/api';
+
 import { auth } from '../../firebase/config';
 const logoUrl = `${window.location.origin}/images/logo.png`;
 
@@ -332,7 +333,7 @@ console.log('Using Flutterwave public key prefix:', import.meta.env.VITE_FLUTTER
 
             // ✅ Store nonce in ref
             nonceRef.current = nonceResponse.nonce;
-
+console.log(nonceRef.current, 'nonce')
             const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
 
