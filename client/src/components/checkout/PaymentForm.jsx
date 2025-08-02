@@ -304,6 +304,9 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         };
     }, []);
 
+console.log('Using Flutterwave public key prefix:', import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY?.slice(0, 10));
+
+    
     const initializePayment = async () => {
         if (!scriptReady) {
             setError('Payment processor is still loading. Please wait.');
