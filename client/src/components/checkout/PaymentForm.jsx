@@ -364,9 +364,9 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
                     items: cartItems.map(item => item.id)
                 },
                 customizations: {
-                    title: 'Zeph Store',
+                    title: 'Bellebeau Aesthetics.ng',
                     description: 'Payment for skincare products',
-                    logo: 'https://your-logo-url.com/logo.png'
+                    logo: 'images/logo.png'
                 },
                 callback: handlePaymentCallback,
                 onclose: handlePaymentClose
