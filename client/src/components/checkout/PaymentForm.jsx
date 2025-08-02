@@ -334,7 +334,7 @@ console.log('meta data', securityToken, currentUser.uid, nonceRef.current.nonce)
             nonceRef.current = nonceResponse.nonce;
             const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
-
+console.log(securityToken, 'eye)
             // Store all payment data in ref
             nonceRef.current = {
                 nonce: nonceResponse.nonce,
