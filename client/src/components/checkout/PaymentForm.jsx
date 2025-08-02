@@ -361,7 +361,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
                     phone_number: ''
                 },
                 meta: {
-                    securityToken,
+                    //securityToken,
                     userId: currentUser.uid,
                     nonce: nonceRef.current.nonce,
                     items: cartItems.map(item => item.id)
