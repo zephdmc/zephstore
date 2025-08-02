@@ -153,7 +153,7 @@ const metaPayload = {
                     amount,
                     meta: {
                         userId,
-                        items: cartItems.map(item => item.id),
+                        items: cartItems.map(i => i?.id).filter(Boolean),
                         txRef,
                         securityToken
                     }
