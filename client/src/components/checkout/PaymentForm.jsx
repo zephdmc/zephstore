@@ -306,7 +306,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
     }, []);
 
 
-    
+    consoole.log(cartItems, 'catItems')
     const initializePayment = async () => {
         if (!scriptReady) {
             setError('Payment processor is still loading. Please wait.');
