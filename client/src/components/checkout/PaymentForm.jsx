@@ -87,8 +87,6 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
             });
 
 
-const itemis = cartItems.map(i => i?.id).filter(Boolean);
-console.log(itemis, 'do')
 
 //console.log('Initializing Flutterwave with cartItems:', cartItems);
 const metaPayload = {
@@ -97,7 +95,8 @@ const metaPayload = {
   nonce: nonceRef.current.nonce,
   items: cartItems.map(i => i?.id).filter(Boolean)
 };
-
+console.log(metaPayload, 'do')
+            
             window.FlutterwaveCheckout({
                 public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY,
                 tx_ref: txRef,
