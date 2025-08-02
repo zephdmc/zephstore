@@ -305,7 +305,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         };
     }, []);
 
-console.log('meta data', currentUser.uid, nonceRef.current)
+
     
     const initializePayment = async () => {
         if (!scriptReady) {
@@ -361,10 +361,10 @@ console.log(securityToken, 'eye')
                     phone_number: ''
                 },
                 meta: {
-                    //securityToken,
-                    //userId: currentUser.uid,
+                    securityToken,
+                    userId: currentUser.uid,
                     nonce: nonceRef.current.nonce,
-                    items: cartItems.map(item => item.id)
+                    //items: cartItems.map(item => item.id)
                 },
                 customizations: {
                     title: 'Bellebeau Aesthetics',
