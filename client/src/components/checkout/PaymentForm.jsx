@@ -362,7 +362,7 @@ console.log(securityToken, 'eye')
                 },
                 meta: {
                     //securityToken,
-                    userId: currentUser.uid,
+                    //userId: currentUser.uid,
                     nonce: nonceRef.current.nonce,
                     items: cartItems.map(item => item.id)
                 },
