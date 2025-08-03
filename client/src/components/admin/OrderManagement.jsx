@@ -10,6 +10,7 @@ export default function OrderManagement() {
         const fetchOrders = async () => {
             try {
                 const response = await getOrders();
+                console.log(response, 'order engin');
                 setOrders(response.data);
             } catch (err) {
                 setError(err.message || 'Failed to load orders');
