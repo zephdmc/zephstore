@@ -47,7 +47,7 @@ const OrderConfirmation = ({ order }) => {
                     to={`/orders/${order.data.id}`}
                     className="bg-primary text-purpleDark py-2 px-6 rounded hover:bg-purpleDark1 transition font-medium"
                 >
-                    View Order Details
+                    View Order Details Now
                 </Link>
                 <Link
                     to="/products"
