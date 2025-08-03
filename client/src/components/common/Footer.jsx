@@ -46,7 +46,7 @@ export default function Footer() {
                                 <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> About Us</a></li>
                             <li><a href="/blog" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> Blog</a></li>
-                            <li><a href="/about" className="text-whitehover:text-purple-400 transition-colors flex items-center">
+                            <li><a href="/about" className="text-white hover:text-purple-400 transition-colors flex items-center">
                                 <span className="w-1 h-1 bg-purpleLighter mr-2 rounded-full"></span> FAQs</a></li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@ export default function Footer() {
                     {/* Contact Info */}
                     <div>
                         <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-purpleDark1"> Contact Us </h4>
-                        <ul className="space-y-4 text-white" >
+                        <ul className="space-y-4 text-gray-50" >
                             <li className="flex items-start">
                                 <FiMapPin className="mt-1 mr-3 flex-shrink-0 text-white" />
                                 <span>330 PH/Aba Express way Rumukwurushi Port Harcourt</span>
