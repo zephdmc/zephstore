@@ -14,6 +14,7 @@ export default function CheckoutPage() {
     const [order, setOrder] = useState(null);
     const [step, setStep] = useState(1);
     const navigate = useNavigate();
+const [isProcessingOrder, setIsProcessingOrder] = useState(false);
 
     // Redirect to login if not authenticated
     useEffect(() => {
@@ -34,6 +35,7 @@ export default function CheckoutPage() {
 
     const handlePaymentSuccess = async (paymentData) => {
         try {
+            setIsProcessingOrder(true); // show processing immediately
             const {
                 payment,
                 verification,
@@ -88,7 +90,9 @@ export default function CheckoutPage() {
                 config: error.config
             });
             alert(`Order processing failed: ${error.response?.data?.message || error.message}`);
-        }
+        }finally {
+        setIsProcessingOrder(false); // hide processing if error or after success render
+    }
     };
 
     return (
@@ -120,7 +124,30 @@ export default function CheckoutPage() {
                     cartItems={cartItems}
                 />
             )}
-            {step === 3 && order && <OrderConfirmation order={order} />}
+            
+            {step === 3 && (
+    isProcessingOrder ? (
+        <div className="flex flex-col items-center justify-center py-16 bg-white rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+                <div className="relative w-12 h-12">
+                    <div className="animate-spin rounded-full border-4 border-t-primary border-b-transparent border-l-primary border-r-transparent w-12 h-12"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <p className="text-xl font-semibold text-purpleDark">Processing your transaction…</p>
+                    <p className="text-sm text-gray-500">This usually takes a few seconds. Please don’t close or refresh.</p>
+                </div>
+            </div>
+        </div>
+    ) : (
+        order && <OrderConfirmation order={order} />
+    )
+)}
+
         </div>
     );
 }
