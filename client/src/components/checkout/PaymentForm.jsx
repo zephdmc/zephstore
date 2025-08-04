@@ -70,7 +70,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
 
             // ✅ Store nonce in ref
             nonceRef.current = nonceResponse.nonce;
-            const txRef = `zeph_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
+            const txRef = `BBA_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
             const securityToken = await generateSecurityToken(currentUser.uid, txRef);
             // Store all payment data in ref
             nonceRef.current = {
