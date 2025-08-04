@@ -33,7 +33,7 @@ const paymentResolvedRef = useRef(false);
         script.src = 'https://checkout.flutterwave.com/v3.js';
         script.async = true;
         script.onload = () => {
-            console.log('Flutterwave script loaded');
+          
             setScriptReady(true);
         };
         script.onerror = () => {
@@ -93,7 +93,6 @@ const paymentResolvedRef = useRef(false);
 
 
 
-//console.log('Initializing Flutterwave with cartItems:', cartItems);
 const itemIds = cartItems
   .map(i => i?.id)
   .filter(id => id !== undefined && id !== null);
@@ -106,7 +105,7 @@ const metaPayload = {
   items: JSON.stringify(itemIds) // <--- serialize here
 };
 
-console.log(metaPayload, 'do')
+
             
             window.FlutterwaveCheckout({
                 public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY,
@@ -178,14 +177,13 @@ if (['successful', 'success', 'completed'].includes(normalizedStatus)) {
                         'Content-Type': 'application/json'
                     }
                 });
- console.log('Verification response12:', verification);
+
 
                 if (verification.success) {
                     await logPaymentEvent('success', {
                         txRef: response.tx_ref,
                         amount: response.amount
                     });
-                    console.log('Verification response12:', verification.payment);
 
                     onSuccess({
                         payment: {
