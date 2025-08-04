@@ -152,8 +152,9 @@ console.log(metaPayload, 'do')
         setError(null);
 
         try {
-            console.log('Flutterwave callback response (live):', response);
-            if (response.status === 'successful') {
+          const normalizedStatus = (response.status || '').toString().toLowerCase();
+// treat 'successful', 'success', 'completed' as success
+if (['successful', 'success', 'completed'].includes(normalizedStatus)) {
                  paymentResolvedRef.current = true; // ← prevent onclose from reverting step
                 const token = await auth.currentUser.getIdToken(true);
                 const { nonce, txRef, securityToken, userId } = nonceRef.current;
@@ -177,7 +178,7 @@ console.log(metaPayload, 'do')
                         'Content-Type': 'application/json'
                     }
                 });
-
+ console.log('Verification response12:', verification);
 
                 if (verification.success) {
                     await logPaymentEvent('success', {
