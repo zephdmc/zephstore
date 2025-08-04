@@ -38,7 +38,7 @@ export const logClientEvent = async (eventData) => {
         console.error('Analytics logging failed:', error);
         // Fallback to console in development
         if (process.env.NODE_ENV === 'development') {
-            console.log('Event would have been logged:', eventData);
+          
         }
     }
 };
