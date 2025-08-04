@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const OrderConfirmation = ({ order }) => {
 
-    console.log(order.data, 'sdsd')
+  
     useEffect(() => {
         // Track conversion in analytics
         window.dataLayer = window.dataLayer || [];
