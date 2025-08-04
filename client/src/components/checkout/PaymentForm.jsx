@@ -14,6 +14,10 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
     const [scriptReady, setScriptReady] = useState(false);
     const [error, setError] = useState(null);
 
+
+    // near the top of PaymentForm, alongside nonceRef
+const paymentResolvedRef = useRef(false);
+
     // ✅ Use ref to store nonce
     // const nonceRef = useRef('');
     const nonceRef = useRef({
@@ -22,6 +26,7 @@ const PaymentForm = ({ amount, onSuccess, onClose, cartItems }) => {
         securityToken: '',
         userId: ''
     });
+    
     // Load Flutterwave script
     useEffect(() => {
         const script = document.createElement('script');
@@ -148,6 +153,7 @@ console.log(metaPayload, 'do')
 
         try {
             if (response.status === 'successful') {
+                 paymentResolvedRef.current = true; // ← prevent onclose from reverting step
                 const token = await auth.currentUser.getIdToken(true);
                 const { nonce, txRef, securityToken, userId } = nonceRef.current;
                 if (!nonce) throw new Error('Payment nonce missing');
@@ -220,8 +226,10 @@ console.log(metaPayload, 'do')
     };
 
     const handlePaymentClose = () => {
-        setIsLoading(false);
-        onClose();
+       setIsLoading(false);
+    if (!paymentResolvedRef.current) {
+        onClose(); // only call if payment didn't already succeed
+    }
     };
 
     return (
