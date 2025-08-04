@@ -9,72 +9,121 @@ const axios = require('axios');
 // @route   POST /api/payments/verify
 // @access  Private
 
-exports.verifyPayment = async (req, res) => {
-    try {
-        console.log('Verification request received:', {
-            headers: req.headers,
-            body: req.body,
-            user: req.user
-        });
-
-        // 1. Validate required fields
-        const { transaction_id, tx_ref, nonce } = req.body;
-        if (!transaction_id || !tx_ref || !nonce) {
-            console.error('Missing required fields');
-            return res.status(400).json({
-                success: false,
-                error: 'Missing required fields: transaction_id, tx_ref, nonce'
-            });
-        }
-
-        // 2. Validate nonce
-        const isNonceValid = await validateNonce(req.user.uid, nonce);
-        if (!isNonceValid) {
-            console.error('Invalid nonce');
-            return res.status(401).json({
-                success: false,
-                error: 'Invalid or expired nonce'
-            });
-        }
-
-        // 3. Process payment (mock - replace with actual Flutterwave verification)
-        const paymentRecord = {
-            id: tx_ref,
-            status: 'verified',
-            amount: req.body.amount,
-            verifiedAt: new Date().toISOString()
-        };
-
-        // 4. Clear the used nonce
-        await db.collection('paymentNonces').doc(req.user.uid).delete();
-
-        console.log('Payment verified successfully');
-        res.json({
-            success: true,
-            payment: paymentRecord
-        });
-
-    } catch (error) {
-        console.error('Verification error:', error);
-        res.status(500).json({
-            success: false,
-            error: 'Payment verification failed'
-        });
-    }
-};
-
+// Helper: verify with Flutterwave
 async function verifyWithFlutterwave(transactionId) {
     try {
-        return await axios.get(`https://api.flutterwave.com/v3/transactions/${transactionId}/verify`, {
-            headers: {
-                'Authorization': `Bearer ${process.env.FLUTTERWAVE_SECRET_KEY}`
+        const res = await axios.get(
+            `https://api.flutterwave.com/v3/transactions/${transactionId}/verify`,
+            {
+                headers: {
+                    Authorization: `Bearer ${process.env.FLUTTERWAVE_SECRET_KEY}`,
+                    'Content-Type': 'application/json'
+                }
             }
-        });
+        );
+        return res.data; // full Flutterwave payload
     } catch (error) {
         console.error('Flutterwave verification error:', error.response?.data || error.message);
-        throw new ErrorResponse('Payment verification failed with Flutterwave', 400);
+        throw new ErrorResponse(
+            error.response?.data?.message || 'Payment verification failed with Flutterwave',
+            400
+        );
     }
 }
+
+// Main verify endpoint
+exports.verifyPayment = asyncHandler(async (req, res) => {
+    console.log('Verification request received:', {
+        headers: req.headers,
+        body: req.body,
+        user: req.user
+    });
+
+    const { transaction_id, tx_ref, nonce, amount: clientAmount } = req.body;
+
+    // 1. Validate required fields
+    if (!transaction_id || !tx_ref || !nonce) {
+        console.error('Missing required fields');
+        return res.status(400).json({
+            success: false,
+            error: 'Missing required fields: transaction_id, tx_ref, nonce'
+        });
+    }
+
+    // 2. Validate nonce
+    const isNonceValid = await validateNonce(req.user.uid, nonce);
+    if (!isNonceValid) {
+        console.error('Invalid nonce');
+        return res.status(401).json({
+            success: false,
+            error: 'Invalid or expired nonce'
+        });
+    }
+
+    // 3. Verify with Flutterwave (live/test depending on secret key)
+    const flutterwaveRaw = await verifyWithFlutterwave(transaction_id); // transaction_id is the identifier for verify
+    // Expected shape: { status: 'success', message: '...', data: { status: 'successful', tx_ref: '...', amount: ..., currency: ..., customer: {...}, ... } }
+
+    const fwData = flutterwaveRaw?.data;
+    if (!(flutterwaveRaw?.status === 'success' && fwData?.status === 'successful')) {
+        console.error('Flutterwave returned failed status:', flutterwaveRaw);
+        return res.status(400).json({
+            success: false,
+            error: 'Flutterwave verification failed',
+            details: flutterwaveRaw
+        });
+    }
+
+    // 4. Cross-check tx_ref consistency
+    if (fwData.tx_ref !== tx_ref) {
+        console.error('tx_ref mismatch', { expected: tx_ref, got: fwData.tx_ref });
+        return res.status(400).json({
+            success: false,
+            error: 'Transaction reference mismatch'
+        });
+    }
+
+    // 5. Optional: verify amount matches what client expected (to avoid tampering)
+    if (clientAmount != null && Number(fwData.amount) !== Number(clientAmount)) {
+        console.warn('Amount discrepancy', { flutterwave: fwData.amount, client: clientAmount });
+        // You can choose to reject or proceed depending on tolerance
+        return res.status(400).json({
+            success: false,
+            error: 'Payment amount mismatch'
+        });
+    }
+    // 5b. Optional: verify currency matches what you expect
+if (fwData.currency !== (req.body.currency || 'NGN')) {
+    console.warn('Currency mismatch', { flutterwave: fwData.currency, client: req.body.currency });
+    return res.status(400).json({
+        success: false,
+        error: 'Payment currency mismatch'
+    });
+}
+
+    // 6. Persist using existing logic (wrap in try/catch if needed)
+    const clientData = {
+        meta: req.body.meta || {}
+    };
+    const result = await processPaymentVerification({
+        userId: req.user.uid,
+        flutterwaveData: fwData,
+        clientData
+    });
+
+    // 7. Clear nonce was already handled in processPaymentVerification
+
+    // 8. Return normalized shape to frontend
+    return res.json({
+        success: true,
+        payment: {
+            id: result.id,
+            amount: result.amount,
+            status: result.status,
+            verifiedAt: new Date().toISOString()
+        }
+    });
+});
 
 async function processPaymentVerification({ userId, flutterwaveData, clientData }) {
     const batch = db.batch();
