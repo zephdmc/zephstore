@@ -152,6 +152,7 @@ console.log(metaPayload, 'do')
         setError(null);
 
         try {
+            console.log('Flutterwave callback response (live):', response);
             if (response.status === 'successful') {
                  paymentResolvedRef.current = true; // ← prevent onclose from reverting step
                 const token = await auth.currentUser.getIdToken(true);
