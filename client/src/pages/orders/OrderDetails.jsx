@@ -73,7 +73,7 @@ export default function OrderDetails() {
                     <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
-                    <h3 className="mt-2 text-lg font-medium text-gray-900">Order not found</h3>
+                    <h3 className="mt-2 text-lg font-medium text-white">Order not found</h3>
                     <p className="mt-1 text-gray-500 mb-4">We couldn't find the order you're looking for.</p>
                     <Link
                         to="/orders"
@@ -145,21 +145,21 @@ export default function OrderDetails() {
                     </div>
 
                     <div className="bg-white rounded-lg shadow overflow-hidden">
-                        <div className="px-6 py-4 border-b border-gray-200">
+                        <div className="px-6 py-4 border-b border-purpleDark1">
                             <h2 className="text-lg font-medium">Payment Information</h2>
                         </div>
                         <div className="p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-500">Payment Method</h3>
+                                    <h3 className="text-sm font-medium text-purpleDark1">Payment Method</h3>
                                     <p className="mt-1 text-sm text-gray-900 capitalize">
                                         {order.paymentMethod}
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-500">Payment Status</h3>
-                                    <p className="mt-1 text-sm text-gray-900">
-                                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${order.isPaid ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                                    <h3 className="text-sm font-medium text-purpleDark1">Payment Status</h3>
+                                    <p className="mt-1 text-sm text-purpleLight">
+                                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${order.isPaid ? 'bg-green-100 text-purpleLight' : 'bg-yellow-100 text-purpleDark2'}`}>
                                             {order.isPaid ? 'Paid' : 'Not Paid'}
                                         </span>
                                     </p>
@@ -167,13 +167,13 @@ export default function OrderDetails() {
                                 {order.isPaid && (
                                     <>
                                         <div>
-                                            <h3 className="text-sm font-medium text-gray-500">Paid At</h3>
-                                            <p className="mt-1 text-sm text-gray-900">
+                                            <h3 className="text-sm font-medium text-purpleDark1">Paid At</h3>
+                                            <p className="mt-1 text-sm text-purpleDark1">
                                                 {new Date(order.paidAt).toLocaleDateString()} at {new Date(order.paidAt).toLocaleTimeString()}
                                             </p>
                                         </div>
                                         <div>
-                                            <h3 className="text-sm font-medium text-gray-500">Transaction ID</h3>
+                                            <h3 className="text-sm font-medium text-purpleDark1">Transaction ID</h3>
                                             <p className="mt-1 text-sm text-gray-900">
                                                 {order.paymentResult?.transactionRef || 'N/A'}
                                             </p>
@@ -187,8 +187,8 @@ export default function OrderDetails() {
 
                 <div>
                     <div className="bg-white rounded-lg shadow overflow-hidden mb-6">
-                        <div className="px-6 py-4 border-b border-gray-200">
-                            <h2 className="text-lg font-medium">Order Summary</h2>
+                        <div className="px-6 py-4 border-b border-purpleDark1">
+                            <h2 className="text-lg font-medium text-purpleDark1">Order Summary</h2>
                         </div>
                         <div className="p-6">
                             <div className="flex justify-between py-2">
@@ -211,8 +211,8 @@ export default function OrderDetails() {
                     </div>
 
                     <div className="bg-white rounded-lg shadow overflow-hidden">
-                        <div className="px-6 py-4 border-b border-gray-200">
-                            <h2 className="text-lg font-medium">Shipping Information</h2>
+                        <div className="px-6 py-4 border-b border-purpleDark1">
+                            <h2 className="text-lg text-purpleDark1 font-medium">Shipping Information</h2>
                         </div>
                         <div className="p-6">
                             <div className="mb-4">
