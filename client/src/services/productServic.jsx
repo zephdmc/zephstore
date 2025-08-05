@@ -65,7 +65,7 @@ export const updateProduct = async (id, productData) => {
         });
 
         // Debug log to see actual response structure
-        console.log('Update response:', response);
+    
 
         return response;
 
