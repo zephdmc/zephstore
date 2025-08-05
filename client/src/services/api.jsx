@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { auth } from '../firebase/config'; // or './firebase/config' depending on your folder structure
+import { auth } from '../firebase/config'; // 
 
 const API = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -112,19 +112,5 @@ API.isNetworkError = (error) => {
 };
 
 
-// API.interceptors.response.use(
-//     response => response.data,
-//     error => {
-//         const formattedError = {
-//             message: API.isNetworkError(error)
-//                 ? 'Network connection failed'
-//                 : error.response?.data?.message || error.message,
-//             status: error.response?.status,
-//             isNetworkError: API.isNetworkError(error),
-//             originalError: error
-//         };
-//         console.error('API Error Intercepted:', formattedError);
-//         return Promise.reject(formattedError);
-//     }
-// );
+
 export default API;
