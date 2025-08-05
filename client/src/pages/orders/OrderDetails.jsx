@@ -98,7 +98,7 @@ export default function OrderDetails() {
                     </svg>
                     Back to Orders
                 </Link>
-                <h1 className="text-2xl font-bold mt-2">Order #{order.id.substring(0, 8)}</h1>
+                <h1 className="text-2xl text-white font-bold mt-2">Order #{order.id.substring(0, 8)}</h1>
                 <p className="text-white">
                     Placed on {new Date(order.createdAt).toLocaleDateString()} at {new Date(order.createdAt).toLocaleTimeString()}
                 </p>
