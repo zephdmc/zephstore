@@ -123,7 +123,7 @@ export default function OrderDetails() {
                                     <div className="ml-6 flex-1">
                                         <div className="flex items-baseline justify-between">
                                             <h3 className="text-lg font-medium">
-                                                <Link to={`/products/${item.productId}`} className="text-gray-900 hover:text-primary">
+                                                <Link to={`/products/${item.productId}`} className="text-purpleDark1 hover:text-primary">
                                                     {item.name}
                                                 </Link>
                                             </h3>
@@ -135,7 +135,7 @@ export default function OrderDetails() {
                                             Quantity: {item.quantity}
                                         </p>
                                         
-                                        <p className="mt-2 text-lg font-medium">
+                                        <p className="mt-2 text-lg font-medium text-purpleDark1">
                                             Subtotal: ₦{(item.price * item.quantity).toLocaleString()}
                                         </p>
                                     </div>
@@ -146,7 +146,7 @@ export default function OrderDetails() {
 
                     <div className="bg-white rounded-lg shadow overflow-hidden">
                         <div className="px-6 py-4 border-b border-purpleDark1">
-                            <h2 className="text-lg font-medium">Payment Information</h2>
+                            <h2 className="text-lg text-purpleDark1 font-medium">Payment Information</h2>
                         </div>
                         <div className="p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -174,7 +174,7 @@ export default function OrderDetails() {
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-medium text-purpleDark1">Transaction ID</h3>
-                                            <p className="mt-1 text-sm text-gray-900">
+                                            <p className="mt-1 text-sm text-purpleDark1">
                                                 {order.paymentResult?.transactionRef || 'N/A'}
                                             </p>
                                         </div>
@@ -204,8 +204,8 @@ export default function OrderDetails() {
                                 <span className="font-medium">₦{order.taxPrice.toLocaleString()}</span>
                             </div>
                             <div className="flex justify-between py-4 border-t border-gray-200">
-                                <span className="text-lg font-medium">Total</span>
-                                <span className="text-lg font-bold">₦{order.totalPrice.toLocaleString()}</span>
+                                <span className="text-lg text-purpleDark1 font-medium">Total</span>
+                                <span className="text-lg text-purpleDark1 font-bold">₦{order.totalPrice.toLocaleString()}</span>
                             </div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@ export default function OrderDetails() {
                         </div>
                         <div className="p-6">
                             <div className="mb-4">
-                                <h3 className="text-sm font-medium text-gray-500">Delivery Status</h3>
+                                <h3 className="text-sm font-medium text-purpleDark1">Delivery Status</h3>
                                 <p className="mt-1 text-sm text-gray-900">
                                     <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${order.isDelivered ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                                         {order.isDelivered ? 'Delivered' : 'Processing'}
@@ -230,13 +230,13 @@ export default function OrderDetails() {
                             </div>
                             <div className="space-y-4">
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-500">Contact</h3>
+                                    <h3 className="text-sm font-medium text-purpleDark1">Contact</h3>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.email}</p>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.phone}</p>
                                     <p className="mt-1 text-sm text-gray-900">{order.shippingAddress.promocode}</p>
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-500">Shipping Address</h3>
+                                    <h3 className="text-sm font-medium text-purpleDark1">Shipping Address</h3>
                                     <p className="mt-1 text-sm text-gray-900">
                                         {order.shippingAddress.address},<br />
                                         {order.shippingAddress.city}, {order.shippingAddress.state}<br />
