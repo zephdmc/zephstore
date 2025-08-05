@@ -91,7 +91,7 @@ export default function OrderDetails() {
             <div className="mb-6">
                 <Link
                     to="/orders"
-                    className="inline-flex items-center text-primary hover:text-primary-dark"
+                    className="x-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-white hover:text-primary-dark rounded-lg hover:opacity-90 transition-all shadow-md"
                 >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -99,7 +99,7 @@ export default function OrderDetails() {
                     Back to Orders
                 </Link>
                 <h1 className="text-2xl font-bold mt-2">Order #{order.id.substring(0, 8)}</h1>
-                <p className="text-gray-500">
+                <p className="text-white">
                     Placed on {new Date(order.createdAt).toLocaleDateString()} at {new Date(order.createdAt).toLocaleTimeString()}
                 </p>
             </div>
@@ -107,8 +107,8 @@ export default function OrderDetails() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
                     <div className="bg-white rounded-lg shadow overflow-hidden mb-6">
-                        <div className="px-6 py-4 border-b border-gray-200">
-                            <h2 className="text-lg font-medium">Order Items</h2>
+                        <div className="px-6 py-4 border-b border-white">
+                            <h2 className="text-lg text-white font-medium">Order Items</h2>
                         </div>
                         <div className="divide-y divide-gray-200">
                             {order.items.map((item, index) => (
