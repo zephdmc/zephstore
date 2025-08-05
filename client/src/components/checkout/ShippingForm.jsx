@@ -53,7 +53,7 @@ const handleDeliveryChange = (e) => {
 
     return (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium mb-4">Shipping Information</h3>
+            <h3 className="text-lg text-purpleDark1 font-medium mb-4">Shipping Information</h3>
 
             <div className="mb-4">
                 <label className="block text-purpleDark mb-1">Email</label>
