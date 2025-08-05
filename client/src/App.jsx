@@ -7,7 +7,7 @@ import AppRoutes from './routes';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import ErrorBoundary from './pages/ErrorBoundary';
-import  {ScrollToTop} from './ScrollToTop';
+import  ScrollToTop from './ScrollToTop';
 function App() {
     useEffect(() => {
         if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
